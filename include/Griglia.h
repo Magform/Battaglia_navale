@@ -9,9 +9,13 @@ public:
 
     //funzioni utili
     void set(std::string toSet, std::string location);
+    void remove(std::string location);
+    std::string retrive(std::string location);
 
     //overload operatori
     friend std::ostream& operator<<(std::ostream& os, const Griglia to_print);
-}
+};
+
+#include "../src/Griglia.hpp"
 
 #endif // Griglia_H_
