@@ -1,4 +1,4 @@
-#include "../include/Griglia.h"
+#include "../../include/Griglia/Griglia.h"
 
 //costuttori
 Griglia::Griglia(){

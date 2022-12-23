@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "include/Griglia.h"
+#include "../../include/Griglia/Griglia.h"
 
 using namespace std;
 

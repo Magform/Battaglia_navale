@@ -16,6 +16,6 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Griglia to_print);
 };
 
-#include "../src/Griglia.hpp"
+#include "../../lib/Griglia/Griglia.hpp"
 
 #endif // Griglia_H_
