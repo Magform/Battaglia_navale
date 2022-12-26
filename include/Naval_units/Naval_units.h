@@ -9,7 +9,7 @@ protected:
 
 public:
     virtual void set(std::string inizio, std::string fine);
-    virtual void azione(std::string centro);
+    virtual void azione(std::string centro, std::string obiettivo);
 };
 
 #include "../../lib/Naval_units/Naval_units.hpp"

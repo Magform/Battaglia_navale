@@ -3,7 +3,7 @@
 
 class Supporto : public Naval_units{
     void set(std::string inizio, std::string fine);
-    void azione(std::string centro);
+    void azione(std::string centro, std::string obiettivo);
 };
 
 #include "../../lib/Naval_units/Supporto.hpp"

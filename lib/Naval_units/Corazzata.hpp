@@ -2,6 +2,7 @@
 
 void Corazzata::set(std::string inizio, std::string fine){
 
+
 }
 
 void Corazzata::azione(std::string centro)

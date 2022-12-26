@@ -13,7 +13,7 @@ private:
     Sottomarino sottomarino2;
 
 public:
-
+    void setup();
 
 };
 
