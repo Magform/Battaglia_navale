@@ -1,4 +1,5 @@
 #include "../../include/Griglia/Griglia.h"
+#include "..\..\include\Griglia\Griglia_difesa.h"
 
 void Griglia_difesa::setup(){
     std::string inizio,fine;
@@ -28,4 +29,9 @@ void Griglia_difesa::setup(){
     std::cout<<"Quali sono le coordinate per il sottomarino 2: "
     std::cin>>inizio>>fine;
     sottomarino2.set(inizio, fine);
+}
+
+inline void Griglia_difesa::bot_setup(){
+    srand(time(NULL));
+
 }

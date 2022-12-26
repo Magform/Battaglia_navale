@@ -8,6 +8,7 @@ protected:
     std::string centro;
 
 public:
+    virtual NavalUnits(Griglia_difesa griglia_argomento) { griglia = griglia_argomento };
     virtual void set(std::string inizio, std::string fine);
     virtual void azione(std::string centro, std::string obiettivo);
 };
