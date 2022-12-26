@@ -2,13 +2,14 @@
 #define Griglia_H_
 
 class Griglia{
-private:
+protected:
     std::string matrix[12][12]; //matrice che rappresenta la griglia [y][x]
 public:
     Griglia();
 
     //funzioni utili
     void set(std::string toSet, std::string location);
+    void clear();
     void remove(std::string location);
     std::string retrive(std::string location);
 

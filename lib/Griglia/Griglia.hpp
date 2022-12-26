@@ -25,6 +25,14 @@ void Griglia::set(std::string toSet, std::string location){
     matrix[character][number] = toSet;
 }
 
+void Griglia::clear(){
+    for(int riga=0; riga<12; riga++ ){
+        for(int colonna=0; colonna<12; colonna++){
+            matrix[riga][colonna]=" ";
+        }
+    }
+}
+
 void Griglia::remove(std::string location){
     int character = location[0];
     character = character-65;
