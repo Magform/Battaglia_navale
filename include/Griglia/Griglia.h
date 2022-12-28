@@ -1,20 +1,22 @@
 #ifndef Griglia_H_
 #define Griglia_H_
 
+using namespace srd;
+
 class Griglia{
 protected:
-    std::string matrix[12][12]; //matrice che rappresenta la griglia [y][x]
+    string matrix[12][12]; //matrice che rappresenta la griglia [y][x]
 public:
     Griglia();
 
     //funzioni utili
-    void set(std::string toSet, std::string location);
+    void set(string toSet, string location);
     void clear();
-    void remove(std::string location);
-    std::string retrive(std::string location);
+    void remove(string location);
+    string retrive(string location);
 
     //overload operatori
-    friend std::ostream& operator<<(std::ostream& os, const Griglia to_print);
+    friend ostream& operator<<(ostream& os, const Griglia to_print);
 };
 
 #include "../../lib/Griglia/Griglia.hpp"
