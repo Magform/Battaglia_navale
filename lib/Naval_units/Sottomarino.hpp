@@ -9,16 +9,7 @@ public:
         //Qua non ho capito se inizio e fine sono uguali, 
         //essendo il Sottomarino di lunghezza 1
 
-        char c=inizio.at(0);
-        int xPos=stoi(inizio.substr(1,2))-1;
-        int yPos;
-        if(c<74){
-            yPos=c-65;
-        }else{
-            yPos=c-67;
-        }
-
-        if(matrix[yPos][xPos]==" "){
+        if(Griglia.retrive(inizio)==" "){
             Griglia.set("E", inizio);
         }else{
             throw std::invalid_argument("Carattere non valido");
@@ -28,25 +19,33 @@ public:
     
    void azione(std::string centro, std::string obiettivo){
 
-        char c=obiettivo.at(0);
-        int XTarget=stoi(obiettivo.substr(1,2))-1;
-        int YTarget;
-        if(c<74){
-            YTarget=c-65;
-        }else{
-            YTarget=c-67;
-        }
-       
-        if(matrix[YTarget][XTarget]==" "){
-            PosValid=true;
-
+        if(Griglia.retrive(obiettivo)==" "){
+  
             Griglia.remove(centro);
-            std::string Pos=Ytarget+""+XTarget;
-            Griglia.set("E", Pos);
-
-            //radar
-
-        }else{
+            Griglia.set("E", obiettivo);
+            
+            char c=obiettivo.at(0);
+            int XTarget=stoi(obiettivo.substr(1,2))-1;
+            int YTarget;
+            YTarget=c-65;
+            
+            int YSearch=YTarget-2;
+            int XSearch=XTarget-2;
+            
+            //inizio radar
+            for(int k=0; k<5; k++){
+                for(int j=0; j<5; j++){
+                    if(((YSearch+k)>0)&&((YSearch+k)<12)&&((XSearch+j)>0)&&((XSearch+j)<12))){   //if per vedere se si esce dalla matrice quando si fa la ricerca radar
+                        
+                        //Controllo se ci sono navi nel punto matrix[YSearch][XSearch]
+                        //e in caso metto una Y nella griglia di difesa
+                        
+                    }
+                }
+            }
+            //fine del radar
+            
+          }else{
 
             throw std::invalid_argument("Carattere non valido");
 
