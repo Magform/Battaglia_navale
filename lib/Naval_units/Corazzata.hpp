@@ -36,6 +36,9 @@ public:
                 Griglia.set("C", Pos);
             }
         }
+        
+        //Sono Nicolas, ho buttato un occhi e cosi ho paura che non riesca a trovarti la griglia, volendo potresti aggiungere un terzo parametro ossia la griglia cosi che possiamo sceglierla.
+        //Ti chiedo inoltre se riesci a fare in modo che se si prova a creare una barca dove ve ne é gia un altro oppure fuoria dalla griglia non crea nessuna casella ma lancia un eccezzione cosi poi la vado a cattuare per fare in modo che i bot impostino le navi in modo casuale.
     }
     
     void azione(std::string centro, std::string obiettivo){
