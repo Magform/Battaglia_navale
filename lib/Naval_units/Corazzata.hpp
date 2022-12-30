@@ -4,7 +4,7 @@
 class Corazzata : public NavalUnits{
 public:
     
-    void set(string inizio, :string fine){
+    void set(std::string inizio, std::string fine){
 
         char cInizio=inizio.at(0);
         int xInizio=stoi(inizio.substr(1,2))-1;
