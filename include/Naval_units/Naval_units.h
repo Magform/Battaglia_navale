@@ -3,14 +3,15 @@
 
 class NavalUnits{
 protected:
+    int vita;
     std::string inizio;
     std::string fine;
     std::string centro;
 
 public:
-    virtual NavalUnits(Griglia_difesa griglia_argomento) { griglia = griglia_argomento };
-    virtual void set(std::string inizio, std::string fine);
-    virtual void azione(std::string centro, std::string obiettivo);
+    bool isAlive() { if (vita != 0) { return true; } return false; }
+    virtual void set(std::string inizio, std::string fine) {};
+    virtual void azione(std::string obiettivo) {};
 };
 
 #include "../../lib/Naval_units/Naval_units.hpp"

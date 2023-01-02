@@ -41,7 +41,7 @@ public:
         //PS. sarebbe in tutte le Naval_units da fare
     }
     
-    void azione(std::string centro, std::string obiettivo){
+    void azione(std::string obiettivo){
 
         if(Griglia.retrive(obiettivo)!=" "){         
 
@@ -60,5 +60,7 @@ public:
             //(Non so in che griglia di difesa metterla)
 
         }
+
+        //Sono Nicolas, ti chiedo se riesci a fare in modo che controlli, prima di attaccare che la barca sia viva, se non é cosi lancia un eccezione che poi catturo io.
     }
 };

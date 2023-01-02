@@ -17,7 +17,7 @@ public:
 
     }
     
-   void azione(std::string centro, std::string obiettivo){
+   void azione(std::string obiettivo){
 
         if(Griglia.retrive(obiettivo)==" "){
   

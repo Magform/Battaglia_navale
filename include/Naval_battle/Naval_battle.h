@@ -34,7 +34,8 @@ public:
 
     void setup();
     bool getBotBattle() { return botBattle };
-    void accept_command();
+    void accept_command(std::string origin, std::string target);
+    void bot_command();
     bool end_battle();
 
 }

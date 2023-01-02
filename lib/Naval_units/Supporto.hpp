@@ -35,7 +35,7 @@ public:
         }
     }
     
-   void azione(std::string centro, std::string obiettivo){
+   void azione(std::string obiettivo){
 
         char o=obiettivo.at(0);
         int XTarget=stoi(obiettivo.substr(1,2))-1;

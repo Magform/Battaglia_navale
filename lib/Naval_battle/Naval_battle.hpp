@@ -3,6 +3,8 @@
 //funzioni utili 
 void create(Naval_units unita, int lunghezza);
 string location_to_string(int X, int Y);
+int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
+int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
 
 Naval_battle::Naval_battle(std::string battletype) {
 	if (battletype == "pc") {
@@ -65,8 +67,37 @@ void Naval_battle::setup() {
 }
 
 
+void Naval_battle::accept_command(std::string origin, std::string target){
+    if (origin == g1_corazzata1.centro) {
+        g1_corazzata1.azione(target);
+    }else if (origin == g1_corazzata2.centro) {
+        g1_corazzata2.azione(target);
+    }else if (origin == g1_corazzata3.centro) {
+        g1_corazzata3.azione(target);
+    }else if (origin == g1_supporto1.centro) {
+        g1_supporto1.azione(target);
+    }else if (origin == g1_supporto2.centro) {
+        g1_supporto2.azione(target);
+    }else if (origin == g1_supporto3.centro) {
+        g1_supporto3.azione(target);
+    }else if (origin == g1_sottomarino1.centro) {
+        g1_sottomarino1.azione(target);
+    }else if (origin == g1_sottomarino2.centro) {
+        g1_sottomarino2.azione(target);
+    }else {
+        throw std::invalid_argument("Nessuna nave ha il centro nel punto selezionato");
+    }
+}
 
-//Funzioni utilizzate dal setup della Naval_battle
+void Naval_battle::bot_command() {
+    if (botBattle) {
+        srand(time(NULL));
+        int attaccante = rand() % ;
+    }
+
+}
+
+//Funzioni utili
 void create(Naval_units unita, int lunghezza){
     bool isGood = false;
     while (!isGood) {
@@ -102,6 +133,63 @@ void create(Naval_units unita, int lunghezza){
     }
 }
 
+int g1_navi() {
+    int toReturn{ 0 };
+    if (g1_corazzata1.isAlive()) {
+        toReturn++;
+    }
+    if (g1_corazzata2.isAlive()) {
+        toReturn++;
+    }
+    if (g1_corazzata3.isAlive()) {
+        toReturn++;
+    }
+    if (g1_supporto1.isAlive()) {
+        toReturn++;
+    }
+    if (g1_supporto2.isAlive()) {
+        toReturn++;
+    }
+    if (g1_supporto3.isAlive()) {
+        toReturn++;
+    }
+    if (g1_sottomarino1.isAlive()) {
+        toReturn++;
+    }
+    if (g1_sottomarino2.isAlive()) {
+        toReturn++;
+    }
+    return toReturn;
+}
+
+int g2_navi() {
+    int toReturn{ 0 };
+    if (g2_corazzata1.isAlive()) {
+        toReturn++;
+    }
+    if (g2_corazzata2.isAlive()) {
+        toReturn++;
+    }
+    if (g2_corazzata3.isAlive()) {
+        toReturn++;
+    }
+    if (g2_supporto1.isAlive()) {
+        toReturn++;
+    }
+    if (g2_supporto2.isAlive()) {
+        toReturn++;
+    }
+    if (g2_supporto3.isAlive()) {
+        toReturn++;
+    }
+    if (g2_sottomarino1.isAlive()) {
+        toReturn++;
+    }
+    if (g2_sottomarino2.isAlive()) {
+        toReturn++;
+    }
+    return toReturn;
+}
 
 string location_to_string(int X, int Y) {
     string output{};
@@ -148,3 +236,5 @@ string location_to_string(int X, int Y) {
     output = output + to_string(Y);
     return output;
 }
+
+
