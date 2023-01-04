@@ -1,7 +1,7 @@
 #ifndef Naval_units_H_
 #define Naval_units_H_
 
-class NavalUnits{
+class Naval_units{
 protected:
     int vita;
     std::string inizio;
