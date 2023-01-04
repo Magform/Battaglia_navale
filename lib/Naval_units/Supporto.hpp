@@ -4,7 +4,7 @@
 class Supporto : public Naval_units{
 public:
     
-    void set(std::string inizio, std::string fine){
+    void set(string inizio, :string fine, Griglia g_difesa){
 
         //converto in cordiate "matrici" la coordinata di inizio
         char cInizio=inizio.at(0);
@@ -29,48 +29,59 @@ public:
         //Check per vedere se posso metterla in verticale
 
         if(xInizio==xFine){
-            bool isValid=true;
-            for(int k=0; k<3; k++){      
+            
+             for(int k=0; k<3; k++){            
                 std::string Pos=yInizio+""+xInizio;
-                if(Griglia.retrive(Pos)==" "){      //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
-                    yInizio=yInizio+1;
-                }else{
+                if(g_difesa.retrive(Pos)==" "){      //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
+                    yInizio=yInizio+1;            
+                }else{                 
                     throw std::invalid_argument("Carattere non valido");
                 }
+                
             }
 
-            //Posizione valida, si inserisce la lettera S nella griglia
+            //Posizione verticale valida, si inserisce la lettera S nella griglia
             yInizio=yInizio-3;
+            begin=inizio;
+            end=fine;
+            centro=(yInizio+1)+""+xInizio;
+            
             for(int k=0; k<3; k++){   
+                
                 yInizio=yInizio+1;
                 std::string Pos=yInizio+""+xInizio;
-                Griglia.set("C", Pos);
+                g_difesa.set("C", Pos);
+                
             } 
-
-        
+            
         }else{
 
             //Check per vedere se posso metterla in orizzontale
 
             if(yInizio==yFine){
-                bool isValid=true;
+
                 for(int k=0; k<3; k++){      
                     std::string Pos=yInizio+""+xInizio;
-                    if(Griglia.retrive(Pos)==" "){      //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
+                    if(g_difesa.retrive(Pos)==" "){      //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
                         xInizio=xInizio+1;
                     }else{
                         throw std::invalid_argument("Carattere non valido");
                     }
+                    
                 }
 
-                //Posizione valida, si inserisce la lettera S nella griglia
+                //Posizione orizzontale valida, si inserisce la lettera S nella griglia
                 xInizio=xInizio-3;
+                begin=inizio;
+                end=fine;
+                centro=yInizio+""+(xInizio+1);
+                
                 for(int k=0; k<3; k++){
                     
                     xInizio=xInizio+1;
                     std::string Pos=yInizio+""+xInizio;
 
-                    Griglia.set("C", Pos);
+                    g_difesa.set("C", Pos);
                 }
             }else{
 
@@ -81,79 +92,175 @@ public:
         }
     }
     
-   void azione(std::string obiettivo){
-       
+    void azione(std::string obiettivo, Griglia g1_difesa, Griglia g1_attacco, Griglia g2_difesa){
+  
        //Controllo se la nave di supporto è ancora in vita
         if(!isAlive()) throw std::invalid_argument("Carattere non valido");
        
-       //Guardo se la nuova posizione è già occupata
-        if(!isvalid(YTarget, XTarget))      throw std::invalid_argument("Carattere non valido");
-       
-       //Inizio rimozione nave nella vecchia posizione
-        Griglia.remove(centro);
-            
-        char c=centro.at(0);
-        int XCentro=stoi(centro.substr(1,2))-1;
-        int YCentro;
-        if((c>64)(c<74)){
-            YCentro=c-65;
+       //Ottengo le coordinate dell'obiettivo
+        char cO=obiettivo.at(0);
+        int XTarget=stoi(obiettivo.substr(1,2))-1;
+        int YTarget;
+        if((cO>64)(cO<74)){
+            YTarget=cO-65;
         }else{
             throw std::invalid_argument("Carattere non valido");
         }
-            
-        if((matrix[YCentro][XCentro+1]=="S")||(matrix[YCentro][XCentro+1]=="s")){
-           std::string s1=YCentro+""+(XCentro+1);
-           std::string s1=YCentro+""+(XCentro-1);
-                
-           Griglia.remove(s1);
-           Griglia.remove(s2);
-            
-         }else{
-           std::string s1=(c+1)+""+XCentro;
-           std::string s1=(c-1)+""+XCentro;
-                
-           Griglia.remove(s1);
-           Griglia.remove(s2);
-         }
-       //Fine rimozione
-       
-       //Inizio riparazione
-       char o=obiettivo.at(0);
-       int XTarget=stoi(obiettivo.substr(1,2))-1;
-       int YTarget;
-       if((o>64)(o<74)){
-           YTarget=o-65;
-       }else{
-            throw std::invalid_argument("Carattere non valido");
-       }
+
+        //Ottengo le coordinate x dell'inizio e fine della vecchia posizione, per vedere se la nave è in orizzontale o verticale
+        int XInizio=stoi(begin.substr(1,2))-1;
+        int XFine=stoi(end.substr(1,2))-1;
         
-       
-       
-               
+        //inizio spostamento, controllando prima se la nave è in orizzontale o in verticale
+        if(xInizio==xFine){
             
-    }
+            //E' in verticale
 
-    bool isvalid(int YTarget, int XTarget)}{    //funzione per verificare se la posizione nuova è valida
+            //Prendo le posizioni sopra e sotto all'obiettivo, per vedere se posso metterla in verticale
+            std::string sopra=(YTarget-1)+""+XTarget;
+            std::string sotto=(YTarget+1)+""+XTarget;
 
-        if(matrix[YTarget][XTarget]==" "){
-            if((matrix[YTarget][XTarget+1]==" ")&&((matrix[YTarget][XTarget-1]==" "))){ 
-               
-                //Qui guardo se, oltre alla posizione data, sono liberi anche gli spazi laterali
-                return true;
-
-            }else{
-                
-                if((matrix[YTarget+1][XTarget]==" ")&&((matrix[YTarget-1][XTarget]==" "))){ 
-                    
-                    //Qui guardo se, oltre alla posizione data, sono liberi anche gli spazi sopra e sotto
-                    return true;
-
-                    
-                }
+            //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
+            if(!((g1_difesa.retrive(obiettivo==" "))&&(g1_difesa.retrive(sopra==" "))&&(g1_difesa.retrive(sotto==" ")))){
+                throw std::invalid_argument("Carattere non valido");
             }
+
+            //Posizione valida, rimuovo la vecchia posizione
+            g1_difesa.remove(begin);
+            g1_difesa.remove(centro);
+            g1_difesa.remove(end)
+
+            //E metto quella nuova
+            begin=sopra;
+            end=sotto;
+            centro=obiettivo;
+
+            g1_difesa.set("S", begin);
+            g1_difesa.set("S", centro);
+            g1_difesa.set("S", end);
+
+        }else{
+
+            //E' in orizzontale (essendo che non è in verticale)
+
+            //Controllo che gli spazi siano vuoti
+            std::string sinistra=YTarget+""+(XTarget-1);
+            std::string destra=YTarget+""+(XTarget+1);
+
+            //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
+            if(!((g1_difesa.retrive(obiettivo==" "))&&(g1_difesa.retrive(sinistra==" "))&&(g1_difesa.retrive(destra==" ")))){
+                throw std::invalid_argument("Carattere non valido");
+            }
+
+            //Posizione valida, rimuovo la vecchia posizione
+            g1_difesa.remove(begin);
+            g1_difesa.remove(centro);
+            g1_difesa.remove(end)
+
+            //E metto quella nuova
+            begin=sinistra;
+            end=destra;
+            centro=obiettivo;
+
+            g1_difesa.set("S", begin);
+            g1_difesa.set("S", centro);
+            g1_difesa.set("S", end);
+
         }
-    //Se non può essere messa nè in orizzontale nè in verticale, la funzione restituisce falso
-    return false;
+
+        //Fine spostamento nave
+
+        //Inizio riparazioni
+
+        //Nuove coordinate x di begin e end
+        char cI=begin.at(0);
+        int XInizio=stoi(begin.substr(1,2))-1;
+        int YInizio;
+        if((cI>64)(cI<74)){
+            YInizio=cI-65;
+        }else{
+            throw std::invalid_argument("Carattere non valido");
+        }
+
+        char cF=end.at(0);
+        int XFine=stoi(end.substr(1,2))-1;
+        int YFine;
+        if((cF64)(cF<74)){
+            YFine=cF-65;
+        }else{
+            throw std::invalid_argument("Carattere non valido");
+        }
+
+        if(XInizio==XFine){
+            
+            //Essendo in verticale, devo considerare solo le due colonne a lato della nave
+
+            //Riparazione colonna a sinistra nella nave
+            int YRepair=YInizio-1;
+            for(int k=0; k<3; k++){
+                std::string Repair=(YRepair+k)+""+(XInizio-1);
+
+                //if per vedere se nella posizione di ricerca c'è una lettera minuscola
+                if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
+                    char c=g1_difesa.retrive(Repair);
+                    c=c-32;     //Metto in maiuscolo
+                    g1_difesa.set(c, Repair);
+                }
+                
+                //Fine controlli di riparazione colonna a sinistra nella nave
+            }
+
+            //Riparazione colonna a destra nella nave
+            YRepair=YInizio-1;
+            for(int k=0; k<3; k++){
+                std::string Repair=(YRepair+k)+""+(XInizio+1);
+
+                //if per vedere se nella posizione di ricerca c'è una lettera minuscola
+                if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
+                    char c=g1_difesa.retrive(Repair);
+                    c=c-32;     //Metto in maiuscolo
+                    g1_difesa.set(c, Repair);
+                }
+                
+                //Fine controlli di riparazione colonna a destra nella nave
+            }
+            
+        }else{
+            
+            //Essendo in orizzontale, devo considerare solo le due righe sopra e sotto della nave
+
+            //Riparazione riga superiore
+            int XRepair=XInizio-1;
+            for(int k=0; k<3; k++){
+                std::string Repair=(YRepair-1)+""+(XInizio+k);
+
+                //if per vedere se nella posizione di ricerca c'è una lettera minuscola
+                if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
+                    char c=g1_difesa.retrive(Repair);
+                    c=c-32;     //Metto in maiuscolo
+                    g1_difesa.set(c, Repair);
+                }
+                
+                //Fine controlli di riparazione nella riga superiore alla nave
+            }
+
+            //Riparazione riga inferiore
+            XRepair=XInizio-1;
+            for(int k=0; k<3; k++){
+                std::string Repair=(YRepair+1)+""+(XInizio+k);
+
+                //if per vedere se nella posizione di ricerca c'è una lettera minuscola
+                if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
+                    char c=g1_difesa.retrive(Repair);
+                    c=c-32;     //Metto in maiuscolo
+                    g1_difesa.set(c, Repair);
+                }
+                
+                //Fine controlli di riparazione riga inferiore alla nave
+
+                //Fine riparazione
+        }
+    //Fine dell'azione della nave di supporto 
     
     }
 };
