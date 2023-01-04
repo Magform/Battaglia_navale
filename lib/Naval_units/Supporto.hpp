@@ -1,5 +1,6 @@
 #include "../../include/Naval_units/Supporto.h"
 #include "../../lib/Naval_units/Naval_units.hpp"
+#include "../../lib/Griglia/Griglia.hpp"
 
 class Supporto : public Naval_units{
 public:
