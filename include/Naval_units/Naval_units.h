@@ -10,8 +10,8 @@ protected:
 
 public:
     bool isAlive() { if (vita != 0) { return true; } return false; }
-    virtual void set(std::string inizio, std::string fine) {};
-    virtual void azione(std::string obiettivo) {};
+    virtual set(string inizio, :string fine, Griglia g_difesa) {};
+    virtual azione(std::string obiettivo, Griglia g1_difesa, Griglia g1_attacco, Griglia g2_difesa) {};
 };
 
 #include "../../lib/Naval_units/Naval_units.hpp"
