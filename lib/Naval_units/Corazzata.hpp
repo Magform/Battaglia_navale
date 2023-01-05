@@ -5,7 +5,7 @@
 class Corazzata : public Naval_units{
 public:
     
-    void set(string inizio, :string fine, Griglia g_difesa){
+    void set(std::string inizio, std::string fine, Griglia g_difesa){
         
         //converto in cordiate "matrici" la coordinata di inizio
         cchar cInizio=inizio.at(0);
