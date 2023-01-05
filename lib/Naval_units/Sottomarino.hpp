@@ -1,7 +1,7 @@
 #include "../../include/Naval_units/Sottomarino.h"
 #include "../../lib/Naval_units/Naval_units.hpp"
 
-class Sottomarino : public NavalUnits{
+class Sottomarino : public Naval_units{
 public:
     
     void set(std::string inizio, std::string fine){ 
