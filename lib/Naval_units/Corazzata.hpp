@@ -47,11 +47,11 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
             
         //Posizione overticale valida, si inserisce la lettera C nella griglia
         cInizio=cInizio-5;
+           
         centro+=cInizio+2;
         centro=centro+to_string(xInizio);
             
-        centro=(yInizio+2)+""+xInizio;            
-            
+        //for per inserire la corazzata in orizzontale nella griglia          
         for(int k=0; k<5; k++){   
                                                 
             std::string Put(1,cInizio);
@@ -86,9 +86,8 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
                
             centro+=cInizio;
             centro=centro+to_string(xInizio+2);
-               
-            //centro=yInizio+""+(xInizio+2);
-                
+            
+            //for per inserire la corazzata in orizzontale nella griglia
             for(int k=0; k<5; k++){
 
                 std::string Put(1,cInizio);
@@ -108,11 +107,11 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
        
     //Imposto le variabili della nave
     begin=inizio;
-    end=fine;   
+    end=fine;    
         
 }
     
-    void azione(std::string obiettivo, Griglia g1_difesa, Griglia g1_attacco, Griglia g2_difesa){
+    void Corazzata::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
         
     //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione,
     //2 quello che subisce l'attacco)
@@ -121,9 +120,11 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     if((g2_difesa.retrive(obiettivo)=="C")||(g2_difesa.retrive(obiettivo)=="S")||(g2_difesa.retrive(obiettivo)=="E")){         
 
         //nave colpita
-        char lettera=g2_difesa.retrive(obiettivo);
+        string l=g2_difesa.retrive(obiettivo);
+        char lettera=l[0];
         lettera=lettera+32;     //mette in minuscolo
-        g2_difesa.set(lettera, obiettivo);
+        string insert(1,lettera);
+        g2_difesa.set(insert, obiettivo);
 
         g1_attacco.set("X", obiettivo);     //Mette un "X" nella posizione data nella griglia di attacco
             
