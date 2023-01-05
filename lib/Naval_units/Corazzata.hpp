@@ -45,10 +45,12 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
             }
         }
             
-        //Posizione orizzontale valida, si inserisce la lettera C nella griglia
+        //Posizione overticale valida, si inserisce la lettera C nella griglia
         cInizio=cInizio-5;
+        centro+=cInizio+2;
+        centro=centro+to_string(xInizio);
             
-        //centro=(yInizio+2)+""+xInizio;            
+        centro=(yInizio+2)+""+xInizio;            
             
         for(int k=0; k<5; k++){   
                                                 
@@ -79,8 +81,11 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
                 }
             }
 
-            //Posizione verticale valida, si inserisce la lettera C nella griglia
+            //Posizione orizzontale valida, si inserisce la lettera C nella griglia
             xInizio=xInizio-5;
+               
+            centro+=cInizio;
+            centro=centro+to_string(xInizio+2);
                
             //centro=yInizio+""+(xInizio+2);
                 
@@ -100,6 +105,10 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
         }
     }
+       
+    //Imposto le variabili della nave
+    begin=inizio;
+    end=fine;   
         
 }
     
