@@ -17,17 +17,18 @@ public:
 
     }
     
-   void azione(std::string obiettivo){
-       
-        //Controllo se il sottomarino è ancora in vita
+   void azione(std::string obiettivo, Griglia g1_difesa, Griglia g1_attacco, Griglia g2_difesa){
+        //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione)
+        
+       //Controllo se il sottomarino è ancora in vita
         if(!isAlive())  throw std::invalid_argument("Carattere non valido");
 
         //Guardo se la posizione non è già occupata
-        if(Griglia.retrive(obiettivo)!=" ")     throw std::invalid_argument("Carattere non valido");
+        if(g1_difesa.retrive(obiettivo)!=" ")     throw std::invalid_argument("Carattere non valido");
   
         //rimuovo vecchia posizione e metto quella nuova
-        Griglia.remove(centro);
-        Griglia.set("E", obiettivo);
+        g1_difesa.remove(centro);
+        g1_difesa.set("E", obiettivo);
             
         //Trasformo "obiettivo" in coordinate
         char o=obiettivo.at(0);
@@ -38,8 +39,7 @@ public:
         }else{
              throw std::invalid_argument("Carattere non valido");
         }
-            
-            
+        
         //inizio radar
         YTarget=YTarget-2;
         XTarget=XTarget-2;
@@ -56,10 +56,8 @@ public:
                 if((XSearch>0)&&(XSearch<12)&&(YSearch>0)&&(YSearch<12)){  
 
                     std::string Pos=YSearch+""+XSearch;
-                    if(Griglia.retrive(Pos)!=" "){  //Qua bisognerebbe guardare nella griglia di difesa dell'avversario
-                            
-                           //Mette una Y nella posizione "Pos" della propria griglia d'attacco
-                        
+                    if(g2_difesa.retrive(Pos)!=" "){    //guardo nella griglia di difesa dell'avversario, se trovo qualcosa...
+                        g1_attacco.set("Y", Pos);	//...metto una Y nella posizione "Pos" nella mia griglia di attacco
                     }
                 }
            }
