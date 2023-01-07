@@ -76,7 +76,7 @@ ostream& operator<<(ostream& os, const Griglia to_Print){
     os<<"  |1|2|3|4|5|6|7|8|9|10|11|12"<<std::endl;
     for(int riga=0; riga<12; riga++ ){
         if(rigaChar==74) rigaChar=rigaChar+2;
-        os<<"\n"<<rigaChar;
+        os<<" "<<rigaChar;
         rigaChar++;
         for(int colonna=0; colonna<12; colonna++){
             os<<"|"<<to_Print.matrix[riga][colonna];
