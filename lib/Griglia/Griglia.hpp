@@ -12,7 +12,11 @@ Griglia::Griglia(){
 
 void Griglia::set(string toSet, string location){
     int character = location[0];
-    character = character-65;
+    if(character<74){
+        character=character-65;
+    }else{
+         character=character-67;
+    }
     if(character<0 || character>11){
         throw invalid_argument("Carattere non valido");
     }
@@ -36,7 +40,11 @@ void Griglia::clear(){
 
 void Griglia::remove(string location){
     int character = location[0];
-    character = character-65;
+    if(character<74){
+        character=character-65;
+    }else{
+         character=character-67;
+    }
     if(character<0 || character>11){
         throw invalid_argument("Carattere non valido");
     }
@@ -52,7 +60,11 @@ void Griglia::remove(string location){
 
 string Griglia::retrive(string location){
     int character = location[0];
-    character = character-65;
+    if(character<74){
+        character=character-65;
+    }else{
+         character=character-67;
+    }
     if(character<0 || character>11){
         throw invalid_argument("Carattere non valido");
     }
