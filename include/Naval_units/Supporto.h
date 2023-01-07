@@ -1,7 +1,7 @@
 #ifndef Supporto_H_
 #define Supporto_H_
 
-using namespace std;
+#include "../../lib/Naval_units/Corazzata.hpp"
 
 class Supporto : public Naval_units{
 private:
@@ -14,5 +14,4 @@ public:
     void azione(string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa);
 };
 
-#include "../../lib/Naval_units/Supporto.hpp"
 #endif // Supporto_H_
