@@ -1,8 +1,6 @@
 #include "../../include/Naval_units/Supporto.h"
 #include "../../include/Naval_units/Naval_units.h"
 
-class Supporto : public Naval_units{
-    
 void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
     //converto in cordiate "matrici" la coordinata di inizio
@@ -39,7 +37,8 @@ void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
             
             if(g_difesa.retrive(Pos)==" "){      //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
                 cInizio=cInizio+1;            
-            }else{                 
+            }else{ 
+                //Se un solo spazio è occupato, lancia una eccezione
                 throw std::invalid_argument("Carattere non valido");
             }
                 
@@ -75,6 +74,7 @@ void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
                 if(g_difesa.retrive(Pos)==" "){      //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
                     xInizio=xInizio+1;
                 }else{
+                    //Se un solo spazio è occupato, lancia una eccezione
                     throw std::invalid_argument("Carattere non valido");
                 }
                     
