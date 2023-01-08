@@ -1,7 +1,7 @@
 #ifndef Griglia_H_
 #define Griglia_H_
 
-using namespace srd;
+using namespace std;
 
 class Griglia{
 protected:
