@@ -19,71 +19,71 @@ Naval_battle::Naval_battle(std::string battletype) {
 void Naval_battle::setup() {
     if (botBattle = false) {
         std::string inizio, fine;
-        std::cout << "Quali sono le coordinate per la corazzata 1: "
+        std::cout << "Quali sono le coordinate per la corazzata 1: "<<endl;
         std::cin >> inizio >> fine;
-        g1_corazzata1.set(inizio, fine);
-        std::cout << "Quali sono le coordinate per la corazzata 2: "
+        g1_corazzata1.set(inizio, fine, g1_difesa);
+        std::cout << "Quali sono le coordinate per la corazzata 2: "<<endl;
         std::cin >> inizio >> fine;
-        g1_corazzata2.set(inizio, fine);
-        std::cout << "Quali sono le coordinate per la corazzata 3: "
+        g1_corazzata2.set(inizio, fine, g1_difesa);
+        std::cout << "Quali sono le coordinate per la corazzata 3: "<<endl;
         std::cin >> inizio >> fine;
-        g1_corazzata3.set(inizio, fine);
+        g1_corazzata3.set(inizio, fine, g1_difesa);
 
-        std::cout << "Quali sono le coordinate per la nave di supporto 1: "
+        std::cout << "Quali sono le coordinate per la nave di supporto 1: "<<endl;
         std::cin >> inizio >> fine;
-        g1_supporto1.set(inizio, fine);
-        std::cout << "Quali sono le coordinate per la nave di supporto 2: "
+        g1_supporto1.set(inizio, fine, g1_difesa);
+        std::cout << "Quali sono le coordinate per la nave di supporto 2: "<<endl;
         std::cin >> inizio >> fine;
-        g1_supporto2.set(inizio, fine);
-        std::cout << "Quali sono le coordinate per la nave di supporto 3: "
+        g1_supporto2.set(inizio, fine, g1_difesa);
+        std::cout << "Quali sono le coordinate per la nave di supporto 3: "<<endl;
         std::cin >> inizio >> fine;
-        g1_supporto3.set(inizio, fine);
+        g1_supporto3.set(inizio, fine, g1_difesa);
 
-        std::cout << "Quali sono le coordinate per il sottomarino 1: "
+        std::cout << "Quali sono le coordinate per il sottomarino 1: "<<endl;
         std::cin >> inizio >> fine;
-        g1_sottomarino1.set(inizio, fine);
-        std::cout << "Quali sono le coordinate per il sottomarino 2: "
+        g1_sottomarino1.set(inizio, fine, g1_difesa);
+        std::cout << "Quali sono le coordinate per il sottomarino 2: "<<endl;
         std::cin >> inizio >> fine;
-        g1_sottomarino2.set(inizio, fine);
+        g1_sottomarino2.set(inizio, fine, g1_difesa);
     }
     else {
-        create(g1_corazzata1, 5);
-        create(g1_corazzata2, 5);
-        create(g1_corazzata3, 5);
-        create(g1_supporto1, 3);
-        create(g1_supporto2, 3);
-        create(g1_supporto3, 3);
-        create(g1_sottomarino1, 0);
-        create(g1_sottomarino2, 0);
+        create(g1_corazzata1, 5, g1_difesa);
+        create(g1_corazzata2, 5, g1_difesa);
+        create(g1_corazzata3, 5, g1_difesa);
+        create(g1_supporto1, 3, g1_difesa);
+        create(g1_supporto2, 3, g1_difesa);
+        create(g1_supporto3, 3, g1_difesa);
+        create(g1_sottomarino1, 0, g1_difesa);
+        create(g1_sottomarino2, 0, g1_difesa);
     }
-        create(g2_corazzata1, 5);
-        create(g2_corazzata2, 5);
-        create(g2_corazzata3, 5);
-        create(g2_supporto1, 3);
-        create(g2_supporto2, 3);
-        create(g2_supporto3, 3);
-        create(g2_sottomarino1, 0);
-        create(g2_sottomarino2, 0);
+        create(g2_corazzata1, 5, g2_difesa);
+        create(g2_corazzata2, 5, g2_difesa);
+        create(g2_corazzata3, 5, g2_difesa);
+        create(g2_supporto1, 3, g2_difesa);
+        create(g2_supporto2, 3, g2_difesa);
+        create(g2_supporto3, 3, g2_difesa);
+        create(g2_sottomarino1, 0, g2_difesa);
+        create(g2_sottomarino2, 0, g2_difesa);
 }
 
 
 void Naval_battle::accept_command(std::string origin, std::string target){
     if (origin == g1_corazzata1.centro) {
-        g1_corazzata1.azione(target);
+        g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else if (origin == g1_corazzata2.centro) {
-        g1_corazzata2.azione(target);
+        g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else if (origin == g1_corazzata3.centro) {
-        g1_corazzata3.azione(target);
+        g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else if (origin == g1_supporto1.centro) {
-        g1_supporto1.azione(target);
+        g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else if (origin == g1_supporto2.centro) {
-        g1_supporto2.azione(target);
+        g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else if (origin == g1_supporto3.centro) {
-        g1_supporto3.azione(target);
+        g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else if (origin == g1_sottomarino1.centro) {
-        g1_sottomarino1.azione(target);
+        g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else if (origin == g1_sottomarino2.centro) {
-        g1_sottomarino2.azione(target);
+        g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else {
         throw std::invalid_argument("Nessuna nave ha il centro nel punto selezionato");
     }
@@ -98,7 +98,7 @@ void Naval_battle::bot_command() {
 }
 
 //Funzioni utili
-void create(Naval_units unita, int lunghezza){
+void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa){
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -124,7 +124,7 @@ void create(Naval_units unita, int lunghezza){
             break;
         }
         try {
-            unita.set(inizio, fine);
+            unita.set(inizio, fine, griglia_difesa);
             isGood = true;
         }
         catch () {      //eccezione ancora da decidere
@@ -231,7 +231,7 @@ string location_to_string(int X, int Y) {
         output = output + "N";
         break;
     default:
-        output = output + "A"; //se il valore non é valido ho deciso di, invece di lanciare un eccezzione, impostare la colonna A.
+        output = output + "A"; //se il valore non Ã© valido ho deciso di, invece di lanciare un eccezzione, impostare la colonna A.
     }
     output = output + to_string(Y);
     return output;
