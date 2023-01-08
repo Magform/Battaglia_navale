@@ -1,7 +1,7 @@
 #ifndef Supporto_H_
 #define Supporto_H_
 
-#include "../../lib/Naval_units/Corazzata.hpp"
+#include "../../lib/Naval_units/Supporto.hpp"
 
 class Supporto : public Naval_units{
 private:
