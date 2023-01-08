@@ -14,8 +14,8 @@ protected:
 
 public:
     bool isAlive() { if (vita != 0) { return true; } return false; }
-    virtual set(string inizio, string fine, Griglia& g_difesa) {};
-    virtual azione(string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa) {};
+    virtual void set(string inizio, string fine, Griglia& g_difesa) {};
+    virtual void azione(string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa) {};
 };
 
 #endif // Naval_units_H_
