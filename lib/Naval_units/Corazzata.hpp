@@ -7,7 +7,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     char cInizio=inizio.at(0);
     int xInizio=stoi(inizio.substr(1,2));
     int yInizio;
-    if((cInizio<64)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
+    if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
     if(cInizio<74){
         yInizio=cInizio-65;
     }else{
@@ -19,7 +19,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     char cFine=fine.at(0);
     int xFine=stoi(fine.substr(1,2));
     int yFine;
-    if((cFine<64)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
+    if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
     if(cFine<74){
         yFine=cFine-65;
     }else{
@@ -45,7 +45,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
             }
         }
             
-        //Posizione overticale valida, si inserisce la lettera C nella griglia
+        //Posizione verticale valida, si inserisce la lettera C nella griglia
         cInizio=cInizio-5;
            
         centro+=cInizio+2;
