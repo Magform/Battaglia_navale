@@ -1,9 +1,9 @@
 #ifndef Sottomarino_H_
 #define Sottomarino_H_
 
-using namespace std;
+#include "../../lib/Naval_units/Nava_units.h"
 
-class Sottomarino : public Naval_units{
+class Supporto : public Naval_units{
 private:
     int vita = 1;
     string begin;
@@ -14,5 +14,4 @@ public:
     void azione(string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa);
 };
 
-#include "../../lib/Naval_units/Sottomarino.hpp"
 #endif // Sottomarino_H_
