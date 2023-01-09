@@ -2,7 +2,7 @@
 
 //funzioni utili 
 void create(Naval_units unita, int lunghezza);
-string location_to_string(int X, int Y);
+std::string location_to_string(int X, int Y);
 int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
 int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
 
@@ -191,7 +191,7 @@ int g2_navi() {
     return toReturn;
 }
 
-string location_to_string(int X, int Y) {
+std::string location_to_string(int X, int Y) {
     string output{};
     switch (X) {
     case 0:

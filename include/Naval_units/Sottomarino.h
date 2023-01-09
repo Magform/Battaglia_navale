@@ -1,7 +1,7 @@
 #ifndef Sottomarino_H_
 #define Sottomarino_H_
 
-#include "../../lib/Naval_units/Nava_units.h"
+#include "Naval_units.h"
 
 class Supporto : public Naval_units{
 private:

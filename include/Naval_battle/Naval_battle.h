@@ -2,13 +2,18 @@
 #define Naval_battle_H_
 
 #include "../../lib/Naval_battle/Naval_battle.hpp"
+#include "../../include/Griglia/Griglia.h"
+#include "../../include/Naval_units/Naval_units.h"
+#include "../../include/Naval_units/Corazzata.h"
+#include "../../include/Naval_units/Sottomarino.h"
+#include "../../include/Naval_units/Supporto.h"
 
 class Naval_battle{
 private:
     bool botBattle;
 
-    Grigila g1_attacco;
-    Grigila g1_difesa;
+    Griglia g1_attacco;
+    Griglia g1_difesa;
     Corazzata g1_corazzata1;
     Corazzata g1_corazzata2;
     Corazzata g1_corazzata3;
@@ -18,8 +23,8 @@ private:
     Sottomarino g1_sottomarino1;
     Sottomarino g1_sottomarino2;
 
-    Grigila g2_attacco;
-    Grigila g2_difesa;
+    Griglia g2_attacco;
+    Griglia g2_difesa;
     Corazzata g2_corazzata1;
     Corazzata g2_corazzata2;
     Corazzata g2_corazzata3;

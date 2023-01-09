@@ -12,13 +12,15 @@ Griglia::Griglia(){
 
 void Griglia::set(string toSet, string location){
     int character = location[0];
-    if(character<74){
-        character=character-65;
-    }else{
-         character=character-67;
-    }
-    if(character<0 || character>11){
+    character=character-65;
+    if(character<0 || character>13){
         throw invalid_argument("Carattere non valido");
+    }
+    if (character == 9 || character == 10) {
+        throw invalid_argument("Carattere non valido");
+    }
+    if (character > 10) {
+        character -= 2;
     }
     int number=stoi(location.substr(1,2))-1;
     if(number<0 || number>11){
@@ -37,13 +39,15 @@ void Griglia::clear(){
 
 void Griglia::remove(string location){
     int character = location[0];
-    if(character<74){
-        character=character-65;
-    }else{
-         character=character-67;
-    }
-    if(character<0 || character>11){
+    character = character - 65;
+    if (character < 0 || character>13) {
         throw invalid_argument("Carattere non valido");
+    }
+    if (character == 9 || character == 10) {
+        throw invalid_argument("Carattere non valido");
+    }
+    if (character > 10) {
+        character -= 2;
     }
     int number=stoi(location.substr(1,2))-1;
     if(number<0 || number>11){
@@ -54,13 +58,15 @@ void Griglia::remove(string location){
 
 string Griglia::retrive(string location){
     int character = location[0];
-    if(character<74){
-        character=character-65;
-    }else{
-         character=character-67;
-    }
-    if(character<0 || character>11){
+    character = character - 65;
+    if (character < 0 || character>13) {
         throw invalid_argument("Carattere non valido");
+    }
+    if (character == 9 || character == 10) {
+        throw invalid_argument("Carattere non valido");
+    }
+    if (character > 10) {
+        character -= 2;
     }
     int number=stoi(location.substr(1,2))-1;
     if(number<0 || number>11){
