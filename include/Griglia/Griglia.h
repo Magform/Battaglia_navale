@@ -5,15 +5,16 @@ using namespace std;
 
 class Griglia{
 protected:
-    std::string matrix[12][12];      //matrice che rappresenta la griglia [y][x]
+    string matrix[12][12];      //matrice che rappresenta la griglia [y][x]
 public:
     Griglia();
 
     //funzioni utili
-    void set(string toSet, string location);    //setta "toSet" nalla posizione "location" 
-    void clear();                               //cancella TUTTA la griglia
-    void remove(string location);               //rimuove ciò che c'è nalla posizione "location"
-    std::string retrive(string location);            //restituisce la stringa nalla posizione "location"
+    void set(string toSet, string location);        //setta "toSet" nalla posizione "location" 
+    void clear();                                   //cancella TUTTA la griglia
+    void remove(string location);                   //rimuove ciò che c'è nalla posizione "location"
+    void remove_all(string to_remove);              //Elimina interamente il valore cercato dalla griglia.
+    string retrive(string location);            //restituisce la stringa nalla posizione "location"
 
     //overload operatori
     friend ostream& operator<<(ostream& os, const Griglia to_print);

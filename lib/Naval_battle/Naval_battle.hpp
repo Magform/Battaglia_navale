@@ -1,10 +1,8 @@
 #include "../../include/Naval_battle/Naval_battle.h"
 
 //funzioni utili 
-void create(Naval_units unita, int lunghezza);
 std::string location_to_string(int X, int Y);
-int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
-int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
+
 
 Naval_battle::Naval_battle(std::string battletype) {
 	if (battletype == "pc") {
@@ -67,22 +65,34 @@ void Naval_battle::setup() {
 }
 
 
-void Naval_battle::accept_command(std::string origin, std::string target){
-    if (origin == g1_corazzata1.centro) {
+void Naval_battle::accept_command(){
+    cout << "Inserire comando \n";
+    std::string origin, target;
+    cin >> origin >> target;
+    if(origin=="AA" && target=="AA"){
+        g1_attacco.remove_all("Y");
+        accept_command();
+    }
+    if (origin == "XX" && target == "XX") {
+        cout << g1_difesa;
+        cout << g1_attacco;
+        accept_command();
+    }
+    if (origin == g1_corazzata1.get_centro()) {
         g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-    }else if (origin == g1_corazzata2.centro) {
+    }else if (origin == g1_corazzata2.get_centro()) {
         g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-    }else if (origin == g1_corazzata3.centro) {
+    }else if (origin == g1_corazzata3.get_centro()) {
         g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-    }else if (origin == g1_supporto1.centro) {
+    }else if (origin == g1_supporto1.get_centro()) {
         g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-    }else if (origin == g1_supporto2.centro) {
+    }else if (origin == g1_supporto2.get_centro()) {
         g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-    }else if (origin == g1_supporto3.centro) {
+    }else if (origin == g1_supporto3.get_centro()) {
         g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-    }else if (origin == g1_sottomarino1.centro) {
+    }else if (origin == g1_sottomarino1.get_centro()) {
         g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-    }else if (origin == g1_sottomarino2.centro) {
+    }else if (origin == g1_sottomarino2.get_centro()) {
         g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
     }else {
         throw std::invalid_argument("Nessuna nave ha il centro nel punto selezionato");
@@ -92,9 +102,70 @@ void Naval_battle::accept_command(std::string origin, std::string target){
 void Naval_battle::bot_command() {
     if (botBattle) {
         srand(time(NULL));
-        int attaccante = rand() % ;
+        int attaccante = rand() % 7 + 0;
+        int locationX, locationY;
+        locationX = rand() % 11 + 0;
+        locationY = rand() % 11 + 0;
+        string target = location_to_string(locationX, locationY);
+        switch (attaccante) {
+        case 0:
+            g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        case 1:
+            g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        case 2:
+            g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        case 3:
+            g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        case 4:
+            g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        case 5:
+            g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        case 6:
+            g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        case 7:
+            g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+            break;
+        }
     }
-
+    srand(time(NULL));
+    int attaccante = rand() % 7 + 0;
+    int locationX, locationY;
+    locationX = rand() % 11 + 0;
+    locationY = rand() % 11 + 0;
+    string target = location_to_string(locationX, locationY);
+    switch (attaccante) {
+    case 0:
+        g2_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    case 1:
+        g2_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    case 2:
+        g2_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    case 3:
+        g2_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    case 4:
+        g2_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    case 5:
+        g2_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    case 6:
+        g2_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    case 7:
+        g2_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+        break;
+    }
 }
 
 //Funzioni utili
@@ -133,7 +204,7 @@ void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa){
     }
 }
 
-int g1_navi() {
+int Naval_battle::g1_navi() {
     int toReturn{ 0 };
     if (g1_corazzata1.isAlive()) {
         toReturn++;
@@ -162,7 +233,7 @@ int g1_navi() {
     return toReturn;
 }
 
-int g2_navi() {
+int  Naval_battle::g2_navi() {
     int toReturn{ 0 };
     if (g2_corazzata1.isAlive()) {
         toReturn++;
@@ -189,6 +260,10 @@ int g2_navi() {
         toReturn++;
     }
     return toReturn;
+}
+
+bool Naval_battle::is_botBattle(){
+    return botBattle;
 }
 
 std::string location_to_string(int X, int Y) {

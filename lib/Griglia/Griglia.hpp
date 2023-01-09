@@ -75,8 +75,15 @@ string Griglia::retrive(string location){
     return matrix[character][number];
 }
 
-
-
+void Griglia::remove_all(string to_remove) {
+    for (int i = 0; i < 12; i++) {
+        for (int j = 0; j < 12; j++) {
+            if (matrix[i][j] == to_remove) {
+                matrix[i][j] = " ";
+            }
+        }
+    }
+}
 
 //overload operator
 ostream& operator<<(ostream& os, const Griglia to_Print){

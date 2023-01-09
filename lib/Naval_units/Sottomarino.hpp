@@ -1,5 +1,4 @@
 #include "../../include/Naval_units/Sottomarino.h"
-#include "../../include/Naval_units/Naval_units.h"
 
 void Sottomarino::set(std::string inizio, std::string fine, Griglia& g_difesa){
 

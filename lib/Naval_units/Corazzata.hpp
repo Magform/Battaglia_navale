@@ -1,5 +1,4 @@
 #include "../../include/Naval_units/Corazzata.h"
-#include "../../lib/Naval_units/Naval_units.hpp"
 
 void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
        

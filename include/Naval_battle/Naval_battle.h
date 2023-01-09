@@ -39,9 +39,13 @@ public:
 
     void setup();
     bool getBotBattle() { return botBattle };
-    void accept_command(std::string origin, std::string target);
+    void accept_command();
     void bot_command();
     bool end_battle();
+    bool is_botBattle();
+
+    int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
+    int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
 
 }
 
