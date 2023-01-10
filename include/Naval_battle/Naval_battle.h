@@ -9,7 +9,7 @@
 #include "../../include/Naval_units/Supporto.h"
 
 
-class Naval_battle{
+class Naval_battle {
 private:
     bool botBattle;
     bool log;
@@ -49,6 +49,6 @@ public:
     int g1_corazzate(); //conta le corazzate attualmente in vita del giocatore 1.
     int g2_corazzate(); //conta le corazzate attualemente in vida del giocatore 2.
 
-}
+};
 
 #endif // Naval_battle_H_

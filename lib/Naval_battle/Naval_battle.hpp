@@ -1,11 +1,11 @@
 #include "../../include/Naval_battle/Naval_battle.h"
 
-
+using namespace std;
 //funzioni utili
-std::string location_to_string(int X, int Y);
+//std::string location_to_string(int X, int Y);
 void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log);
-void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log);
-void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log);
+void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log);
+void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log);
 void print_command();
 
 Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
@@ -22,7 +22,7 @@ Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
 
 void Naval_battle::setup() {
     //se abbiamo i log accesi allora vado ad utilizzare il file log.txt per scrivere il log.
-    ofstream log_file;
+    std::ofstream log_file;
     if (log) {
         log_file.open("log.txt");
     }
@@ -66,22 +66,22 @@ void Naval_battle::setup() {
     }
     else {
         create_corazzata(g1_corazzata1, 5, g1_difesa, log_file, log);
-        create(g1_corazzata2, 5, g1_difesa, log_file, log);
-        create(g1_corazzata3, 5, g1_difesa, log_file, log);
-        create(g1_supporto1, 3, g1_difesa, log_file, log);
-        create(g1_supporto2, 3, g1_difesa, log_file, log);
-        create(g1_supporto3, 3, g1_difesa, log_file, log);
-        create(g1_sottomarino1, 0, g1_difesa, log_file, log);
-        create(g1_sottomarino2, 0, g1_difesa, log_file, log);
+        create_corazzata(g1_corazzata2, 5, g1_difesa, log_file, log);
+        create_corazzata(g1_corazzata3, 5, g1_difesa, log_file, log);
+        create_supporto(g1_supporto1, 3, g1_difesa, log_file, log);
+        create_supporto(g1_supporto2, 3, g1_difesa, log_file, log);
+        create_supporto(g1_supporto3, 3, g1_difesa, log_file, log);
+        create_sottomarino(g1_sottomarino1, 0, g1_difesa, log_file, log);
+        create_sottomarino(g1_sottomarino2, 0, g1_difesa, log_file, log);
     }
-        create(g2_corazzata1, 5, g2_difesa, log_file, log);
-        create(g2_corazzata2, 5, g2_difesa, log_file, log);
-        create(g2_corazzata3, 5, g2_difesa, log_file, log);
-        create(g2_supporto1, 3, g2_difesa, log_file, log);
-        create(g2_supporto2, 3, g2_difesa, log_file, log);
-        create(g2_supporto3, 3, g2_difesa, log_file, log);
-        create(g2_sottomarino1, 0, g2_difesa, log_file, log);
-        create(g2_sottomarino2, 0, g2_difesa, log_file, log);
+    create_corazzata(g2_corazzata1, 5, g2_difesa, log_file, log);
+    create_corazzata(g2_corazzata2, 5, g2_difesa, log_file, log);
+    create_corazzata(g2_corazzata3, 5, g2_difesa, log_file, log);
+    create_supporto(g2_supporto1, 3, g2_difesa, log_file, log);
+    create_supporto(g2_supporto2, 3, g2_difesa, log_file, log);
+    create_supporto(g2_supporto3, 3, g2_difesa, log_file, log);
+    create_sottomarino(g2_sottomarino1, 0, g2_difesa, log_file, log);
+    create_sottomarino(g2_sottomarino2, 0, g2_difesa, log_file, log);
 }
 
 
@@ -201,7 +201,7 @@ void Naval_battle::bot_command() {
 }
 
 //Funzioni utili
-void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log){
+void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log){
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -238,7 +238,7 @@ void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, o
     }
 }
 
-void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log) {
+void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log) {
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -275,7 +275,7 @@ void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, ofs
     }
 }
 
-void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log) {
+void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log) {
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -306,7 +306,7 @@ void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difes
             if (log) { log_file << inizio << fine << endl; }
             isGood = true;
         }
-        catch () {      //eccezione ancora da decidere
+        catch (const std::invalid_argument ex) {
             isGood = false;
         }
     }
