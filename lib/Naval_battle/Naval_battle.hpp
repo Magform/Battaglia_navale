@@ -1,11 +1,15 @@
 #include "../../include/Naval_battle/Naval_battle.h"
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
+
 //funzioni utili
-//std::string location_to_string(int X, int Y);
-void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log);
-void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log);
-void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log);
+std::string location_to_string(int X, int Y);
+void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
+void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
+void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
 void print_command();
 
 Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
@@ -134,10 +138,10 @@ void Naval_battle::accept_command(){
 void Naval_battle::bot_command() {
     if (botBattle) {
         srand(time(NULL));
-        int attaccante = rand() % 7 + 0;
+        int attaccante = rand() % 8 + 0;
         int locationX, locationY;
-        locationX = rand() % 11 + 0;
-        locationY = rand() % 11 + 0;
+        locationX = rand() % 12 + 0;
+        locationY = rand() % 12 + 0;
         string target = location_to_string(locationX, locationY);
         switch (attaccante) {
         case 0:
@@ -167,10 +171,10 @@ void Naval_battle::bot_command() {
         }
     }
     srand(time(NULL));
-    int attaccante = rand() % 7 + 0;
+    int attaccante = rand() % 8 + 0;
     int locationX, locationY;
-    locationX = rand() % 11 + 0;
-    locationY = rand() % 11 + 0;
+    locationX = rand() % 12 + 0;
+    locationY = rand() % 12 + 0;
     string target = location_to_string(locationX, locationY);
     switch (attaccante) {
     case 0:
@@ -201,7 +205,7 @@ void Naval_battle::bot_command() {
 }
 
 //Funzioni utili
-void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log){
+void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, std::ofstream& log_file, bool log){
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -232,22 +236,22 @@ void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, s
             if (log) { log_file << inizio << fine << endl; }
             isGood = true;
         }
-        catch () {      //eccezione ancora da decidere
+        catch (const std::invalid_argument ex) {      //eccezione ancora da decidere
             isGood = false;
         }
     }
 }
 
-void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log) {
+void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, std::ofstream& log_file, bool log) {
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
         int locationX, locationY;
-        locationX = rand() % 11 + 0;
-        locationY = rand() % 11 + 0;
+        locationX = rand() % 12 + 0;
+        locationY = rand() % 12 + 0;
         string inizio = location_to_string(locationX, locationY);
 
-        int direzione = rand() % 3 + 0;
+        int direzione = rand() % 4 + 0;
         string fine{};
         switch (direzione) {
         case 0:
@@ -269,22 +273,22 @@ void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, std
             if (log) { log_file << inizio << fine << endl; }
             isGood = true;
         }
-        catch () {      //eccezione ancora da decidere
+        catch (const std::invalid_argument ex) {      //eccezione ancora da decidere
             isGood = false;
         }
     }
 }
 
-void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log) {
+void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, std::ofstream& log_file, bool log) {
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
         int locationX, locationY;
-        locationX = rand() % 11 + 0;
-        locationY = rand() % 11 + 0;
+        locationX = rand() % 12 + 0;
+        locationY = rand() % 12 + 0;
         string inizio = location_to_string(locationX, locationY);
 
-        int direzione = rand() % 3 + 0;
+        int direzione = rand() % 4 + 0;
         string fine{};
         switch (direzione) {
         case 0:
