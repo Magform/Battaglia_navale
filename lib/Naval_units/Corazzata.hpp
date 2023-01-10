@@ -25,6 +25,17 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     }else{
          yFine=cFine-67;
     }
+    
+    //Metto in ordine le due coordinate
+    if((yFine<yInizio)||(xFine<xInizio)){
+        char scambioY=cFine;
+        cFine=cInizio;
+        cInizio=scambioY;
+
+        int scambioX=xFine;
+        xFine=xInizio;
+        xInizio=xFine;
+    }
 
     //Check per vedere se posso metterla in verticale
 
