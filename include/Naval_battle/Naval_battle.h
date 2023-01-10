@@ -11,6 +11,7 @@
 class Naval_battle{
 private:
     bool botBattle;
+    bool log;
 
     Griglia g1_attacco;
     Griglia g1_difesa;
@@ -35,7 +36,7 @@ private:
     Sottomarino g2_sottomarino2;
 
 public:
-    Naval_battle(std::string battletype);
+    Naval_battle(std::string battletype, bool log_or_not);
 
     void setup();
     bool getBotBattle() { return botBattle };
@@ -44,8 +45,8 @@ public:
     bool end_battle();
     bool is_botBattle();
 
-    int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
-    int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
+    int g1_corazzate(); //conta le corazzate attualmente in vita del giocatore 1.
+    int g2_corazzate(); //conta le corazzate attualemente in vida del giocatore 2.
 
 }
 

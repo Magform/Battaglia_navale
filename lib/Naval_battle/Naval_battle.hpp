@@ -2,73 +2,94 @@
 
 //funzioni utili 
 std::string location_to_string(int X, int Y);
+void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log);
+void print_command();
 
-
-Naval_battle::Naval_battle(std::string battletype) {
+Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
 	if (battletype == "pc") {
 		botBattle = false;
-	}
-	if (battletype == "cc") {
+	}else if (battletype == "cc") {
 		botBattle = true;
-	}
-	throw std::invalid_argument("Argomento non valido");
+    }
+    else {
+        throw std::invalid_argument("Argomento non valido");
+    }
+    log = log_or_not;
 }
 
 void Naval_battle::setup() {
+    //se abbiamo i log accesi allora vado ad utilizzare il file log.txt per scrivere il log.
+    ofstream log_file;
+    if (log) {
+        log_file.open("log.txt");
+    }
+
     if (botBattle = false) {
         std::string inizio, fine;
         std::cout << "Quali sono le coordinate per la corazzata 1: "<<endl;
         std::cin >> inizio >> fine;
+        if(log){ log_file << inizio << fine<< endl; }
         g1_corazzata1.set(inizio, fine, g1_difesa);
         std::cout << "Quali sono le coordinate per la corazzata 2: "<<endl;
         std::cin >> inizio >> fine;
+        if (log) { log_file << inizio << fine << endl; }
         g1_corazzata2.set(inizio, fine, g1_difesa);
         std::cout << "Quali sono le coordinate per la corazzata 3: "<<endl;
         std::cin >> inizio >> fine;
+        if (log) { log_file << inizio << fine << endl; }
         g1_corazzata3.set(inizio, fine, g1_difesa);
 
         std::cout << "Quali sono le coordinate per la nave di supporto 1: "<<endl;
         std::cin >> inizio >> fine;
+        if (log) { log_file << inizio << fine << endl; }
         g1_supporto1.set(inizio, fine, g1_difesa);
         std::cout << "Quali sono le coordinate per la nave di supporto 2: "<<endl;
         std::cin >> inizio >> fine;
+        if (log) { log_file << inizio << fine << endl; }
         g1_supporto2.set(inizio, fine, g1_difesa);
         std::cout << "Quali sono le coordinate per la nave di supporto 3: "<<endl;
         std::cin >> inizio >> fine;
+        if (log) { log_file << inizio << fine << endl; }
         g1_supporto3.set(inizio, fine, g1_difesa);
 
         std::cout << "Quali sono le coordinate per il sottomarino 1: "<<endl;
         std::cin >> inizio >> fine;
+        if (log) { log_file << inizio << fine << endl; }
         g1_sottomarino1.set(inizio, fine, g1_difesa);
         std::cout << "Quali sono le coordinate per il sottomarino 2: "<<endl;
         std::cin >> inizio >> fine;
+        if (log) { log_file << inizio << fine << endl; }
         g1_sottomarino2.set(inizio, fine, g1_difesa);
     }
     else {
-        create(g1_corazzata1, 5, g1_difesa);
-        create(g1_corazzata2, 5, g1_difesa);
-        create(g1_corazzata3, 5, g1_difesa);
-        create(g1_supporto1, 3, g1_difesa);
-        create(g1_supporto2, 3, g1_difesa);
-        create(g1_supporto3, 3, g1_difesa);
-        create(g1_sottomarino1, 0, g1_difesa);
-        create(g1_sottomarino2, 0, g1_difesa);
+        create(g1_corazzata1, 5, g1_difesa, log_file, log);
+        create(g1_corazzata2, 5, g1_difesa, log_file, log);
+        create(g1_corazzata3, 5, g1_difesa, log_file, log);
+        create(g1_supporto1, 3, g1_difesa, log_file, log);
+        create(g1_supporto2, 3, g1_difesa, log_file, log);
+        create(g1_supporto3, 3, g1_difesa, log_file, log);
+        create(g1_sottomarino1, 0, g1_difesa, log_file, log);
+        create(g1_sottomarino2, 0, g1_difesa, log_file, log);
     }
-        create(g2_corazzata1, 5, g2_difesa);
-        create(g2_corazzata2, 5, g2_difesa);
-        create(g2_corazzata3, 5, g2_difesa);
-        create(g2_supporto1, 3, g2_difesa);
-        create(g2_supporto2, 3, g2_difesa);
-        create(g2_supporto3, 3, g2_difesa);
-        create(g2_sottomarino1, 0, g2_difesa);
-        create(g2_sottomarino2, 0, g2_difesa);
+        create(g2_corazzata1, 5, g2_difesa, log_file, log);
+        create(g2_corazzata2, 5, g2_difesa, log_file, log);
+        create(g2_corazzata3, 5, g2_difesa, log_file, log);
+        create(g2_supporto1, 3, g2_difesa, log_file, log);
+        create(g2_supporto2, 3, g2_difesa, log_file, log);
+        create(g2_supporto3, 3, g2_difesa, log_file, log);
+        create(g2_sottomarino1, 0, g2_difesa, log_file, log);
+        create(g2_sottomarino2, 0, g2_difesa, log_file, log);
 }
 
 
 void Naval_battle::accept_command(){
-    cout << "Inserire comando \n";
+    cout << "Inserire comando (HH HH per mostrare tutti i comandi possibili) \n";
     std::string origin, target;
     cin >> origin >> target;
+    if (origin == "HH" && target == "HH") {
+        print_command();
+        accept_command();
+    }
     if(origin=="AA" && target=="AA"){
         g1_attacco.remove_all("Y");
         accept_command();
@@ -76,6 +97,14 @@ void Naval_battle::accept_command(){
     if (origin == "XX" && target == "XX") {
         cout << g1_difesa;
         cout << g1_attacco;
+        accept_command();
+    }
+    if (origin == "BB" && target == "BB") {
+        g1_attacco.remove_all("X");
+        accept_command();
+    }
+    if (origin == "CC" && target == "CC") {
+        g1_attacco.remove_all("O");
         accept_command();
     }
     if (origin == g1_corazzata1.get_centro()) {
@@ -169,7 +198,7 @@ void Naval_battle::bot_command() {
 }
 
 //Funzioni utili
-void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa){
+void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log){
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -195,7 +224,9 @@ void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa){
             break;
         }
         try {
+
             unita.set(inizio, fine, griglia_difesa);
+            if (log) { log_file << inizio << fine << endl; }
             isGood = true;
         }
         catch () {      //eccezione ancora da decidere
@@ -204,7 +235,7 @@ void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa){
     }
 }
 
-int Naval_battle::g1_navi() {
+int Naval_battle::g1_corazzate() {
     int toReturn{ 0 };
     if (g1_corazzata1.isAlive()) {
         toReturn++;
@@ -215,25 +246,10 @@ int Naval_battle::g1_navi() {
     if (g1_corazzata3.isAlive()) {
         toReturn++;
     }
-    if (g1_supporto1.isAlive()) {
-        toReturn++;
-    }
-    if (g1_supporto2.isAlive()) {
-        toReturn++;
-    }
-    if (g1_supporto3.isAlive()) {
-        toReturn++;
-    }
-    if (g1_sottomarino1.isAlive()) {
-        toReturn++;
-    }
-    if (g1_sottomarino2.isAlive()) {
-        toReturn++;
-    }
     return toReturn;
 }
 
-int  Naval_battle::g2_navi() {
+int  Naval_battle::g2_corazzate() {
     int toReturn{ 0 };
     if (g2_corazzata1.isAlive()) {
         toReturn++;
@@ -242,21 +258,6 @@ int  Naval_battle::g2_navi() {
         toReturn++;
     }
     if (g2_corazzata3.isAlive()) {
-        toReturn++;
-    }
-    if (g2_supporto1.isAlive()) {
-        toReturn++;
-    }
-    if (g2_supporto2.isAlive()) {
-        toReturn++;
-    }
-    if (g2_supporto3.isAlive()) {
-        toReturn++;
-    }
-    if (g2_sottomarino1.isAlive()) {
-        toReturn++;
-    }
-    if (g2_sottomarino2.isAlive()) {
         toReturn++;
     }
     return toReturn;
@@ -313,3 +314,13 @@ std::string location_to_string(int X, int Y) {
 }
 
 
+void print_command() {
+    std::cout << "Lista dei comandi possibili:" << std::endl;
+    std::cout << "HH HH -> mostra questa lista di comandi" << std::endl;
+    std::cout << "XYOrigin XYTarget -> esegue l'azione della nave centrata in XYOrigin verso la casella XYtarget" << std::endl;
+    std::cout << "YY YY -> rimuove tutti gli avvistamenti sonar dalla griglia di attacco (carattere Y)" << std::endl;
+    std::cout << "XX XX -> mostra la griglia di attacco e la griglia di difesa" << std::endl;
+    std::cout << "BB BB -> rimuove tutti i caratteri relativi ai colpi andati a segno dalla griglia di attacco (carattere X)" << std::endl;
+    std::cout << "CC CC -> rimuove tutti i caratteri relativi ai colpi andati a vuoto dalla griglia di attacco (carattere O)" << std::endl;
+    
+}
