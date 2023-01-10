@@ -1,8 +1,11 @@
 #include "../../include/Naval_battle/Naval_battle.h"
 
-//funzioni utili 
+
+//funzioni utili
 std::string location_to_string(int X, int Y);
-void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log);
+void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, std::ofstream log_file, bool log);
+void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log);
+void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log);
 void print_command();
 
 Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
@@ -62,7 +65,7 @@ void Naval_battle::setup() {
         g1_sottomarino2.set(inizio, fine, g1_difesa);
     }
     else {
-        create(g1_corazzata1, 5, g1_difesa, log_file, log);
+        create_corazzata(g1_corazzata1, 5, g1_difesa, log_file, log);
         create(g1_corazzata2, 5, g1_difesa, log_file, log);
         create(g1_corazzata3, 5, g1_difesa, log_file, log);
         create(g1_supporto1, 3, g1_difesa, log_file, log);
@@ -198,7 +201,81 @@ void Naval_battle::bot_command() {
 }
 
 //Funzioni utili
-void create(Naval_units unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log){
+void create_corazzata(Corazzata unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log){
+    bool isGood = false;
+    while (!isGood) {
+        srand(time(NULL));
+        int locationX, locationY;
+        locationX = rand() % 12 + 0;
+        locationY = rand() % 12 + 0;
+        string inizio = location_to_string(locationX, locationY);
+
+        int direzione = rand() % 4 + 0;
+        string fine{};
+        switch (direzione) {
+        case 0:
+            fine = location_to_string(locationX - lunghezza, locationY);
+            break;
+        case 1:
+            fine = location_to_string(locationX + lunghezza, locationY);
+            break;
+        case 2:
+            fine = location_to_string(locationX, locationY - lunghezza);
+            break;
+        case 3:
+            fine = location_to_string(locationX, locationY + lunghezza);
+            break;
+        }
+        try {
+
+            unita.set(inizio, fine, griglia_difesa);
+            if (log) { log_file << inizio << fine << endl; }
+            isGood = true;
+        }
+        catch () {      //eccezione ancora da decidere
+            isGood = false;
+        }
+    }
+}
+
+void create_supporto(Supporto unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log) {
+    bool isGood = false;
+    while (!isGood) {
+        srand(time(NULL));
+        int locationX, locationY;
+        locationX = rand() % 11 + 0;
+        locationY = rand() % 11 + 0;
+        string inizio = location_to_string(locationX, locationY);
+
+        int direzione = rand() % 3 + 0;
+        string fine{};
+        switch (direzione) {
+        case 0:
+            fine = location_to_string(locationX - lunghezza, locationY);
+            break;
+        case 1:
+            fine = location_to_string(locationX + lunghezza, locationY);
+            break;
+        case 2:
+            fine = location_to_string(locationX, locationY - lunghezza);
+            break;
+        case 3:
+            fine = location_to_string(locationX, locationY + lunghezza);
+            break;
+        }
+        try {
+
+            unita.set(inizio, fine, griglia_difesa);
+            if (log) { log_file << inizio << fine << endl; }
+            isGood = true;
+        }
+        catch () {      //eccezione ancora da decidere
+            isGood = false;
+        }
+    }
+}
+
+void create_sottomarino(Sottomarino unita, int lunghezza, Griglia& griglia_difesa, ofstream log_file, bool log) {
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -322,5 +399,5 @@ void print_command() {
     std::cout << "XX XX -> mostra la griglia di attacco e la griglia di difesa" << std::endl;
     std::cout << "BB BB -> rimuove tutti i caratteri relativi ai colpi andati a segno dalla griglia di attacco (carattere X)" << std::endl;
     std::cout << "CC CC -> rimuove tutti i caratteri relativi ai colpi andati a vuoto dalla griglia di attacco (carattere O)" << std::endl;
-    
+
 }

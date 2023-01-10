@@ -8,6 +8,7 @@
 #include "../../include/Naval_units/Sottomarino.h"
 #include "../../include/Naval_units/Supporto.h"
 
+
 class Naval_battle{
 private:
     bool botBattle;

@@ -3,7 +3,7 @@
 
 #include "../../lib/Naval_units/Sottomarino.hpp"
 
-class Supporto : public Naval_units{
+class Sottomarino : public Naval_units{
 private:
     int vita = 1;
     string begin;
