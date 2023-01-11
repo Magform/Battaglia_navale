@@ -6,6 +6,9 @@ project(${PROJECT_NAME} VERSION 1.0)
 set(SRC_FILES lib/Griglia/Griglia.hpp lib/Naval_battle/Naval_battle.hpp lib/Naval_units/Corazzata.hpp lib/Naval_units/Sottomarino.hpp lib/Naval_units/Supporto.hpp lib/Replay/Replay.hpp)
 set(HEADER_FILE include/Griglia/Griglia.h include/Naval_battle/Naval_battle.h include/Naval_units/Corazzata.h include/Naval_units/Naval_units.h include/Naval_units/Sottomarino.h lib/Naval_units/Supporto.hpp lib/Replay/Replay.hpp)
 
+SET(GCC_COVERAGE_COMPILE_FLAGS "-g -O2")
+add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
+
 include_directory(include lib)
 
 add_library(

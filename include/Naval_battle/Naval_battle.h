@@ -11,8 +11,9 @@
 
 class Naval_battle {
 private:
-    bool botBattle;
-    bool log;
+    bool botBattle;             //variabile che se é true dice che la battaglia non ha giocatori umani ma solo due bot
+    bool log;                   //variabile che indica se é necessario o meno il logging su file
+    std::ofstream log_file;     //variablie per la scrittura dei log su file (viene utilizzata solo se richiesto)
 
     Griglia g1_attacco;
     Griglia g1_difesa;
@@ -40,10 +41,10 @@ public:
     Naval_battle(std::string battletype, bool log_or_not);
 
     void setup();
-    bool getBotBattle() { return botBattle };
+    bool getBotBattle() { return botBattle; }
     void accept_command();
     void bot_command();
-    bool end_battle();
+    int winner(); //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
     bool is_botBattle();
 
     int g1_corazzate(); //conta le corazzate attualmente in vita del giocatore 1.

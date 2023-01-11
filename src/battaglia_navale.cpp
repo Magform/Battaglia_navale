@@ -15,12 +15,13 @@ int main() {
 	Naval_battle battaglia(battletype, true);
 	battaglia.setup();
 	int turni = 1;
-	while (!battaglia.end_battle() && turni<=100) {
+	while (battaglia.winner()==0 && turni<=100) {
 		if (!battaglia.is_botBattle()) {
 			battaglia.accept_command();
 		}
 		battaglia.bot_command();
 		turni++;
 	}
+	cout << "Il vincitore é il giocatore " << battaglia.winner() << endl;
 
 }
