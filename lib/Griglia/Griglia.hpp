@@ -89,18 +89,19 @@ void Griglia::remove_all(string to_remove) {
 ostream& operator<<(ostream& os, const Griglia to_Print){
     char rigaChar=65;
 
-    os<<"  |1|2|3|4|5|6|7|8|9|10|11|12"<<std::endl;
+    os<<"   1   2   3   4   5   6   7   8   9   10  11  12"<<endl;
     for(int riga=0; riga<12; riga++ ){
+        os<<"  --- --- --- --- --- --- --- --- --- --- --- ---"<<endl;
         if(rigaChar==74) rigaChar=rigaChar+2;
-        os<<" "<<rigaChar;
+        os<<rigaChar<<"|";
         rigaChar++;
         for(int colonna=0; colonna<12; colonna++){
-            os<<"|"<<to_Print.matrix[riga][colonna];
-            if(colonna>=9){
-                os<<" ";
-            }
+                
+            os<<" "<<to_Print.matrix[riga][colonna]<<" |";
+
         }
         os<<endl;
     }
+    os<<"  --- --- --- --- --- --- --- --- --- --- --- ---"<<"\n";
     return os;
 }
