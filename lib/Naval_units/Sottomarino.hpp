@@ -29,17 +29,15 @@ void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Grig
         //rimuovo vecchia posizione e metto quella nuova
         g1_difesa.remove(centro);
         g1_difesa.set("E", obiettivo);
+        centro=obiettivo;  
             
         //Trasformo "obiettivo" in coordinate
         char cTarget=obiettivo.at(0);
         int XTarget=stoi(obiettivo.substr(1,2));
         int YTarget;
         if((cTarget<65)||(cTarget>78))  throw std::invalid_argument("Carattere non valido");
-        if(cTarget<74){
-            YTarget=cTarget-65;
-        }else{
-            YTarget=cTarget-67;
-        }
+        YTarget=cTarget-65;
+       
         
         //inizio radar
         int YSearch=YTarget-3;
@@ -57,15 +55,20 @@ void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Grig
                 if((XSearch>=0)&&(XSearch<12)&&(YSearch>=0)&&(YSearch<12)){  
 
                     char cY=YSearch+65;
+                    if(cY=='J'||cY=='K') cY+=2;
+                    
                     std::string Pos(1,cY);
                     Pos=Pos+to_string(XSearch);
 
-                    //if per vedere se nella posizione dove stiamo cercando cercando c'è una nave nemica
-                    if(g2_difesa.retrive(Pos)!=" "){ 
+                    try{
+                        
+                        //if per vedere se nella posizione dove stiamo cercando cercando c'è una nave nemica
+                        if(g2_difesa.retrive(Pos)!=" "){ 
                             
-                           //Nave trovata, metto una Y nella griglia d'attacco
+                            //Nave trovata, metto una Y nella griglia d'attacco
                             g1_attacco.set("Y", Pos);
-                    }
+                        }
+                    }catch(const std::invalid_argument ex){}
                 }
            }
        //fine del radar           
