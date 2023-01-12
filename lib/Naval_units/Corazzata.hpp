@@ -129,9 +129,12 @@ void Corazzata::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_at
     //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione,
     //2 quello che subisce l'attacco)
 
+    //Controllo se il sottomarino è ancora in vita
+    if(!isAlive())  throw std::invalid_argument("Carattere non valido");
+       
     //if per vedere se nell'obiettivo c'è una nave non colpita
     if((g2_difesa.retrive(obiettivo)=="C")||(g2_difesa.retrive(obiettivo)=="S")||(g2_difesa.retrive(obiettivo)=="E")){         
-
+       
         //nave colpita
         string lettera=g2_difesa.retrive(obiettivo);
         char l=lettera[0];
