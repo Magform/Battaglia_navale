@@ -71,10 +71,10 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
         //Check per vedere se posso metterla in orizzontale
         if(yInizio==yFine){
-               
+            char cSearch=cInizio;
             for(int k=0; k<5; k++){      
-                if(cInizio==74||cInizio==75) cInizio=cInizio+2;
-                std::string Pos(1,cInizio);
+                if(cSearch==74||cSearch==75) cSearch=cSearch+2;
+                std::string Pos(1,cSearch);
                 Pos=Pos+to_string(xInizio);
 
                 if(g_difesa.retrive(Pos)==" "){    //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
@@ -89,9 +89,9 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
             xInizio=xInizio-5;
 
             if(cInizio+2=='J'||cInizio+2=='K') {
-                centro=cInizio+4;
-            }else{
                 centro=cInizio+2;
+            }else{
+                centro=cInizio;
             }
             centro=centro+to_string(xInizio+2);
                 
