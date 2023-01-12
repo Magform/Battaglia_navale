@@ -452,9 +452,11 @@ bool Naval_battle::is_botBattle() {
 
 int Naval_battle::winner() {
     if (g1_corazzate() == 0) {
+        log_file.close();
         return 1;
     }
     if (g2_corazzate() == 0) {
+        log_file.close();
         return 2;
     }
     return 0;
