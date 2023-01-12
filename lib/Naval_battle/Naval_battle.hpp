@@ -40,6 +40,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_corazzata1.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -53,6 +54,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_corazzata2.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -66,6 +68,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_corazzata3.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -79,6 +82,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_supporto1.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -92,6 +96,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_supporto2.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -105,6 +110,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_supporto3.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -118,6 +124,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_sottomarino1.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -131,6 +138,7 @@ void Naval_battle::setup() {
                 std::cin >> inizio >> fine;
                 g1_sottomarino2.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
+		accepted=true;
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -472,23 +480,30 @@ void create_corazzata(Corazzata unita, Griglia& griglia_difesa, std::ofstream& l
         locationY = rand() % 12 + 0;
         string inizio = location_to_string(locationX, locationY);
 
+	
         int direzione = rand() % 4 + 0;
         string fine{};
-        switch (direzione) {
-        case 0:
-            fine = location_to_string(locationX -5, locationY);
-            break;
-        case 1:
-            fine = location_to_string(locationX + 5, locationY);
-            break;
-        case 2:
-            fine = location_to_string(locationX, locationY - 5);
-            break;
-        case 3:
-            fine = location_to_string(locationX, locationY + 5);
-            break;
-        }
-        try {
+	
+	try{
+        	switch (direzione) {
+	        case 0:
+			if(locationX -4<0)throw invalid_argument("Numero non valido");
+			fine = location_to_string(locationX -4, locationY);
+			break;
+     	        case 1:
+			if(locationX +4>12)throw invalid_argument("Numero non valido");
+			fine = location_to_string(locationX + 4, locationY);
+			break;
+        	case 2:
+			if(locationY -4<0)throw invalid_argument("Numero non valido");
+            		fine = location_to_string(locationX, locationY - 4);
+            		break;
+       		case 3:
+			if(locationY+4>12)throw invalid_argument("Numero non valido");
+            		fine = location_to_string(locationX, locationY + 4);
+            		break;
+        	}
+        
 
             unita.set(inizio, fine, griglia_difesa);
             if (log) { log_file << inizio << " " << fine << endl; }
@@ -511,21 +526,26 @@ void create_supporto(Supporto unita, Griglia& griglia_difesa, std::ofstream& log
 
         int direzione = rand() % 4 + 0;
         string fine{};
-        switch (direzione) {
-        case 0:
-            fine = location_to_string(locationX - 3, locationY);
-            break;
-        case 1:
-            fine = location_to_string(locationX + 3, locationY);
-            break;
-        case 2:
-            fine = location_to_string(locationX, locationY - 3);
-            break;
-        case 3:
-            fine = location_to_string(locationX, locationY + 3);
-            break;
-        }
-        try {
+	   
+	try{
+        	switch (direzione) {
+        	case 0:
+			if(locationX -2<0)throw invalid_argument("Numero non valido");
+            		fine = location_to_string(locationX - 2, locationY);
+            		break;
+        	case 1:
+			if(locationX +2>12)throw invalid_argument("Numero non valido");
+            		fine = location_to_string(locationX + 2, locationY);
+            		break;
+        	case 2:
+			if(locationY -2<0)throw invalid_argument("Numero non valido");
+            		fine = location_to_string(locationX, locationY - 2);
+            		break;
+        	case 3:
+			if(locationY+2>12)throw invalid_argument("Numero non valido");
+            		fine = location_to_string(locationX, locationY + 2);
+            		break;
+        	}
 
             unita.set(inizio, fine, griglia_difesa);
             if (log) { log_file << inizio << " " << fine << endl; }
