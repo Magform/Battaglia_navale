@@ -39,7 +39,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per la corazzata 1: " << endl;
                 std::cin >> inizio >> fine;
                 g1_corazzata1.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -52,7 +52,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per la corazzata 2: " << endl;
                 std::cin >> inizio >> fine;
                 g1_corazzata2.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -65,7 +65,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per la corazzata 3: " << endl;
                 std::cin >> inizio >> fine;
                 g1_corazzata3.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -78,7 +78,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per la nave di supporto 1: " << endl;
                 std::cin >> inizio >> fine;
                 g1_supporto1.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -91,7 +91,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per la nave di supporto 2: " << endl;
                 std::cin >> inizio >> fine;
                 g1_supporto2.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -104,7 +104,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per la nave di supporto 3: " << endl;
                 std::cin >> inizio >> fine;
                 g1_supporto3.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -117,7 +117,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per il sottomarino 1: " << endl;
                 std::cin >> inizio >> fine;
                 g1_sottomarino1.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -130,7 +130,7 @@ void Naval_battle::setup() {
                 std::cout << "Quali sono le coordinate per il sottomarino 2: " << endl;
                 std::cin >> inizio >> fine;
                 g1_sottomarino2.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << fine << endl; }
+                if (log) { log_file << inizio << " " << fine << endl; }
             }
             catch (const invalid_argument ex) {
                 cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
@@ -187,7 +187,7 @@ void Naval_battle::accept_command(){
     else if (origin == g1_corazzata1.get_centro()) {
         try {
             g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -196,7 +196,7 @@ void Naval_battle::accept_command(){
     }else if (origin == g1_corazzata2.get_centro()) {
         try {
             g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -205,7 +205,7 @@ void Naval_battle::accept_command(){
     }else if (origin == g1_corazzata3.get_centro()) {
         try {
             g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -214,7 +214,7 @@ void Naval_battle::accept_command(){
     }else if (origin == g1_supporto1.get_centro()) {
         try {
             g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -223,7 +223,7 @@ void Naval_battle::accept_command(){
     }else if (origin == g1_supporto2.get_centro()) {
         try {
             g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -232,7 +232,7 @@ void Naval_battle::accept_command(){
     }else if (origin == g1_supporto3.get_centro()) {
         try {
             g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -241,7 +241,7 @@ void Naval_battle::accept_command(){
     }else if (origin == g1_sottomarino1.get_centro()) {
         try {
             g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -250,7 +250,7 @@ void Naval_battle::accept_command(){
     }else if (origin == g1_sottomarino2.get_centro()) {
         try {
             g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-            if (log) { log_file << origin << target << endl; }
+            if (log) { log_file << origin << " " << target << endl; }
         }
         catch (const invalid_argument ex) {
             cout << "Azione non valida, inserire un nuovo comando" << endl;
@@ -277,7 +277,7 @@ void Naval_battle::bot_command() {
             case 0:
                 try {
                     g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_corazzata1.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -285,7 +285,7 @@ void Naval_battle::bot_command() {
             case 1:
                 try {
                     g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_corazzata2.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -293,7 +293,7 @@ void Naval_battle::bot_command() {
             case 2:
                 try {
                     g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_corazzata3.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -301,7 +301,7 @@ void Naval_battle::bot_command() {
             case 3:
                 try {
                     g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_supporto1.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -309,7 +309,7 @@ void Naval_battle::bot_command() {
             case 4:
                 try {
                     g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_supporto2.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -317,7 +317,7 @@ void Naval_battle::bot_command() {
             case 5:
                 try {
                     g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_supporto3.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -325,7 +325,7 @@ void Naval_battle::bot_command() {
             case 6:
                 try {
                     g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_sottomarino1.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -333,7 +333,7 @@ void Naval_battle::bot_command() {
             case 7:
                 try {
                     g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << origin << target << endl; }
+                    if (log) { log_file << g1_sottomarino2.get_centro() << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -353,7 +353,7 @@ void Naval_battle::bot_command() {
         case 0:
             try {
                 g2_corazzata1.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_corazzata1.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -361,7 +361,7 @@ void Naval_battle::bot_command() {
         case 1:
             try {
                 g2_corazzata2.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_corazzata2.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -369,7 +369,7 @@ void Naval_battle::bot_command() {
         case 2:
             try {
                 g2_corazzata3.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_corazzata3.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -377,7 +377,7 @@ void Naval_battle::bot_command() {
         case 3:
             try {
                 g2_supporto1.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_supporto1.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -385,7 +385,7 @@ void Naval_battle::bot_command() {
         case 4:
             try {
                 g2_supporto2.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_supporto2.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -393,7 +393,7 @@ void Naval_battle::bot_command() {
         case 5:
             try {
                 g2_supporto3.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_supporto3.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -401,7 +401,7 @@ void Naval_battle::bot_command() {
         case 6:
             try {
                 g2_sottomarino1.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_sottomarino1.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -409,7 +409,7 @@ void Naval_battle::bot_command() {
         case 7:
             try {
                 g2_sottomarino2.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << origin << target << endl; }
+                if (log) { log_file << g2_sottomarino2.get_centro() << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -491,7 +491,7 @@ void create_corazzata(Corazzata unita, Griglia& griglia_difesa, std::ofstream& l
         try {
 
             unita.set(inizio, fine, griglia_difesa);
-            if (log) { log_file << inizio << fine << endl; }
+            if (log) { log_file << inizio << " " << fine << endl; }
             isGood = true;
         }
         catch (const std::invalid_argument ex) {      //eccezione ancora da decidere
@@ -528,7 +528,7 @@ void create_supporto(Supporto unita, Griglia& griglia_difesa, std::ofstream& log
         try {
 
             unita.set(inizio, fine, griglia_difesa);
-            if (log) { log_file << inizio << fine << endl; }
+            if (log) { log_file << inizio << " " << fine << endl; }
             isGood = true;
         }
         catch (const std::invalid_argument ex) {
@@ -548,7 +548,7 @@ void create_sottomarino(Sottomarino unita, Griglia& griglia_difesa, std::ofstrea
         try {
 
             unita.set(inizio, inizio, griglia_difesa);
-            if (log) { log_file << inizio << inizio << endl; }
+            if (log) { log_file << inizio << " " << inizio << endl; }
             isGood = true;
         }
         catch (const std::invalid_argument ex) {
