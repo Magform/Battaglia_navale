@@ -29,7 +29,7 @@ void Replay::setup() {
     try {
         std::string inizio, fine;
 
-        write("Inserimento navi giocatore 1 \n");
+        write("-----Inserimento navi giocatore 1-----\n");
 
         write("Corazzata 1: ");
         log_input >> inizio >> fine;
@@ -71,7 +71,7 @@ void Replay::setup() {
         write(inizio + " " + fine + "\n");
         g1_sottomarino1.set(inizio, fine, g1_difesa);
 
-        write("Inserimento navi giocatore 2 \n");
+        write("-----Inserimento navi giocatore 2-----\n");
 
         write("Corazzata 1: ");
         log_input >> inizio >> fine;
@@ -114,16 +114,15 @@ void Replay::setup() {
         g2_sottomarino1.set(inizio, fine, g2_difesa);
     }
     catch (const invalid_argument ex) {
-        throw invalid_argument("Il file selezionato non é una battaglia valida ");
+        throw invalid_argument("Il file selezionato non e' una battaglia valida ");
     }
 }
 
 
 void Replay::turno() {
     try {
-
         string origin, target;
-        write("azione giocatore 1: ");
+        write("Azione giocatore 1: ");
         log_input >> origin >> target;
         write(origin + " " + target + "\n");
 
@@ -154,18 +153,18 @@ void Replay::turno() {
         else {
             throw invalid_argument("Battaglia nel file non valida);
         }
-        write("Griglie di gioco giocatore 1 \n");
+        write("-----Griglie di gioco giocatore 1-----\n");
         if (!file_output) {
-            cout << g1_attacco;
-            cout << g1_difesa;
+            cout << g1_attacco << "\n";
+            cout << g1_difesa << "\n";
             delay(1000);
         }
         else {
-            log_output << g1_attacco;
-            log_output << g1_difesa;
+            log_output << g1_attacco << "\n";
+            log_output << g1_difesa << "\n";
         }
 
-        write("azione giocatore 2: ");
+        write("Azione giocatore 2: ");
         log_input >> origin >> target;
         write(origin + " " + target + "\n");
 
@@ -197,19 +196,19 @@ void Replay::turno() {
             throw invalid_argument("Battaglia nel file non valida);
         }
 
-        write("Griglie di gioco giocatore 2 \n");
+        write("-----Griglie di gioco giocatore 2-----\n");
         if (!file_output) {
-            cout << g2_attacco;
-            cout << g2_difesa;
+            cout << g2_attacco << "\n";
+            cout << g2_difesa << "\n";
             delay(1000);
         }
         else {
-            log_output << g2_attacco;
-            log_output << g2_difesa;
+            log_output << g2_attacco << "\n";
+            log_output << g2_difesa << "\n";
         }
     }
     catch (const invalid_argument) {
-        throw invalid_argument("Il file selezionato non é una battaglia valida ");
+        throw invalid_argument("Il file selezionato non e' una battaglia valida ");
     }
 
 }
@@ -263,7 +262,7 @@ void Replay::write(string toPrint) {
 }
 
 void Replay::fine() {
-    write("Battaglia terminata, ha vinto il giocatore" + winner());
+    write("Battaglia terminata, ha vinto il giocatore " + winner());
     if (file_output) {
         log_output.close()
     }
