@@ -1,6 +1,10 @@
 #include "../../include/Naval_units/Corazzata.h"
 #include <cstring>
 
+string Corazzata::get_centro(){
+    return centro;
+}
+
 void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
        
     //converto in cordiate "matrici" la coordinata di inizio
@@ -113,6 +117,8 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     begin=inizio;
     end=fine;  
 }
+
+bool Corazzata::isAlive(){ return vita!=0;}
 
 void Corazzata::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
     //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione, 2 quello che subisce l'attacco)
