@@ -3,7 +3,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-#include<dos.h>
+#include <chrono>
+#include <thread>
 
 #include "../include/Replay/Replay.h"
 
@@ -12,7 +13,7 @@ using namespace std;
 int main() {
 	string arg;
 	bool accepted = false;
-
+	int turni=0;
 	int massimo_turni = 100; //attenzioe se la si cambia qua bisonga cambiarla anche su battaglia_navale
 
 	while (!accepted) {
@@ -25,7 +26,7 @@ int main() {
 			battaglia.setup();
 			while (battaglia.winner() == 0 && turni <= massimo_turni) {
 				battaglia.turno();
-				turno++;
+				turni++;
 			}
 			battaglia.fine();
 			cout << "Esecuzione terminata " << endl;
