@@ -1,7 +1,7 @@
 #ifndef Corazzata_H_
 #define Corazzata_H_
 
-#include "../../lib/Naval_units/Corazzata.hpp"
+#include "../../include/Naval_units/Naval_units.h"
 
 class Corazzata : public Naval_units{
 private:
