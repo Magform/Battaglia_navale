@@ -1,19 +1,14 @@
 #ifndef Replay_H_
 #define Replay_H_
 
-#include "../../lib/Replay/Replay.hpp"
-#include "../../include/Griglia/Griglia.h"
-#include "../../include/Naval_units/Naval_units.h"
-#include "../../include/Naval_units/Corazzata.h"
-#include "../../include/Naval_units/Sottomarino.h"
-#include "../../include/Naval_units/Supporto.h"
+#include "../../lib/Naval_batlle/Naval_battle.hpp"
 
 
 class Replay {
 private:
     std::ifstream log_input;     //variablie per la lettura dei log dal file
     std::ofstream log_output;
-    bool file_output; //variabile per definire se vi é un output su file o no
+    bool file_output; //variabile per definire se vi Ã© un output su file o no
 
     Griglia g1_attacco;
     Griglia g1_difesa;
