@@ -1,5 +1,9 @@
 #include "../../include/Naval_units/Sottomarino.h"
 
+string Sottomarino::get_centro(){
+    return centro;
+}
+
 void Sottomarino::set(std::string inizio, std::string fine, Griglia& g_difesa){
     
     if(inizio!=fine)    throw std::invalid_argument("Carattere non valido: le coordinate devono essere uguali");
@@ -15,6 +19,7 @@ void Sottomarino::set(std::string inizio, std::string fine, Griglia& g_difesa){
     centro=inizio;
 }
 
+bool Sottomarino::isAlive(){ return vita!=0;}
 
 void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
         //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione)
@@ -33,7 +38,7 @@ void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Grig
             
         //Trasformo "obiettivo" in coordinate
         char cTarget=obiettivo.at(0);
-        int XTarget=stoi(obiettivo.substr(1,2));
+        int XTarget=stoi(obiettivo.substr(1,obiettivo.length()-1));
         int YTarget;
         if((cTarget<65)||(cTarget>78))  throw std::invalid_argument("Carattere non valido");
         YTarget=cTarget-65;
