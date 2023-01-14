@@ -1,6 +1,10 @@
 #include "../../include/Naval_units/Supporto.h"
 #include <cstring>
 
+string Supporto::get_centro(){
+    return centro;
+}
+
 void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
        
     //converto in cordiate "matrici" la coordinata di inizio
@@ -119,12 +123,14 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
         }
     }
     begin=inizio;
-    end=fine;     
+    end=fine;    
+    
 }
 
+bool Supporto::isAlive(){ return vita!=0;}
     
 void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
-  
+
     //Controllo se la nave di supporto è ancora in vita
     if(!isAlive()) throw std::invalid_argument("Carattere non valido");
    
@@ -138,8 +144,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     
 
     //Ottengo le coordinate x dell'inizio e fine della vecchia posizione, per vedere se la nave è in orizzontale o verticale
-    int xInizio=stoi(begin.substr(1,begin.length()-1))-1;
-    int xFine=stoi(end.substr(1,end.length()-1))-1;
+    int xInizio=stoi(begin.substr(1,begin.length()-1));
+    int xFine=stoi(end.substr(1,end.length()-1));
       
     //inizio spostamento, controllando prima se la nave è in orizzontale o in verticale
     if(xInizio==xFine){
@@ -223,7 +229,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     int YInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
     
-        YInizio=cInizio-65;
+    YInizio=cInizio-65;
     
     char cFine=end.at(0);
     int XFine=stoi(end.substr(1,end.length()-1));
@@ -244,22 +250,20 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         }else{
             cRepair=cInizio-1;
         }
-        int XRepair=XInizio-1;
+        int XRepair=XInizio;
         for(int k=0; k<3; k++){
             if((cRepair>64)&&(cRepair<79)&&(XRepair+k>=0)&&(XRepair+k<12)){
 
                 std::string Repair(1,cRepair);
                 Repair=Repair+to_string(XRepair+k);
-
                 //if per vedere se nella posizione di ricerca c'è una lettera minuscola
                 if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
 
                     //Prendo la lettera e la metto maiuscola
-                    string lettera=g2_difesa.retrive(Repair);
+                    string lettera=g1_difesa.retrive(Repair);
                     char l=lettera[0];
                     l=toupper(l);
                     string insert(1,l);
-                    g2_difesa.set(insert, obiettivo);
 
                     //E la inserisco
                     g1_difesa.set(insert, Repair);
@@ -275,7 +279,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         }else{
             cRepair=cInizio+1;
         }
-        XRepair=XInizio-1;
+        XRepair=XInizio;
         for(int k=0; k<3; k++){
 
             if((cRepair>64)&&(cRepair<79)&&(XRepair+k>=0)&&(XRepair+k<12)){
@@ -287,14 +291,13 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
                 if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
 
                     //Prendo la lettera e la metto maiuscola
-                    string lettera=g2_difesa.retrive(Repair);
+                    string lettera=g1_difesa.retrive(Repair);
                     char l=lettera[0];
                     l=toupper(l);
                     string insert(1,l);
-                    g2_difesa.set(insert, obiettivo);
 
                     //E la inserisco
-                    g2_difesa.set(insert, Repair);
+                    g1_difesa.set(insert, Repair);
 
                 }
             }    
@@ -319,19 +322,17 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
                     Repair=cRepair+k;
                 }
                 Repair=Repair+to_string(XRepair);
- 
                 //if per vedere se nella posizione di ricerca c'è una lettera minuscola
                 if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
 
                     //Prendo la lettera e la metto maiuscola
-                    string lettera=g2_difesa.retrive(Repair);
+                    string lettera=g1_difesa.retrive(Repair);
                     char l=lettera[0];
                     l=toupper(l);
                     string insert(1,l);
-                    g2_difesa.set(insert, obiettivo);
 
                     //E la inserisco
-                    g2_difesa.set(insert, Repair);
+                    g1_difesa.set(insert, Repair);
 
                 }
             }
@@ -357,14 +358,13 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
                 if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
               
                     //Prendo la lettera e la metto maiuscola
-                    string lettera=g2_difesa.retrive(Repair);
+                    string lettera=g1_difesa.retrive(Repair);
                     char l=lettera[0];
                     l=toupper(l);
                     string insert(1,l);
-                    g2_difesa.set(insert, obiettivo);
 
                     //E la inserisco
-                    g2_difesa.set(insert, Repair);
+                    g1_difesa.set(insert, Repair);
 
                 }
 
@@ -376,6 +376,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     }
     //Fine dell'azione della nave di supporto 
 };
+
+    
 
     
 
