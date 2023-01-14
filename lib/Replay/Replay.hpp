@@ -13,7 +13,7 @@ Replay::Replay(std::string type) {
         log_input.open(log_in);
         file_output = false;
     }
-    else if{type == "f"} {
+    else if(type == "f") {
         string log_in, log_out;
         cin >> log_in >> log_out;
         log_input.open(log_in);
@@ -151,13 +151,13 @@ void Replay::turno() {
             g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else {
-            throw invalid_argument("Battaglia nel file non valida);
+            throw invalid_argument("Battaglia nel file non valida");
         }
         write("-----Griglie di gioco giocatore 1-----\n");
         if (!file_output) {
             cout << g1_attacco << "\n";
             cout << g1_difesa << "\n";
-            delay(1000);
+            std::this_thread::sleep_for(std::chrono::seconds(1));
         }
         else {
             log_output << g1_attacco << "\n";
@@ -193,14 +193,14 @@ void Replay::turno() {
             g2_sottomarino2.azione(target, g2_difesa, g2_attacco, g1_difesa);
         }
         else {
-            throw invalid_argument("Battaglia nel file non valida);
+            throw invalid_argument("Battaglia nel file non valida");
         }
 
         write("-----Griglie di gioco giocatore 2-----\n");
         if (!file_output) {
             cout << g2_attacco << "\n";
             cout << g2_difesa << "\n";
-            delay(1000);
+            std::this_thread::sleep_for(std::chrono::seconds(1));
         }
         else {
             log_output << g2_attacco << "\n";
@@ -264,7 +264,7 @@ void Replay::write(string toPrint) {
 void Replay::fine() {
     write("Battaglia terminata, ha vinto il giocatore " + winner());
     if (file_output) {
-        log_output.close()
+        log_output.close();
     }
     log_input.close();
 }
