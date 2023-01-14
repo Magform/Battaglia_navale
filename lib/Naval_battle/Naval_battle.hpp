@@ -1,15 +1,19 @@
 #include "../../include/Naval_battle/Naval_battle.h"
+
 #include <fstream>
 #include <iostream>
 #include <string>
 
 using namespace std;
+using namespace std;
+using namespace this_thread;
+using namespace chrono;
 
 //funzioni utili.
 std::string location_to_string(int X, int Y);
-void create_corazzata(Corazzata unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
-void create_supporto(Supporto unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
-void create_sottomarino(Sottomarino unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
+void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
+void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
+void create_sottomarino(Sottomarino& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
 void print_command();
 
 
@@ -164,6 +168,7 @@ void Naval_battle::setup() {
     create_supporto(g2_supporto3, g2_difesa, log_file, log);
     create_sottomarino(g2_sottomarino1, g2_difesa, log_file, log);
     create_sottomarino(g2_sottomarino2, g2_difesa, log_file, log);
+    cout<<g1_difesa<<"\n"<<g2_difesa<<endl;
 }
 
 
@@ -272,6 +277,8 @@ void Naval_battle::accept_command(){
 }
 
 void Naval_battle::bot_command() {
+    std::this_thread::sleep_for(std::chrono::milliseconds(800));
+    string old_centro;
     if (botBattle) {
         bool command_accepted = false;
         while (!command_accepted) {
@@ -279,69 +286,77 @@ void Naval_battle::bot_command() {
             int attaccante = rand() % 8 + 0;
             int locationX, locationY;
             locationX = rand() % 12 + 0;
-            locationY = rand() % 12 + 0;
+            locationY = rand() % 12 + 1;
             string target = location_to_string(locationX, locationY);
             switch (attaccante) {
             case 0:
                 try {
+                    old_centro=g1_corazzata1.get_centro();
                     g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_corazzata1.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
                 break;
             case 1:
                 try {
+                    old_centro=g1_corazzata2.get_centro();
                     g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_corazzata2.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro<< " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
                 break;
             case 2:
                 try {
+                    old_centro=g1_corazzata3.get_centro();
                     g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_corazzata3.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
                 break;
             case 3:
                 try {
+                    old_centro=g1_supporto1.get_centro();
                     g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_supporto1.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
                 break;
             case 4:
                 try {
+                    old_centro=g1_supporto2.get_centro();
                     g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_supporto2.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
                 break;
             case 5:
                 try {
+                    old_centro=g1_supporto3.get_centro();
                     g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_supporto3.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
                 break;
             case 6:
                 try {
+                    old_centro=g1_sottomarino1.get_centro();
                     g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_sottomarino1.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro << " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
                 break;
             case 7:
                 try {
+                    old_centro=g1_sottomarino2.get_centro();
                     g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
-                    if (log) { log_file << g1_sottomarino2.get_centro() << " " << target << endl; }
+                    if (log) { log_file << old_centro<< " " << target << endl; }
                     command_accepted = true;
                 }
                 catch (const invalid_argument ex) {}
@@ -349,75 +364,84 @@ void Naval_battle::bot_command() {
             }
         }
     }
+    std::this_thread::sleep_for(std::chrono::milliseconds(800));
     bool command_accepted = false;
     while (!command_accepted) {
         srand(time(NULL));
         int attaccante = rand() % 8 + 0;
         int locationX, locationY;
         locationX = rand() % 12 + 0;
-        locationY = rand() % 12 + 0;
+        locationY = rand() % 12 + 1;
         string target = location_to_string(locationX, locationY);
         switch (attaccante) {
         case 0:
             try {
+                old_centro=g2_corazzata1.get_centro();
                 g2_corazzata1.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_corazzata1.get_centro() << " " << target << endl; }
+                if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
             break;
         case 1:
             try {
+                old_centro=g2_corazzata2.get_centro();
                 g2_corazzata2.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_corazzata2.get_centro() << " " << target << endl; }
+                if (log) { log_file <<"" <<old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
             break;
         case 2:
             try {
+                old_centro=g2_corazzata3.get_centro();
                 g2_corazzata3.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_corazzata3.get_centro() << " " << target << endl; }
+                if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
             break;
         case 3:
             try {
+                old_centro=g2_supporto1.get_centro();
                 g2_supporto1.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_supporto1.get_centro() << " " << target << endl; }
+                if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
             break;
         case 4:
             try {
+                old_centro=g2_supporto2.get_centro();
                 g2_supporto2.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_supporto2.get_centro() << " " << target << endl; }
+                if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
             break;
         case 5:
             try {
+                old_centro=g2_supporto3.get_centro();
                 g2_supporto3.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_supporto3.get_centro() << " " << target << endl; }
+                if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
             break;
         case 6:
             try {
+                old_centro=g2_sottomarino1.get_centro();
                 g2_sottomarino1.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_sottomarino1.get_centro() << " " << target << endl; }
+                if (log) { log_file <<old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
             break;
         case 7:
             try {
+                old_centro=g2_sottomarino2.get_centro();
                 g2_sottomarino2.azione(target, g2_difesa, g2_attacco, g1_difesa);
-                if (log) { log_file << g2_sottomarino2.get_centro() << " " << target << endl; }
+                if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
             }
             catch (const invalid_argument ex) {}
@@ -471,7 +495,7 @@ int Naval_battle::winner() {
 }
 
 //Funzioni utili
-void create_corazzata(Corazzata unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log){
+void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log){
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -515,7 +539,7 @@ void create_corazzata(Corazzata unita, Griglia& griglia_difesa, std::ofstream& l
     }
 }
 
-void create_supporto(Supporto unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log) {
+void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log) {
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -555,9 +579,10 @@ void create_supporto(Supporto unita, Griglia& griglia_difesa, std::ofstream& log
             isGood = false;
         }
     }
+
 }
 
-void create_sottomarino(Sottomarino unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log) {
+void create_sottomarino(Sottomarino& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log) {
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
