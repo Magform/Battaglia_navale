@@ -1,18 +1,17 @@
 #ifndef Naval_battle_H_
 #define Naval_battle_H_
 
-#include "../../lib/Naval_battle/Naval_battle.hpp"
-#include "../../include/Griglia/Griglia.h"
-#include "../../include/Naval_units/Naval_units.h"
-#include "../../include/Naval_units/Corazzata.h"
-#include "../../include/Naval_units/Sottomarino.h"
-#include "../../include/Naval_units/Supporto.h"
+#include <fstream>
+
+#include "../../lib/Naval_units/Corazzata.hpp"
+#include "../../lib/Naval_units/Sottomarino.hpp"
+#include "../../lib/Naval_units/Supporto.hpp"
 
 
 class Naval_battle {
 private:
-    bool botBattle;             //variabile che se é true dice che la battaglia non ha giocatori umani ma solo due bot
-    bool log;                   //variabile che indica se é necessario o meno il logging su file
+    bool botBattle;             //variabile che se Ã© true dice che la battaglia non ha giocatori umani ma solo due bot
+    bool log;                   //variabile che indica se Ã© necessario o meno il logging su file
     std::ofstream log_file;     //variablie per la scrittura dei log su file (viene utilizzata solo se richiesto)
 
     Griglia g1_attacco;
