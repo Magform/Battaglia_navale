@@ -1,7 +1,7 @@
 #ifndef Sottomarino_H_
 #define Sottomarino_H_
 
-#include "../../lib/Naval_units/Sottomarino.hpp"
+#include "../../include/Naval_units/Naval_units.h"
 
 class Sottomarino : public Naval_units{
 private:
