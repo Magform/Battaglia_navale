@@ -3,6 +3,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
+#include <chrono>
+#include <thread>
 
 #include "../include/Naval_battle/Naval_battle.h"
 
@@ -25,11 +27,11 @@ int main() {
 		battaglia.bot_command();
 		turni++;
 	}
-	cout << "Battaglia terminata" endl;
+	cout << "Battaglia terminata"<<endl;
 	if (turni = massimo_turni + 1) {
-		cout << "Numero massimo di turni raggiunto, non vi é un vincitore e la partita termina in pareggio" << endl;
+		cout << "Numero massimo di turni raggiunto, non vi Ã© un vincitore e la partita termina in pareggio" << endl;
 	}
 	else {
-		cout << "Il vincitore é il giocatore " << battaglia.winner() << endl;
+		cout << "Il vincitore Ã© il giocatore " << battaglia.winner() << endl;
 	}
 }
