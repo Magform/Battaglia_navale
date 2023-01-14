@@ -10,6 +10,8 @@ private:
     string end;
     string centro;
 public:
+    string get_centro(); 
+    bool isAlive();
     void set(string inizio, string fine, Griglia& g_difesa);
     void azione(string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa);
 };
