@@ -6,7 +6,7 @@
 #include <chrono>
 #include <thread>
 
-#include "../include/Naval_battle/Naval_battle.h"
+#include "../lib/Naval_battle/Naval_battle.hpp"
 
 using namespace std;
 
