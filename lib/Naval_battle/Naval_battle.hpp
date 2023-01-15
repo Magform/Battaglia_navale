@@ -18,9 +18,6 @@ void print_command();
 
 //costruttore di Naval_battle, richiede la conosceza del tipo di battaglia e se é necessario o meno creare i log in output (Cosi posso andare ad utilizzare la medesima classe anche per il Replay)
 Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
-	
-	battletyp=tolower(battletype);
-	
 	if (battletype == "pc") {
 		botBattle = false;
 	}else if (battletype == "cc") {
