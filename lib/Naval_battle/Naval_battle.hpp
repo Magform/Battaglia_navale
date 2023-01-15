@@ -5,32 +5,34 @@
 #include <string>
 
 using namespace std;
-using namespace std;
 using namespace this_thread;
 using namespace chrono;
 
 //funzioni utili.
 std::string location_to_string(int X, int Y);
-void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
-void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
-void create_sottomarino(Sottomarino& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);
+void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);		//funzione utilizzata dal bot per creare la corazzata "in maniera casuale" (=messa casualmente in orizzontale o verticale)
+void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);		//funzione utilizzata dal bot per creare la nave di supporto "in maniera casuale" (=messa casualmente in orizzontale o verticale)
+void create_sottomarino(Sottomarino& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);	//funzione utilizzata dal bot per creare il sottomarino "in maniera casuale" (=messa casualmente in orizzontale o verticale)
 void print_command();
 
 
 //costruttore di Naval_battle, richiede la conosceza del tipo di battaglia e se é necessario o meno creare i log in output (Cosi posso andare ad utilizzare la medesima classe anche per il Replay)
 Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
+	
+	battletyp=tolower(battletype);
+	
 	if (battletype == "pc") {
 		botBattle = false;
 	}else if (battletype == "cc") {
 		botBattle = true;
-    }
-    else {
-        throw std::invalid_argument("Argomento non valido");
-    }
-    log = log_or_not;
-    if (log) {
-        log_file.open("log.txt");
-    }
+    	}
+    	else {
+        	throw std::invalid_argument("Argomento non valido");
+    	}
+    	log = log_or_not;
+    	if (log) {
+    	    log_file.open("log.txt");
+    	}
 }
 
 void Naval_battle::setup() {
@@ -40,7 +42,7 @@ void Naval_battle::setup() {
         bool accepted = false;
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per la corazzata 1: " << endl;
+                std::cout << "Coordinate della corazzata 1: " << endl;
                 std::cin >> inizio >> fine;
                 g1_corazzata1.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -54,7 +56,7 @@ void Naval_battle::setup() {
 
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per la corazzata 2: " << endl;
+                std::cout << "Coordinate della corazzata 2: " << endl;
                 std::cin >> inizio >> fine;
                 g1_corazzata2.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -68,7 +70,7 @@ void Naval_battle::setup() {
 
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per la corazzata 3: " << endl;
+                std::cout << "Coordinate della corazzata 3: " << endl;
                 std::cin >> inizio >> fine;
                 g1_corazzata3.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -82,7 +84,7 @@ void Naval_battle::setup() {
 
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per la nave di supporto 1: " << endl;
+                std::cout << "Coordinate della nave di supporto 1: " << endl;
                 std::cin >> inizio >> fine;
                 g1_supporto1.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -96,7 +98,7 @@ void Naval_battle::setup() {
 
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per la nave di supporto 2: " << endl;
+                std::cout << "Coordinate della nave di supporto 2: " << endl;
                 std::cin >> inizio >> fine;
                 g1_supporto2.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -110,7 +112,7 @@ void Naval_battle::setup() {
 
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per la nave di supporto 3: " << endl;
+                std::cout << "Coordinate della nave di supporto 3: " << endl;
                 std::cin >> inizio >> fine;
                 g1_supporto3.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -124,7 +126,7 @@ void Naval_battle::setup() {
 
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per il sottomarino 1: " << endl;
+                std::cout << "Coordinate del sottomarino 1: " << endl;
                 std::cin >> inizio >> fine;
                 g1_sottomarino1.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -138,7 +140,7 @@ void Naval_battle::setup() {
 
         while (!accepted) {
             try {
-                std::cout << "Quali sono le coordinate per il sottomarino 2: " << endl;
+                std::cout << "Coordinate del sottomarino 2: " << endl;
                 std::cin >> inizio >> fine;
                 g1_sottomarino2.set(inizio, fine, g1_difesa);
                 if (log) { log_file << inizio << " " << fine << endl; }
@@ -168,7 +170,10 @@ void Naval_battle::setup() {
     create_supporto(g2_supporto3, g2_difesa, log_file, log);
     create_sottomarino(g2_sottomarino1, g2_difesa, log_file, log);
     create_sottomarino(g2_sottomarino2, g2_difesa, log_file, log);
-    cout<<g1_difesa<<"\n"<<g2_difesa<<endl;
+    
+    //una volta "create" tutte le navi stampo in output la griglia del giocatore 1
+    cout<<"\n------GRIGLIA DEL GIOCATORE 1-----"<<endl;
+    cout<<g1_difesa<<"\n";
 }
 
 
@@ -176,6 +181,7 @@ void Naval_battle::accept_command(){
     cout << "Inserire comando (HH HH per mostrare tutti i comandi possibili) \n";
     std::string origin, target;
     cin >> origin >> target;
+    //se il comadno inserito non è un'azione che deve  fare una delle varie navi
     if (origin == "HH" && target == "HH") {
         print_command();
         accept_command();
@@ -184,9 +190,11 @@ void Naval_battle::accept_command(){
         g1_attacco.remove_all("Y");
         accept_command();
     }
-    else if (origin == "XX" && target == "XX") {
-        cout << g1_difesa;
-        cout << g1_attacco;
+    else if (origin == "XX" && target == "XX") 
+	cout << "-----GRIGLIA DI DIFESA-----" << endl;
+        cout << g1_difesa << "\n";
+	cout << "-----GRIGLIA DI ATTACCO-----" << endl;
+        cout << g1_attacco << "\n";
         accept_command();
     }
     else if (origin == "BB" && target == "BB") {
@@ -197,6 +205,7 @@ void Naval_battle::accept_command(){
         g1_attacco.remove_all("O");
         accept_command();
     }
+    //se il comando inserito fa fare un'azione a una delle navi disponibili
     else if (origin == g1_corazzata1.get_centro()) {
         try {
             g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
@@ -270,7 +279,7 @@ void Naval_battle::accept_command(){
             accept_command();
         }
     }else {
-        cout << "nessuna nave ha il centro nella casella di origine dell'attacco, inserire una nuova azione" << endl;
+        cout << "Nessuna nave ha il centro nella casella di origine dell'attacco! Inserire una nuova azione." << endl;
         accept_command();
     }
 
@@ -279,6 +288,7 @@ void Naval_battle::accept_command(){
 void Naval_battle::bot_command() {
     std::this_thread::sleep_for(std::chrono::milliseconds(800));
     string old_centro;
+    //azione da parte del bot (in maniera casuale)
     if (botBattle) {
         bool command_accepted = false;
         while (!command_accepted) {
@@ -366,6 +376,8 @@ void Naval_battle::bot_command() {
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(800));
     bool command_accepted = false;
+
+    //azione del bot (in maniera casuale)
     while (!command_accepted) {
         srand(time(NULL));
         int attaccante = rand() % 8 + 0;
@@ -509,7 +521,8 @@ void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& 
         string fine{};
 	
 	try{
-        	switch (direzione) {
+        	//switch per decidere la posizione in cui il bot andrà a mettere la propria corazzata
+		switch (direzione) {
 	        case 0:
 			if(locationX -4<0)throw invalid_argument("Numero non valido");
 			fine = location_to_string(locationX -4, locationY);
@@ -529,7 +542,7 @@ void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& 
         	}
         
 
-            unita.set(inizio, fine, griglia_difesa);
+            unita.set(inizio, fine, griglia_difesa);	//chiamo il set della corazzata per "crearla"
             if (log) { log_file << inizio << " " << fine << endl; }
             isGood = true;
         }
@@ -552,7 +565,8 @@ void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& lo
         string fine{};
 	   
 	try{
-        	switch (direzione) {
+        	//switch per decidere la posizione in cui il bot andrà a mettere la propria nave di supporto
+		switch (direzione) {
         	case 0:
 			if(locationX -2<0)throw invalid_argument("Numero non valido");
             		fine = location_to_string(locationX - 2, locationY);
@@ -571,7 +585,7 @@ void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& lo
             		break;
         	}
 
-            unita.set(inizio, fine, griglia_difesa);
+            unita.set(inizio, fine, griglia_difesa);	//chiamo il set del supporto per "crearla"
             if (log) { log_file << inizio << " " << fine << endl; }
             isGood = true;
         }
@@ -591,8 +605,7 @@ void create_sottomarino(Sottomarino& unita, Griglia& griglia_difesa, std::ofstre
         locationY = rand() % 12 + 0;
         string inizio = location_to_string(locationX, locationY);
         try {
-
-            unita.set(inizio, inizio, griglia_difesa);
+            unita.set(inizio, inizio, griglia_difesa);	  //chiamo il set del sottomarino per "crearlo"
             if (log) { log_file << inizio << " " << inizio << endl; }
             isGood = true;
         }
@@ -602,6 +615,7 @@ void create_sottomarino(Sottomarino& unita, Griglia& griglia_difesa, std::ofstre
     }
 }
 
+//metodo ausialiaro
 std::string location_to_string(int X, int Y) {
     string output{};
     switch (X) {
@@ -642,15 +656,13 @@ std::string location_to_string(int X, int Y) {
         output = output + "N";
         break;
     default:
-        output = output + "A"; //se il valore non é valido ho deciso di, invece di lanciare un eccezzione, impostare la colonna A.
+        output = output + "A"; //se il valore non é valido, invece di lanciare un eccezzione, ho deciso di impostare la colonna A di default.
     }
     output = output + to_string(Y);
     return output;
 }
 
-
-
-
+//metodo ausiliario
 void print_command() {
     std::cout << "Lista dei comandi possibili:" << std::endl;
     std::cout << "HH HH -> mostra questa lista di comandi" << std::endl;
