@@ -37,17 +37,17 @@ private:
     Sottomarino g2_sottomarino2;
 
 public:
-    Naval_battle(std::string battletype, bool log_or_not);
+    Naval_battle(std::string battletype, bool log_or_not);  //serve a capire se la  partita iniziata è del tipo "giocatore vs computer" o "computer vs computer"
 
-    void setup();
+    void setup();           //posiziona le navi del giocatore e "crea" le navi del bot
+    void accept_command();  //metodo che accetta i vari comandi che il giocatore inserisce
+    void bot_command();     //azioni del bot (casuali)
+    int winner();           //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
+    bool is_botBattle();    //metodo per  capire se la battaglia è del tipo "computer vs computer"
     bool getBotBattle() { return botBattle; }
-    void accept_command();
-    void bot_command();
-    int winner(); //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
-    bool is_botBattle();
 
-    int g1_corazzate(); //conta le corazzate attualmente in vita del giocatore 1.
-    int g2_corazzate(); //conta le corazzate attualemente in vida del giocatore 2.
+    int g1_corazzate();     //conta le corazzate attualmente in vita del giocatore 1.
+    int g2_corazzate();     //conta le corazzate attualemente in vida del giocatore 2.
 
 };
 
