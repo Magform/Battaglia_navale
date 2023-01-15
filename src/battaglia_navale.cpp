@@ -20,11 +20,31 @@ int main() {
 	Naval_battle battaglia(battletype, true);
 	battaglia.setup();
 	int turni = 1;
+	srand(time(NULL));
+    	int start = rand()%2;  //si decide in maniera casuale chi inizia
+	
+	if(start==0){
+		cout << "Il giocatere che inizia la partita è il \"giocatore 1\""<<"\n";
+		battaglia.accept_command();		//il giocatore che inizia è il giocatore 1
+	}else{
+		cout << "Il giocatere che inizia la partita è il \"giocatore 2\" (il computer)"<<"\n";
+		battaglia.bot_command();		//il giocatore che inizia è il giocatore 2 (il computer)
+	}
+	
 	while (battaglia.winner()==0 && turni<=massimo_turni) {
 		if (!battaglia.is_botBattle()) {
-			battaglia.accept_command();
+			if(start==0){
+				battaglia.accept_command();		//il giocatore che inizia è il giocatore 1
+			}
 		}
+		
 		battaglia.bot_command();
+		
+		if (!battaglia.is_botBattle()) {
+			if(start==1){
+				battaglia.accept_command();		//il giocatore che inizia è il giocatore 2
+			}
+		}
 		turni++;
 	}
 	cout << "Battaglia terminata"<<endl;
