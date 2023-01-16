@@ -285,6 +285,26 @@ void Naval_battle::accept_command(){
 
 }
 
+//funzione che gestisce tutti i comandi che la battaglia possiede (inseriti dall'utente ed automatici dei bot)
+//se il primo giocatore non é 1 o 2 lancia un eccezione
+void Naval_battle::command(int giocatore_primo) {
+    if (giocatore_primo==2) {
+        bot_command(giocatore_primo);
+        if (!botBattle) {
+            accept_command();
+        }
+    }
+    else if(giocatore_primo==1){
+        if (!botBattle) {
+            accept_command();
+        }
+        bot_command(giocatore_primo);
+    }
+    else {
+        throw invalid_argument("Primo giocatore non valido");
+    }
+
+}
 
 //funzione che gestisce i comandi di entrambi i giocatori bot
 //in caso il primo giocatore non sia valido (non sia 1 o 2) lancia un eccezione invalid_argument

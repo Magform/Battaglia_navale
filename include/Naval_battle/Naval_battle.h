@@ -44,13 +44,14 @@ private:
     int g2_corazzate();     //conta le corazzate attualemente in vida del giocatore 2.
     void bot_g1_command();  //funzioni che gestisce i comandi del bot del giocatore1
     void bot_g2_command();  //funzione che gestisce i comandi del bot del giocatore2
+    void accept_command();  //funzione che accetta i vari comandi che il giocatore inserisce
+    void bot_command(int giocatore_primo);     //funzione che gestisce azioni dei bot (casuali)
 
 public:
     Naval_battle(std::string battletype, bool log_or_not);  //serve a capire se la  partita iniziata è del tipo "giocatore vs computer" o "computer vs computer"
 
     void setup();           //posiziona le navi del giocatore e "crea" le navi del bot
-    void accept_command();  //funzione che accetta i vari comandi che il giocatore inserisce
-    void bot_command(int giocatore_primo);     //funzione che gestisce azioni dei bot (casuali)
+    void command(int giocatore_primo); //gestisce tutti i comandi (inseriti dall'utente ed automatici dei bot)
     int winner();           //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2 altrimenti ritorna 0
     bool is_botBattle();    //funzione membro per capire se la battaglia è del tipo "computer vs computer"
 

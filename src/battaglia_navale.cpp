@@ -23,32 +23,18 @@ int main() {
 	srand(time(NULL));
     	int start = rand()%2;  //si decide in maniera casuale chi inizia
 	
-	if(start==0){
+	if(start==0 ){
 		cout << "Il giocatere che inizia la partita è il \"giocatore 1\""<<"\n";
-		battaglia.accept_command();		//il giocatore che inizia è il giocatore 1
 	}else{
 		cout << "Il giocatere che inizia la partita è il \"giocatore 2\" (il computer)"<<"\n";
-		battaglia.bot_command(start + 1);		//il giocatore che inizia è il giocatore 2 (il computer)
 	}
 	
 	while (battaglia.winner()==0 && turni<=massimo_turni) {
-		if (!battaglia.is_botBattle()) {
-			if(start==0){
-				battaglia.accept_command();		//il giocatore che inizia è il giocatore 1
-			}
-		}
-		
-		battaglia.bot_command(start+1);
-		
-		if (!battaglia.is_botBattle()) {
-			if(start==1){
-				battaglia.accept_command();		//il giocatore che inizia è il giocatore 2
-			}
-		}
+		battaglia.command();
 		turni++;
 	}
 	cout << "Battaglia terminata"<<endl;
-	if (turni = massimo_turni + 1) {
+	if (turni = massimo_turni + 1 && battaglia.winner()==0) {
 		cout << "Numero massimo di turni raggiunto, non vi é un vincitore e la partita termina in pareggio" << endl;
 	}
 	else {
