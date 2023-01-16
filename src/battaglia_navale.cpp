@@ -30,7 +30,7 @@ int main() {
 	}
 	
 	while (battaglia.winner()==0 && turni<=massimo_turni) {
-		battaglia.command();
+		battaglia.command(start+1);
 		turni++;
 	}
 	cout << "Battaglia terminata"<<endl;
