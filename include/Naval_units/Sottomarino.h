@@ -1,4 +1,5 @@
 #include <string>
+#include "Griglia.h"
 
 #ifndef Sottomarino_H_
 #define Sottomarino_H_

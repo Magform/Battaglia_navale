@@ -1,4 +1,5 @@
 #include <string>
+#include "Griglia.h"
 
 #ifndef Naval_units_H_
 #define Naval_units_H_

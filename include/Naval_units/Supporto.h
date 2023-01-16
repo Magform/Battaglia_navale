@@ -1,4 +1,5 @@
 #include <string>
+#include "Griglia.h"
 
 #ifndef Supporto_H_
 #define Supporto_H_

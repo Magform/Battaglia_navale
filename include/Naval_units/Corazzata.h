@@ -1,4 +1,5 @@
 #include <string>
+#include "Griglia.h"
 
 #ifndef Corazzata_H_
 #define Corazzata_H_
