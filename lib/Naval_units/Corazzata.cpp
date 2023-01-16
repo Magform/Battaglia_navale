@@ -2,6 +2,8 @@
 #include <cstring>
 #include <stdexcept>
 
+//to remove
+#include <iostream>
 
 using namespace std;
 
@@ -137,6 +139,9 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
 bool Corazzata::isAlive(Griglia& g_difesa){
     if(vita==0) return false;
+
+    //to remove
+    cout << "isALive corazzata" << endl;
 
     int counter=0;
     char cInizio=begin.at(0);
