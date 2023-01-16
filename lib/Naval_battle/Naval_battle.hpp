@@ -487,33 +487,61 @@ void Naval_battle::bot_g2_command() {
     }
 }
 
-
-//Funzione che conta le corazzate del giocatore1
-int Naval_battle::g1_corazzate() {
+//funzione che conta le navi vive del giocatore 1
+int Naval_battle::g1_navi() {
     int toReturn{ 0 };
-    if (g1_corazzata1.isAlive()) {
+    if (g1_corazzata1.isAlive(g1_difesa)) {
         toReturn++;
     }
-    if (g1_corazzata2.isAlive()) {
+    if (g1_corazzata2.isAlive(g1_difesa)) {
         toReturn++;
     }
-    if (g1_corazzata3.isAlive()) {
+    if (g1_corazzata3.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto1.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto2.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto3.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_sottomarino1.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
     }
     return toReturn;
 }
 
-
-//funzione che conta le corazzate del giocatore2
-int  Naval_battle::g2_corazzate() {
+//funzione che conta le navi vive del giocatore 2
+int Naval_battle::g2_navi() {
     int toReturn{ 0 };
-    if (g2_corazzata1.isAlive()) {
+    if (g2_corazzata1.isAlive(g2_difesa)) {
         toReturn++;
     }
-    if (g2_corazzata2.isAlive()) {
+    if (g2_corazzata2.isAlive(g2_difesa)) {
         toReturn++;
     }
-    if (g2_corazzata3.isAlive()) {
+    if (g2_corazzata3.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto1.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto2.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto3.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_sottomarino1.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
     }
     return toReturn;
@@ -528,11 +556,11 @@ bool Naval_battle::is_botBattle() {
 
 //funzione che ritorna 1 se ha vinto il giocatore 1, 2 se ha vinto il giocatore 2, 0 se la battaglia ancora non é terminata
 int Naval_battle::winner() {
-    if (g1_corazzate() == 0) {
+    if (g1_navi() == 0) {
         log_file.close();
         return 1;
     }
-    if (g2_corazzate() == 0) {
+    if (g2_navi() == 0) {
         log_file.close();
         return 2;
     }
