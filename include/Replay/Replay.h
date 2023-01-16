@@ -39,8 +39,8 @@ private:
     Sottomarino g2_sottomarino2;
 
     void write(std::string toPrint);
-    int g1_corazzate(); //conta le corazzate attualmente in vita del giocatore 1.
-    int g2_corazzate(); //conta le corazzate attualemente in vida del giocatore 2.
+    int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
+    int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
 
 public:
     Replay(std::string type, std::string log_in, std::string log_out = "");

@@ -220,32 +220,62 @@ void Replay::turno() {
 }
 
 
-//funzione che conta le corazzate del giocatore1
-int Replay::g1_corazzate() {
+//Funzione che conta le navi del giocatore1
+int Naval_battle::g1_navi() {
     int toReturn{ 0 };
-    if (g1_corazzata1.isAlive()) {
+    if (g1_corazzata1.isAlive(g1_difesa)) {
         toReturn++;
     }
-    if (g1_corazzata2.isAlive()) {
+    if (g1_corazzata2.isAlive(g1_difesa)) {
         toReturn++;
     }
-    if (g1_corazzata3.isAlive()) {
+    if (g1_corazzata3.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto1.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto2.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto3.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_sottomarino1.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
     }
     return toReturn;
 }
 
 
-//funzione che conta le corazzate del giocatore2
-int  Replay::g2_corazzate() {
+//funzione che conta le navi del giocatore2
+int Naval_battle::g2_navi() {
     int toReturn{ 0 };
-    if (g2_corazzata1.isAlive()) {
+    if (g2_corazzata1.isAlive(g2_difesa)) {
         toReturn++;
     }
-    if (g2_corazzata2.isAlive()) {
+    if (g2_corazzata2.isAlive(g2_difesa)) {
         toReturn++;
     }
-    if (g2_corazzata3.isAlive()) {
+    if (g2_corazzata3.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto1.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto2.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto3.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_sottomarino1.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
     }
     return toReturn;
@@ -254,10 +284,10 @@ int  Replay::g2_corazzate() {
 
 //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
 int Replay::winner() {
-    if (g1_corazzate() == 0) {
+    if (g1_navi() == 0) {
         return 1;
     }
-    if (g2_corazzate() == 0) {
+    if (g2_navi() == 0) {
         return 2;
     }
     return 0;
