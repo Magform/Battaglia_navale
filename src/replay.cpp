@@ -15,15 +15,14 @@ int main(int argc, char ** argv) {
 	bool accepted = false;
 	int turni=0;
 	int massimo_turni = 100; //attenzioe se la si cambia qua bisonga cambiarla anche su battaglia_navale
-
 	while (!accepted) {
 		try {
-			Replay battaglia("","","");
+			Replay battaglia;
 			
-			if (argv[1] == "v") {
+			if (string(argv[1]) == "v") {
 				battaglia.setup(string(argv[1]), string(argv[2]), string(""));
 			}
-			else if (argv[1] == "f") {
+			else if (string(argv[1]) == "f") {
 				battaglia.setup(string(argv[1]), string(argv[2]), string(argv[3]));
 			}
 			else {
@@ -45,6 +44,7 @@ int main(int argc, char ** argv) {
 		}
 		catch (const out_of_range ex) {
 			cout << "Errore nella lettura degli argomenti" << endl;
+			return 0;
 		}
 	}
 }
