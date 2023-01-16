@@ -12,10 +12,10 @@ protected:
     std::string centro;
 
 public:
-    bool isAlive(Griglia& g_difesa) {};
+    bool isAlive(Griglia& g_difesa) { if (vita == 0) { retrun false; } return true; }
     std::string get_centro() { return centro; }
-    virtual void set(std::string inizio, std::string fine, Griglia& g_difesa) {};
-    virtual void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa) {};
+    virtual void set(std::string inizio, std::string fine, Griglia& g_difesa) {}
+    virtual void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa) {}
 };
 
 #endif // Naval_units_H_
