@@ -10,7 +10,7 @@ string Corazzata::get_centro(){
 
 void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
        
-    //converto in cordiate "matrici" la coordinata di inizio
+    //converto in coordinate "matrici" la coordinata di inizio
     char cInizio=inizio.at(0);
     int xInizio=stoi(inizio.substr(1,inizio.length()-1));
     int yInizio;
@@ -18,7 +18,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
  
     yInizio=cInizio-65;
 
-    //converto in cordiate "matrici" la coordinata di fine
+    //converto in coordinate "matrici" la coordinata di fine
     char cFine=fine.at(0);
     int xFine=stoi(fine.substr(1,fine.length()-1));
     int yFine;
@@ -41,7 +41,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
         fine=inizio;
     }
 
-    //Check per  vedere se posso metterla in verticale
+    //Check per vedere se posso metterla in verticale
 
     if(xInizio==xFine){
         char cSearch=cInizio;
@@ -51,12 +51,12 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
             if(cSearch==74||cSearch==75) cSearch=cSearch+2;
             std::string Pos(1,cSearch);
             Pos=Pos+to_string(xInizio);
+            
             if(g_difesa.retrive(Pos)==" "){    //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
                 cSearch=cSearch+1;
-                    
             }else{
                 //Se un solo spazio è occupato, lancia una eccezione
-                throw std::invalid_argument("Carattere non valido");
+                throw std::invalid_argument("Carattere non valido: una o piu' caselle sono gia' occupate.");
             }
         }
             
@@ -74,10 +74,10 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
             g_difesa.set("C", Put);
             cInizio=cInizio+1;
-
-        }         
+        }
+        
     }else{
-
+        
         //Check per vedere se posso metterla in orizzontale
 
         if(yInizio==yFine){
@@ -91,7 +91,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
                     xInizio=xInizio+1;                       
                 }else{
                     //Se un solo spazio è occupato, lancia una eccezione
-                    throw std::invalid_argument("Carattere non valido"); 
+                    throw std::invalid_argument("Carattere non valido: una o piu' caselle sono gia' occupate."); 
                 }
             }
 
@@ -117,7 +117,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
         }else{
 
             //Se non può essere messa nè in orizzontae nè in verticale, da errore
-            throw std::invalid_argument("La corazzata non puo' essere messa in quella posizione!");
+            throw std::invalid_argument("La corazzata puo' essere messa solo in ORIZZONTALE o in VERTICALE! ");
         }
     }
     begin=inizio;
@@ -135,7 +135,7 @@ bool Corazzata::isAlive(Griglia& g_difesa){
 
     char cSearch=cInizio;
     if(cInizio==cFine){
-        //E' in orizzontale
+        //se la corazzata è in orizzontale
         for(int k=0; k<5; k++){
             std::string Search(1,cInizio);
             Search=Search+to_string(xInizio+k);
@@ -143,7 +143,7 @@ bool Corazzata::isAlive(Griglia& g_difesa){
             if(g_difesa.retrive(Search)=="c") counter++;
         }
     }else{
-        //E' in verticale
+        //se la corazzata è in verticale
         for(int k=0; k<5; k++){
             if(cInizio+k==74) cSearch=cSearch+2;
             std::string Search(1,cSearch+k);
@@ -155,10 +155,9 @@ bool Corazzata::isAlive(Griglia& g_difesa){
    
     vita=5-counter;
     if(vita==0){
-        //La nave è sconfitta, la elimino
-
+        //La nave è stata affondata => la elimino dalla griglia di difesa
         if(cInizio==cFine){
-            //E' in orizzontale
+            //se la corazzata è in orizzontale
             for(int k=0; k<5; k++){
                 std::string to_remove(1,cInizio);
                 to_remove=to_remove+to_string(xInizio+k);
@@ -166,7 +165,7 @@ bool Corazzata::isAlive(Griglia& g_difesa){
                 g_difesa.remove(to_remove);
             }
         }else{
-            //E' in verticale
+            //se la corazzata è in verticale
             for(int k=0; k<5; k++){
                 if(cInizio+k==74) cInizio=cInizio+2;
                 std::string to_remove(1,cInizio+k);
@@ -180,11 +179,10 @@ bool Corazzata::isAlive(Griglia& g_difesa){
 }
 
 void Corazzata::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
-        
-    //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione,
-    //2 quello che subisce l'attacco)
-
-    if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido");
+    //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione, 2 quello che subisce l'attacco)
+    
+    //controllo che la corazzata che deve eseguiere l'azione non sia stata ancora affondata altrimenti lancio un'eccezione
+    if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido: la corazzata che si vuole utilizzare e' stata affondata!");
 
     //if per vedere se nell'obiettivo c'è una nave non colpita
     if((g2_difesa.retrive(obiettivo)=="C")||(g2_difesa.retrive(obiettivo)=="S")||(g2_difesa.retrive(obiettivo)=="E")){         
@@ -194,7 +192,7 @@ void Corazzata::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_at
         char l=lettera[0];
         l=tolower(l);
         string insert(1,l);
-        g2_difesa.set(insert, obiettivo);
+        g2_difesa.set(insert, obiettivo);   //metto in minuscolo la lettera nella casella che e' stata colpita
 
         g1_attacco.set("X", obiettivo);     //Mette un "X" nella posizione data nella griglia di attacco
             
