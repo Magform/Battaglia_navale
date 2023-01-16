@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include <string>
 
-
+//to remove
+#include <iostream>
 using namespace std;
 
 string Sottomarino::get_centro(){
@@ -27,7 +28,8 @@ void Sottomarino::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
 
 bool Sottomarino::isAlive(Griglia& g_difesa){
-
+    //to remove
+    cout << "isAlive sottomarino" << endl;
     if(vita==0) return false;
     if(g_difesa.retrive(centro)=="e"){
         g_difesa.remove(centro);
