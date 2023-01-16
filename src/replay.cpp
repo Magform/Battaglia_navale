@@ -10,7 +10,7 @@
 
 using namespace std;
 
-int main(int argc, char * argv[]) {
+int main(int argc, char ** argv) {
 	string loadtype{}, log_in{}, log_out{};
 	bool accepted = false;
 	int turni=0;
@@ -18,15 +18,13 @@ int main(int argc, char * argv[]) {
 
 	while (!accepted) {
 		try {
-			Replay battaglia("","","")";"
-			cout << "Inserire il tipo di replay che si desidera effettuare: " << endl;
-			cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
-			cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
-			if (argv[0] == "v") {
-				battaglia(argv[0], argv[1], "");
+			Replay battaglia("","","");
+			
+			if (argv[1] == "v") {
+				battaglia(string(argv[1]), string(argv[2]), string(""));
 			}
-			else if (argv[0] == "f") {
-				battaglia(argv[0], argv[1], argv[2]);
+			else if (argv[1] == "f") {
+				battaglia(string(argv[1]), string(argv[2]), string(argv[3]));
 			}
 			else {
 				cout << "Argomento non valido: " << endl;
