@@ -38,7 +38,7 @@ int main() {
 			}
 		}
 		
-		battaglia.bot_command();
+		battaglia.bot_command(start+1);
 		
 		if (!battaglia.is_botBattle()) {
 			if(start==1){

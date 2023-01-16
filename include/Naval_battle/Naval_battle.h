@@ -12,8 +12,10 @@ class Naval_battle {
 private:
     bool botBattle;             //variabile che se é true dice che la battaglia non ha giocatori umani ma solo due bot
     bool log;                   //variabile che indica se é necessario o meno il logging su file
-    std::ofstream log_file;     //variablie per la scrittura dei log su file (viene utilizzata solo se richiesto)
+    std::ofstream log_file;     //variablie per la scrittura dei log su file (viene utilizzata solo se richiesto) altrimenti rimane non inizializzate
 
+
+    //Tutti gli elementi del giocatore 1
     Griglia g1_attacco;
     Griglia g1_difesa;
     Corazzata g1_corazzata1;
@@ -25,6 +27,7 @@ private:
     Sottomarino g1_sottomarino1;
     Sottomarino g1_sottomarino2;
 
+    //Tutti gli elementi del giocatore 2
     Griglia g2_attacco;
     Griglia g2_difesa;
     Corazzata g2_corazzata1;
@@ -36,18 +39,20 @@ private:
     Sottomarino g2_sottomarino1;
     Sottomarino g2_sottomarino2;
 
+
+    int g1_corazzate();     //conta le corazzate attualmente in vita del giocatore 1.
+    int g2_corazzate();     //conta le corazzate attualemente in vida del giocatore 2.
+    void bot_g1_command();  //funzioni che gestisce i comandi del bot del giocatore1
+    void bot_g2_command();  //funzione che gestisce i comandi del bot del giocatore2
+
 public:
     Naval_battle(std::string battletype, bool log_or_not);  //serve a capire se la  partita iniziata è del tipo "giocatore vs computer" o "computer vs computer"
 
     void setup();           //posiziona le navi del giocatore e "crea" le navi del bot
-    void accept_command();  //metodo che accetta i vari comandi che il giocatore inserisce
-    void bot_command();     //azioni del bot (casuali)
-    int winner();           //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
-    bool is_botBattle();    //metodo per  capire se la battaglia è del tipo "computer vs computer"
-    bool getBotBattle() { return botBattle; }
-
-    int g1_corazzate();     //conta le corazzate attualmente in vita del giocatore 1.
-    int g2_corazzate();     //conta le corazzate attualemente in vida del giocatore 2.
+    void accept_command();  //funzione che accetta i vari comandi che il giocatore inserisce
+    void bot_command(int giocatore_primo);     //funzione che gestisce azioni dei bot (casuali)
+    int winner();           //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2 altrimenti ritorna 0
+    bool is_botBattle();    //funzione membro per capire se la battaglia è del tipo "computer vs computer"
 
 };
 

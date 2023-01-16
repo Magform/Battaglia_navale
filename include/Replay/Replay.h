@@ -6,10 +6,11 @@
 
 class Replay {
 private:
-    std::ifstream log_input;     //variablie per la lettura dei log dal file
-    std::ofstream log_output;
-    bool file_output; //variabile per definire se vi é un output su file o no
+    std::ifstream log_input;     //variabile per la lettura dei log dal file
+    std::ofstream log_output;    //variabile per la scrittura dell'output su file 
+    bool file_output;           //variabile per definire se vi é un output su file o no
 
+    //tutti le variabili del giocatore1 
     Griglia g1_attacco;
     Griglia g1_difesa;
     Corazzata g1_corazzata1;
@@ -21,6 +22,7 @@ private:
     Sottomarino g1_sottomarino1;
     Sottomarino g1_sottomarino2;
 
+    //tutti le variabili del giocatore2
     Griglia g2_attacco;
     Griglia g2_difesa;
     Corazzata g2_corazzata1;
@@ -37,12 +39,12 @@ private:
     int g2_corazzate(); //conta le corazzate attualemente in vida del giocatore 2.
 
 public:
-    Replay(std::string type);
+    Replay(std::string type, std::string log_in, std::string log_out = "");
 
-    void setup();
-    void turno();
-    int winner(); //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
-    void fine();
+    void setup();   //funzione che inizializza le variabile dei due giocatori
+    void turno();   //funzione che gestisce l'esecuzione dei un singolo turno
+    int winner();   //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
+    void fine();    //funzione da chiamare quando termina la battaglia
 
 };
 

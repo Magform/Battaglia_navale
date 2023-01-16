@@ -6,25 +6,27 @@
 using namespace std;
 
 
-Replay::Replay(std::string type) {
+//Costruttore di replay, richiede l'inseriemento del tipo di log voluto ed il file di log di una partita precente
+//in caso il tipo di replay é f deve essere fornito il file dove creare l'output
+//in caso il tipo di replay non sia valido (f,v) o in caso sia f e non sia presente un file di output viene lanciata un eccezioni 
+Replay::Replay(std::string type, std::string log_in, std::string log_out = "") {
     if (type == "v") {
-        string log_in;
-        cin >> log_in;
         log_input.open(log_in);
         file_output = false;
     }
-    else if(type == "f") {
-        string log_in, log_out;
-        cin >> log_in >> log_out;
+    else if(type == "f" && log_out != "") {
         log_input.open(log_in);
         log_output.open(log_out);
         file_output = true;
     }
     else {
-        throw invalid_argument("Tipo di replay non valido");
+        throw invalid_argument("Tipo di replay non valido o file di output non presente");
     }
 }
 
+
+//Funzione che gestisce l'inserimento delle navi dei due giocatori.
+//Lancia un eccezione invalid_argument se vi é qualche problema presente nel file di log
 void Replay::setup() {
     try {
         std::string inizio, fine;
@@ -119,6 +121,8 @@ void Replay::setup() {
 }
 
 
+//Funzione che gestisce l'esecuzione dei turni e scrive, dove richiesto, l'azione eseguita e le griglie dei due giocatori
+//Lancia un eccezione invalid_argument se vi é qualche problema presente nel file di log
 void Replay::turno() {
     try {
         string origin, target;
@@ -214,6 +218,7 @@ void Replay::turno() {
 }
 
 
+//funzione che conta le corazzate del giocatore1
 int Replay::g1_corazzate() {
     int toReturn{ 0 };
     if (g1_corazzata1.isAlive()) {
@@ -228,6 +233,8 @@ int Replay::g1_corazzate() {
     return toReturn;
 }
 
+
+//funzione che conta le corazzate del giocatore2
 int  Replay::g2_corazzate() {
     int toReturn{ 0 };
     if (g2_corazzata1.isAlive()) {
@@ -242,6 +249,8 @@ int  Replay::g2_corazzate() {
     return toReturn;
 }
 
+
+//se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
 int Replay::winner() {
     if (g1_corazzate() == 0) {
         return 1;
@@ -252,19 +261,28 @@ int Replay::winner() {
     return 0;
 }
 
+
+//funzione da chiamare quando termina la battaglia che si occupa di scrivere in output l'eventuale vincitore e di chiudere i file di input e output
+void Replay::fine() {
+    if (winner != 0) {
+        write("Battaglia terminata, ha vinto il giocatore " + winner());
+    }
+    else {
+        write("Non vi é stato alcun vincitore");
+    }
+    if (file_output) {
+        log_output.close();
+    }
+    log_input.close();
+}
+
+
+//funzione che accetando una stringa la scrive nel file di log se richiesto oppure la stampa a schermo
 void Replay::write(string toPrint) {
-    if (!file_output) { 
+    if (!file_output) {
         cout << toPrint;
     }
     else {
         log_output << toPrint;
     }
-}
-
-void Replay::fine() {
-    write("Battaglia terminata, ha vinto il giocatore " + winner());
-    if (file_output) {
-        log_output.close();
-    }
-    log_input.close();
 }
