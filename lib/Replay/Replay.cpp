@@ -255,6 +255,8 @@ int Replay::g1_navi() {
 
 //funzione che conta le navi del giocatore2
 int Replay::g2_navi() {
+    //to remove
+    cout << "Test" << endl;
     int toReturn{ 0 };
     if (g2_corazzata1.isAlive(g2_difesa)) {
         toReturn++;
