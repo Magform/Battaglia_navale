@@ -47,5 +47,9 @@ int main(int argc, char ** argv) {
 			cout << "Errore nella lettura degli argomenti" << endl;
 			return 0;
 		}
+		catch (const logic_error ex) {
+			cout << "Errore nella lettura degli argomenti" << endl;
+			return 0;
+		}
 	}
 }
