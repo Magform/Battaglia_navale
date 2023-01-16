@@ -9,7 +9,7 @@ using namespace std;
 
 
 //Costruttore di replay, richiede l'inseriemento del tipo di log voluto ed il file di log di una partita precente
-//in caso il tipo di replay é f deve essere fornito il file dove creare l'output
+//in caso il tipo di replay Ã© f deve essere fornito il file dove creare l'output
 //in caso il tipo di replay non sia valido (f,v) o in caso sia f e non sia presente un file di output viene lanciata un eccezioni 
 Replay::Replay(std::string type, std::string log_in, std::string log_out) {
     if (type == "v") {
@@ -28,7 +28,7 @@ Replay::Replay(std::string type, std::string log_in, std::string log_out) {
 
 
 //Funzione che gestisce l'inserimento delle navi dei due giocatori.
-//Lancia un eccezione invalid_argument se vi é qualche problema presente nel file di log
+//Lancia un eccezione invalid_argument se vi Ã© qualche problema presente nel file di log
 void Replay::setup() {
     try {
         std::string inizio, fine;
@@ -124,7 +124,7 @@ void Replay::setup() {
 
 
 //Funzione che gestisce l'esecuzione dei turni e scrive, dove richiesto, l'azione eseguita e le griglie dei due giocatori
-//Lancia un eccezione invalid_argument se vi é qualche problema presente nel file di log
+//Lancia un eccezione invalid_argument se vi Ã© qualche problema presente nel file di log
 void Replay::turno() {
     try {
         string origin, target;
@@ -220,32 +220,62 @@ void Replay::turno() {
 }
 
 
-//funzione che conta le corazzate del giocatore1
-int Replay::g1_corazzate() {
+//Funzione che conta le navi del giocatore1
+int Naval_battle::g1_navi() {
     int toReturn{ 0 };
-    if (g1_corazzata1.isAlive()) {
+    if (g1_corazzata1.isAlive(g1_difesa)) {
         toReturn++;
     }
-    if (g1_corazzata2.isAlive()) {
+    if (g1_corazzata2.isAlive(g1_difesa)) {
         toReturn++;
     }
-    if (g1_corazzata3.isAlive()) {
+    if (g1_corazzata3.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto1.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto2.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_supporto3.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_sottomarino1.isAlive(g1_difesa)) {
+        toReturn++;
+    }
+    if (g1_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
     }
     return toReturn;
 }
 
 
-//funzione che conta le corazzate del giocatore2
-int  Replay::g2_corazzate() {
+//funzione che conta le navi del giocatore2
+int Naval_battle::g2_navi() {
     int toReturn{ 0 };
-    if (g2_corazzata1.isAlive()) {
+    if (g2_corazzata1.isAlive(g2_difesa)) {
         toReturn++;
     }
-    if (g2_corazzata2.isAlive()) {
+    if (g2_corazzata2.isAlive(g2_difesa)) {
         toReturn++;
     }
-    if (g2_corazzata3.isAlive()) {
+    if (g2_corazzata3.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto1.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto2.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_supporto3.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_sottomarino1.isAlive(g2_difesa)) {
+        toReturn++;
+    }
+    if (g2_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
     }
     return toReturn;
@@ -254,10 +284,10 @@ int  Replay::g2_corazzate() {
 
 //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
 int Replay::winner() {
-    if (g1_corazzate() == 0) {
+    if (g1_navi() == 0) {
         return 1;
     }
-    if (g2_corazzate() == 0) {
+    if (g2_navi() == 0) {
         return 2;
     }
     return 0;
@@ -270,7 +300,7 @@ void Replay::fine() {
         write("Battaglia terminata, ha vinto il giocatore " + winner());
     }
     else {
-        write("Non vi é stato alcun vincitore");
+        write("Non vi Ã© stato alcun vincitore");
     }
     if (file_output) {
         log_output.close();

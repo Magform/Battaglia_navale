@@ -12,7 +12,7 @@ protected:
     std::string centro;
 
 public:
-    bool isAlive() { if (vita != 0) { return true; } return false; }
+    bool isAlive(Griglia& g_difesa) {};
     std::string get_centro() { return centro; }
     virtual void set(std::string inizio, std::string fine, Griglia& g_difesa) {};
     virtual void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa) {};
