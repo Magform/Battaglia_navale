@@ -1,5 +1,6 @@
 #include "Sottomarino.h"
 #include <stdexcept>
+#include <string>
 
 using namespace std;
 
