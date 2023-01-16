@@ -21,12 +21,12 @@ int main() {
 	battaglia.setup();
 	int turni = 1;
 	srand(time(NULL));
-    	int start = rand()%2;  //si decide in maniera casuale chi inizia
+    int start = rand()%2;  //si decide in maniera casuale chi inizia
 	
 	if(start==0 ){
-		cout << "Il giocatere che inizia la partita è il \"giocatore 1\""<<"\n";
+		cout << "Il giocatore che inizia la partita è il \"giocatore 1\""<<"\n";
 	}else{
-		cout << "Il giocatere che inizia la partita è il \"giocatore 2\" (il computer)"<<"\n";
+		cout << "Il giocatore che inizia la partita è il \"giocatore 2\""<<"\n";
 	}
 	
 	while (battaglia.winner()==0 && turni<=massimo_turni) {
