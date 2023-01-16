@@ -3,6 +3,9 @@
 #include <stdexcept>
 #include <string>
 
+//to remove
+#include <iostream>
+
 using namespace std;
 
 string Supporto::get_centro(){
@@ -127,7 +130,7 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
 }
 
 bool Supporto::isAlive(Griglia& g_difesa){ 
-
+    cout << "isAlive Supporto" << endl;
     if(vita==0) return false;
 
     int counter=0;

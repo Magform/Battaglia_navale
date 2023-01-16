@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <string>
 
+
 using namespace std;
 
 string Sottomarino::get_centro(){
