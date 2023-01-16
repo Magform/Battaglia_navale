@@ -44,6 +44,7 @@ private:
     int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
 
 public:
+    Replay();
 
     void setup(std::string type, std::string log_in, std::string log_out);   //funzione che inizializza le variabile dei due giocatori e apre i file
     void turno();   //funzione che gestisce l'esecuzione dei un singolo turno

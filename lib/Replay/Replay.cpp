@@ -7,6 +7,7 @@
 
 using namespace std;
 
+Replay::Replay(){}
 
 //Funzione che apre i file di replay, richiede l'inseriemento del tipo di log voluto ed il file di log di una partita precente
 //in caso il tipo di replay é f deve essere fornito il file dove creare l'output
