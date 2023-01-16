@@ -38,15 +38,16 @@ bool Sottomarino::isAlive(Griglia& g_difesa){
 void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
        
         //Controllo se il sottomarino è ancora in vita
-        if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido");
+        if(!isAlive(g1_difesa)) throw std::invalid_argument("Azione non valida: il sottomarino che si vuole utilizzare e' stato affondato!");
 
         //Guardo se la posizione non è già occupata
-        if(g1_difesa.retrive(obiettivo)!=" ")     throw std::invalid_argument("Carattere non valido");
+        if(g1_difesa.retrive(obiettivo)!=" ") throw std::invalid_argument("La casella in cui si vuole spostare il sottomarino e' gia' occupata!");
         //nuova posizione valida
         //rimuovo vecchia posizione e metto quella nuova
         g1_difesa.remove(centro);
         g1_difesa.set("E", obiettivo);
-        centro=obiettivo;  
+        centro=obiettivo;
+        
         //Trasformo "obiettivo" in coordinate
         char cTarget=obiettivo.at(0);
         int XTarget=stoi(obiettivo.substr(1,obiettivo.length()-1));
