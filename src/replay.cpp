@@ -32,10 +32,7 @@ int main(int argc, char ** argv) {
 				cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			}
 
-			cout << battaglia.winner();
-			cout << "sassi" << endl;
 			while (battaglia.winner() == 0 && turni <= massimo_turni) {
-				cout << "test" << endl;
 				battaglia.turno();
 				turni++;
 			}

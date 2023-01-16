@@ -681,21 +681,6 @@ int Naval_battle::g1_navi() {
     if (g1_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
     }
-    if (g1_supporto1.isAlive(g1_difesa)) {
-        toReturn++;
-    }
-    if (g1_supporto2.isAlive(g1_difesa)) {
-        toReturn++;
-    }
-    if (g1_supporto3.isAlive(g1_difesa)) {
-        toReturn++;
-    }
-    if (g1_sottomarino1.isAlive(g1_difesa)) {
-        toReturn++;
-    }
-    if (g1_sottomarino2.isAlive(g2_difesa)) {
-        toReturn++;
-    }
     return toReturn;
 }
 
