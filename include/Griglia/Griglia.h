@@ -1,3 +1,5 @@
+#include <string>
+
 #ifndef Griglia_H_
 #define Griglia_H_
 
