@@ -1,4 +1,4 @@
- #include <stdexcept>
+#include <stdexcept>
 #include <string>
 #include <iostream>
 #include <cstddef>
@@ -37,7 +37,7 @@ int main(int argc, char ** argv) {
 				turni++;
 			}
 			battaglia.fine();
-			cout << "Esecuzione terminata " << endl;
+			cout <<"\n"<< "Esecuzione terminata " << endl;
 
 		}
 		catch (const invalid_argument ex) {
@@ -54,5 +54,6 @@ int main(int argc, char ** argv) {
 			cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			return 0;
 		}
+		accepted=false;
 	}
 }
