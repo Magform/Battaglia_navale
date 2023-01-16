@@ -44,5 +44,8 @@ int main(int argc, char ** argv) {
 		catch (const invalid_argument ex) {
 			cout << "Il file non contiene una battaglia navale valida o il file selezionato non e' valido" << endl;
 		}
+		catch (const out_of_range ex) {
+			cout << "Errore nella lettura degli argomenti" << endl;
+		}
 	}
 }
