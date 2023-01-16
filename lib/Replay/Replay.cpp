@@ -117,7 +117,7 @@ void Replay::setup(std::string type, std::string log_in, std::string log_out) {
         write("Sottomarino 2: ");
         log_input >> inizio >> fine;
         write(inizio + " " + fine + "\n");
-        g2_sottomarino1.set(inizio, fine, g2_difesa);
+        g2_sottomarino2.set(inizio, fine, g2_difesa);
     }
     catch (const invalid_argument ex) {
         throw invalid_argument("Il file selezionato non e' una battaglia valida ");
