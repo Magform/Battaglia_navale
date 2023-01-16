@@ -34,6 +34,10 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
         int scambioX=xFine;
         xFine=xInizio;
         xInizio=scambioX;
+
+        string scambio=inizio;
+        inizio=fine;
+        fine=inizio;
     }
 
     //Check per vedere se posso metterla in verticale
@@ -56,7 +60,6 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
         }
             
         //Posizione verticale valida, si inserisce la lettera C nella griglia
-        
 
         if(cInizio+1=='J'||cInizio+1=='K') {
             centro=cInizio+3;
@@ -97,6 +100,7 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
             }
 
             //Posizione orizzontale valida, si inserisce la lettera C nella griglia
+
             xInizio=xInizio-3;
         
             if(cInizio=='J'||cInizio=='K') {
@@ -127,12 +131,32 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
     
 }
 
-bool Supporto::isAlive(){ return vita!=0;}
+bool Supporto::isAlive(Griglia& g_difesa){ 
+
+    if(vita==0) return false;
+
+    int counter=0;
+
+    if(g_difesa.retrive(begin)=="s") counter++;
+    if(g_difesa.retrive(centro)=="s") counter++;
+    if(g_difesa.retrive(end)=="s") counter++;
+
+    vita=3-counter;
+
+    if(vita==0){
+        g_difesa.remove(begin);
+        g_difesa.remove(centro);
+        g_difesa.remove(end);
+        return false;
+    }
+    return true;
+}
+
     
 void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
 
     //Controllo se la nave di supporto è ancora in vita
-    if(!isAlive()) throw std::invalid_argument("Carattere non valido");
+    if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido");
    
     //Ottengo le coordinate dell'obiettivo
     char cTarget=obiettivo.at(0);
@@ -378,6 +402,3 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 };
 
     
-
-    
-
