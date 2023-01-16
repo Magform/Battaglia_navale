@@ -9,7 +9,7 @@ using namespace std;
 
 
 //Costruttore di replay, richiede l'inseriemento del tipo di log voluto ed il file di log di una partita precente
-//in caso il tipo di replay é f deve essere fornito il file dove creare l'output
+//in caso il tipo di replay Ã© f deve essere fornito il file dove creare l'output
 //in caso il tipo di replay non sia valido (f,v) o in caso sia f e non sia presente un file di output viene lanciata un eccezioni 
 Replay::Replay(std::string type, std::string log_in, std::string log_out) {
     if (type == "v") {
@@ -28,7 +28,7 @@ Replay::Replay(std::string type, std::string log_in, std::string log_out) {
 
 
 //Funzione che gestisce l'inserimento delle navi dei due giocatori.
-//Lancia un eccezione invalid_argument se vi é qualche problema presente nel file di log
+//Lancia un eccezione invalid_argument se vi Ã© qualche problema presente nel file di log
 void Replay::setup() {
     try {
         std::string inizio, fine;
@@ -124,7 +124,7 @@ void Replay::setup() {
 
 
 //Funzione che gestisce l'esecuzione dei turni e scrive, dove richiesto, l'azione eseguita e le griglie dei due giocatori
-//Lancia un eccezione invalid_argument se vi é qualche problema presente nel file di log
+//Lancia un eccezione invalid_argument se vi Ã© qualche problema presente nel file di log
 void Replay::turno() {
     try {
         string origin, target;
@@ -300,7 +300,7 @@ void Replay::fine() {
         write("Battaglia terminata, ha vinto il giocatore " + winner());
     }
     else {
-        write("Non vi é stato alcun vincitore");
+        write("Non vi Ã© stato alcun vincitore");
     }
     if (file_output) {
         log_output.close();

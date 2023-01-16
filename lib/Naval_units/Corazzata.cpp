@@ -15,11 +15,9 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     int xInizio=stoi(inizio.substr(1,inizio.length()-1));
     int yInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
-    
+ 
     yInizio=cInizio-65;
-    
-        
-        
+
     //converto in cordiate "matrici" la coordinata di fine
     char cFine=fine.at(0);
     int xFine=stoi(fine.substr(1,fine.length()-1));
@@ -27,7 +25,6 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
     
     yFine=cFine-65;
-    
 
     //Metto in ordine le due coordinate
     if((yFine<yInizio)||(xFine<xInizio)){
@@ -64,17 +61,12 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
         }
             
         //Posizione verticale valida, si inserisce la lettera C nella griglia
-        
-        
         if(cInizio+2=='J'||cInizio+2=='K') {
             centro=cInizio+4;
         }else{
             centro=cInizio+2;
         }
         centro=centro+to_string(xInizio);
-            
-              
-            
         for(int k=0; k<5; k++){   
             if(cInizio==74||cInizio==75) cInizio=cInizio+2;                                    
             std::string Put(1,cInizio);
@@ -83,9 +75,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
             g_difesa.set("C", Put);
             cInizio=cInizio+1;
 
-        } 
-
-        
+        }         
     }else{
 
         //Check per vedere se posso metterla in orizzontale
@@ -122,16 +112,14 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
                 g_difesa.set("C", Put);
                 xInizio=xInizio+1;
-            
             }
+            
         }else{
 
             //Se non può essere messa nè in orizzontae nè in verticale, da errore
-            throw std::invalid_argument("Carattere non valido");
-
+            throw std::invalid_argument("La corazzata non puo' essere messa in quella posizione!");
         }
     }
-
     begin=inizio;
     end=fine;  
 }
@@ -214,13 +202,9 @@ void Corazzata::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_at
         //Check per vedere se la partita è finita
 
     }else{
-            
-        //mancato
-            
+         
+        //il colpo è andato a vuoto
         g1_attacco.set("O", obiettivo);     //Mette un "O" nella posizione data nella griglia di attacco
-
     }
-        
     //Fine azione della corazzata
-};
-
+}

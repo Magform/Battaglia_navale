@@ -510,6 +510,7 @@ void Naval_battle::bot_g2_command() {
 }
 
 
+
 //Funzione che conta le navi del giocatore1
 int Naval_battle::g1_navi() {
     int toReturn{ 0 };
