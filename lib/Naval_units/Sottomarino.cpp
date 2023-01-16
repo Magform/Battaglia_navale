@@ -1,4 +1,5 @@
 #include "Sottomarino.h"
+#include <stdexcept>
 
 string Sottomarino::get_centro(){
     return centro;

@@ -1,5 +1,6 @@
 #include "Supporto.h"
 #include <cstring>
+#include <stdexcept>
 
 string Supporto::get_centro(){
     return centro;

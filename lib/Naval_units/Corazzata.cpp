@@ -1,7 +1,8 @@
 #include "Corazzata.h"
 #include <cstring>
+#include <stdexcept>
 
-using namespace std
+using namespace std;
 
 string Corazzata::get_centro(){
     return centro;
