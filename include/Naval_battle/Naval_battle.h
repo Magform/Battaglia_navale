@@ -3,9 +3,9 @@
 
 #include <fstream>
 
-#include "../../lib/Naval_units/Corazzata.hpp"
-#include "../../lib/Naval_units/Sottomarino.hpp"
-#include "../../lib/Naval_units/Supporto.hpp"
+#include "Corazzata.h"
+#include "Sottomarino.h"
+#include "Supporto.h"
 
 
 class Naval_battle {

@@ -1,4 +1,4 @@
-#include "../../include/Naval_battle/Naval_battle.h"
+#include "Naval_battle.h"
 
 #include <fstream>
 #include <iostream>

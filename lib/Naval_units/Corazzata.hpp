@@ -1,4 +1,4 @@
-#include "../../include/Naval_units/Corazzata.h"
+#include "Corazzata.h"
 #include <cstring>
 
 string Corazzata::get_centro(){

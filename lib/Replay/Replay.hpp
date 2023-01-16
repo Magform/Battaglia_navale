@@ -1,4 +1,4 @@
-#include "../../include/Replay/Replay.h"
+#include "Replay.h"
 #include <fstream>
 #include <iostream>
 #include <string>

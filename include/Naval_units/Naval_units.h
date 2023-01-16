@@ -1,7 +1,7 @@
 #ifndef Naval_units_H_
 #define Naval_units_H_
 
-#include "../../lib/Griglia/Griglia.hpp"
+#include "Griglia.hpp"
 
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "../../include/Naval_units/Supporto.h"
+#include "Supporto.h"
 #include <cstring>
 
 string Supporto::get_centro(){

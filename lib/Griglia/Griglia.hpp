@@ -1,4 +1,4 @@
-#include "../../include/Griglia/Griglia.h"
+#include "Griglia.h"
 #include <iostream>
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "../../include/Naval_units/Sottomarino.h"
+#include "Sottomarino.h"
 
 string Sottomarino::get_centro(){
     return centro;

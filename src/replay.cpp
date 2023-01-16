@@ -6,7 +6,7 @@
 #include <chrono>
 #include <thread>
 
-#include "../include/Replay/Replay.h"
+#include "Replay.h"
 
 using namespace std;
 
