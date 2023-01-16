@@ -1,8 +1,6 @@
 #ifndef Supporto_H_
 #define Supporto_H_
 
-#include "Naval_units.h"
-
 class Supporto : public Naval_units{
 private:
     int vita = 3;

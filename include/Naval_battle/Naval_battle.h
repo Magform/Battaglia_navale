@@ -3,11 +3,6 @@
 
 #include <fstream>
 
-#include "Griglia.h"
-#include "Corazzata.h"
-#include "Sottomarino.h"
-#include "Supporto.h"
-
 
 class Naval_battle {
 private:

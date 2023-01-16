@@ -20,6 +20,5 @@ public:
     friend ostream& operator<<(ostream& os, const Griglia to_print);
 };
 
-#include "Griglia.hpp"
 
 #endif // Griglia_H_

@@ -1,7 +1,6 @@
 #ifndef Replay_H_
 #define Replay_H_
 
-#include "Naval_battle.hpp"
 
 
 class Replay {
