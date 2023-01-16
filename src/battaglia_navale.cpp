@@ -37,6 +37,7 @@ int main() {
 				battaglia.accept_command();		//il giocatore che inizia è il giocatore 1
 			}
 		}
+		if(battaglia.winner()!=0) break;
 		
 		battaglia.bot_command(start+1);
 		
