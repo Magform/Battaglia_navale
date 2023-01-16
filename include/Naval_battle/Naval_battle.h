@@ -56,6 +56,5 @@ public:
 
 };
 
-#include "Naval_battle.hpp"
 
 #endif // Naval_battle_H_
