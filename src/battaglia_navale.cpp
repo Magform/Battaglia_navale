@@ -35,9 +35,9 @@ int main() {
 	}
 	cout << "Battaglia terminata"<<endl;
 	if (turni = massimo_turni + 1 && battaglia.winner()==0) {
-		cout << "Numero massimo di turni raggiunto, non vi é un vincitore e la partita termina in pareggio" << endl;
+		cout << "Numero massimo di turni raggiunto, non vi e' un vincitore e la partita termina in pareggio" << endl;
 	}
 	else {
-		cout << "Il vincitore é il giocatore " << battaglia.winner() << endl;
+		cout << "Il vincitore e' il giocatore " << battaglia.winner() << endl;
 	}
 }
