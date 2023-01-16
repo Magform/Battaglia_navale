@@ -1,24 +1,29 @@
 cmake_minimum_required(VERSION 3.12)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(PROJECT_NAME Battaglia_Navale)
-project(${PROJECT_NAME} VERSION 1.0)
+project(battaglia_navale VERSION 1.0)
 
-set(SRC_FILES lib/Griglia/Griglia.hpp lib/Naval_battle/Naval_battle.hpp lib/Naval_units/Corazzata.hpp lib/Naval_units/Sottomarino.hpp lib/Naval_units/Supporto.hpp lib/Replay/Replay.hpp)
-set(HEADER_FILE include/Griglia/Griglia.h include/Naval_battle/Naval_battle.h include/Naval_units/Corazzata.h include/Naval_units/Naval_units.h include/Naval_units/Sottomarino.h lib/Naval_units/Supporto.hpp lib/Replay/Replay.hpp)
+add_library(Griglia STATIC lib/Griglia/Griglia.hpp)
+target_include_directories(Griglia PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Griglia)
 
-SET(GCC_COVERAGE_COMPILE_FLAGS "-g -O2")
-add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
+add_library(Naval_battle STATIC lib/Naval_battle/Naval_battle.hpp)
+target_include_directories(Naval_battle PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Naval_battle)
 
-include_directory(include lib)
+target_include_directories(Naval_units PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Naval_units)
+add_library(Corazzata STATIC lib/Naval_units/Corazzata.hpp)
+target_include_directories(Corazzata PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Naval_units)
+add_library(Sottomarino STATIC lib/Naval_units/Sottomarino.hpp)
+target_include_directories(Sottomarino PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Naval_units)
+add_library(Supporto STATIC lib/Naval_units/Supporto.hpp)
+target_include_directories(Supporto PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Naval_units)
 
-add_library(
-    Naval_battle
-    ${SRC_FILES}
-    ${HEADER_FILE}
-)
+add_library(Replay STATIC lib/Replay/Replay.hpp)
+target_include_directories(Replay PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Replay)
+
 
 add_executable(battaglia_navale src/battaglia_navale.cpp)
 add_executable(replay src/replay.cpp)
 
-target_link_libraries(battaglia_navale Naval_battle)
-target_link_libraries(replay Naval_battle)
+target_link_libraries(battaglia_navale PUBLIC Naval_battle)
+target_link_libraries(replay PUBLIC Replay)
