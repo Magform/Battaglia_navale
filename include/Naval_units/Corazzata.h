@@ -1,3 +1,6 @@
+#include <string>
+#include "Griglia.h"
+
 #ifndef Corazzata_H_
 #define Corazzata_H_
 
@@ -6,14 +9,14 @@
 class Corazzata : public Naval_units{
 private:
     int vita = 5;
-    string begin;
-    string end;
-    string centro;
+    std::string begin;
+    std::string end;
+    std::string centro;
 public:
-    string get_centro(); 
+    std::string get_centro();
     bool isAlive();
-    void set(string inizio, string fine, Griglia& g_difesa);
-    void azione(string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa);
+    void set(std::string inizio, std::string fine, Griglia& g_difesa);
+    void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa);
 
 };
 

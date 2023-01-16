@@ -1,3 +1,5 @@
+#include <fstream>
+
 #ifndef Replay_H_
 #define Replay_H_
 
