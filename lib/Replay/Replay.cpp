@@ -246,7 +246,7 @@ int Replay::g1_navi() {
     if (g1_sottomarino1.isAlive(g1_difesa)) {
         toReturn++;
     }
-    if (g1_sottomarino2.isAlive(g2_difesa)) {
+    if (g1_sottomarino2.isAlive(g1_difesa)) {
         toReturn++;
     }
     return toReturn;
