@@ -14,7 +14,7 @@ int main(int argc, char ** argv) {
 	string loadtype{}, log_in{}, log_out{};
 	bool accepted = false;
 	int turni=0;
-	int massimo_turni = 100; //attenzioe se la si cambia qua bisonga cambiarla anche su battaglia_navale
+	int massimo_turni = 100; //attenzine se la si cambia qua bisonga cambiarla anche su battaglia_navale
 	while (!accepted) {
 		try {
 			Replay battaglia;
@@ -25,13 +25,15 @@ int main(int argc, char ** argv) {
 			else if (string(argv[1]) == "f") {
 				battaglia.setup(string(argv[1]), string(argv[2]), string(argv[3]));
 			}
-			else {
+			else{
 				cout << "Argomento non valido: " << endl;
 				cout << " Inserire il tipo di replay che si desidera effettuare: " << endl;
 				cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
 				cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			}
 
+			cout << battaglia.winner();
+			cout << "sassi" << endl;
 			while (battaglia.winner() == 0 && turni <= massimo_turni) {
 				cout << "test" << endl;
 				battaglia.turno();
