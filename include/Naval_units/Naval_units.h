@@ -13,9 +13,9 @@ protected:
 
 public:
     bool isAlive(Griglia& g_difesa) {};
-    string get_centro() { return centro; }
-    virtual void set(string inizio, string fine, Griglia& g_difesa) {};
-    virtual void azione(string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa) {};
+    std::string get_centro() { return centro; }
+    virtual void set(std::string inizio, std::string fine, Griglia& g_difesa) {};
+    virtual void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa) {};
 };
 
 #endif // Naval_units_H_

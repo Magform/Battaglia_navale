@@ -105,7 +105,6 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
             }
 
             //Posizione orizzontale valida, si inserisce la lettera C nella griglia
-
             xInizio=xInizio-3;
         
             if(cInizio=='J'||cInizio=='K') {
@@ -156,12 +155,12 @@ bool Supporto::isAlive(Griglia& g_difesa){
     }
     return true;
 }
-
     
 void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
 
     //Controllo se la nave di supporto è ancora in vita
     if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido");
+
    
     //Ottengo le coordinate dell'obiettivo
     char cTarget=obiettivo.at(0);
@@ -406,4 +405,3 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     //Fine dell'azione della nave di supporto 
 };
 
-    
