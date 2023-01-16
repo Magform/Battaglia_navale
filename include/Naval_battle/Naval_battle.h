@@ -40,8 +40,8 @@ private:
     Sottomarino g2_sottomarino2;
 
 
-    int g1_corazzate();     //conta le corazzate attualmente in vita del giocatore 1.
-    int g2_corazzate();     //conta le corazzate attualemente in vida del giocatore 2.
+    int g1_navi(); //conta le corazzate attualmente in vita del giocatore 1.
+    int g2_navi(); //conta le corazzate attualemente in vida del giocatore 2.
     void bot_g1_command();  //funzioni che gestisce i comandi del bot del giocatore1
     void bot_g2_command();  //funzione che gestisce i comandi del bot del giocatore2
 
