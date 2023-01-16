@@ -11,7 +11,7 @@ using namespace std;
 //Costruttore di replay, richiede l'inseriemento del tipo di log voluto ed il file di log di una partita precente
 //in caso il tipo di replay é f deve essere fornito il file dove creare l'output
 //in caso il tipo di replay non sia valido (f,v) o in caso sia f e non sia presente un file di output viene lanciata un eccezioni 
-Replay::Replay(std::string type, std::string log_in, std::string log_out = "") {
+Replay::Replay(std::string type, std::string log_in, std::string log_out) {
     if (type == "v") {
         log_input.open(log_in);
         file_output = false;
@@ -266,7 +266,7 @@ int Replay::winner() {
 
 //funzione da chiamare quando termina la battaglia che si occupa di scrivere in output l'eventuale vincitore e di chiudere i file di input e output
 void Replay::fine() {
-    if (winner != 0) {
+    if (winner() != 0) {
         write("Battaglia terminata, ha vinto il giocatore " + winner());
     }
     else {
