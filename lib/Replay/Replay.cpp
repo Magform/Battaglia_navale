@@ -291,6 +291,7 @@ int Replay::winner() {
     if (g1_navi() == 0) {
         return 1;
     }
+    cout << "goign to g2" << endl;
     if (g2_navi() == 0) {
         return 2;
     }
