@@ -18,17 +18,17 @@ int main() {
 	cout << "Inserire il tipo di partita ('pc' => giocatore vs computer; 'cc' => computer vs computer)" << endl;
 	cin >> battletype;
 	Naval_battle battaglia(battletype, true);
-	battaglia.setup();
 	int turni = 1;
 	srand(time(NULL));
     int start = rand()%2;  //si decide in maniera casuale chi inizia
-	
 	if(start==0 ){
 		cout << "Il giocatore che inizia la partita è il \"giocatore 1\""<<"\n";
 	}else{
 		cout << "Il giocatore che inizia la partita è il \"giocatore 2\""<<"\n";
 	}
 	
+	battaglia.setup(start+1);
+
 	while (battaglia.winner()==0 && turni<=massimo_turni) {
 		battaglia.command(start+1);
 		turni++;

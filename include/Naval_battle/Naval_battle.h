@@ -50,7 +50,7 @@ private:
 public:
     Naval_battle(std::string battletype, bool log_or_not);  //serve a capire se la  partita iniziata è del tipo "giocatore vs computer" o "computer vs computer"
 
-    void setup();           //posiziona le navi del giocatore e "crea" le navi del bot
+    void setup(int giocatore_primo);           //posiziona le navi del giocatore e "crea" le navi del bot
     void command(int giocatore_primo); //gestisce tutti i comandi (inseriti dall'utente ed automatici dei bot)
     int winner();           //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2 altrimenti ritorna 0
     bool is_botBattle();    //funzione membro per capire se la battaglia è del tipo "computer vs computer"

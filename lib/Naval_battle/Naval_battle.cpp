@@ -38,143 +38,286 @@ Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
 }
 
 
-//funzione che crea le corazzate per i due giocatore (sia umani che bot), e scrive le coordinate nel file di log
+//funzione che crea le corazzate per i due giocatore (sia umani che bot), e scrive le coordinate nel file di log, richiede che venga specificato il primo giocatore
 //In caso sia presente un giocatore umano ed esso inserica delle cordinate non valide l'eccezione é giá catturata e gestita
-void Naval_battle::setup() {
-    if (botBattle == false) {
-        std::string inizio, fine;
+//Lancia eccezione se il giocatore iniziale non é valido (ossia non é 1 o 2)
+void Naval_battle::setup(int giocatore_primo) {
 
-        bool accepted = false;
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate della corazzata 1: " << endl;
-                std::cin >> inizio >> fine;
-                g1_corazzata1.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
-            }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
-            }
-        }
-        accepted = false;
+    if (giocatore_primo == 1) {
+        if (botBattle == false) {
+            std::string inizio, fine;
 
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate della corazzata 2: " << endl;
-                std::cin >> inizio >> fine;
-                g1_corazzata2.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
+            bool accepted = false;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della corazzata 1: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_corazzata1.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
-            }
-        }
-        accepted = false;
+            accepted = false;
 
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate della corazzata 3: " << endl;
-                std::cin >> inizio >> fine;
-                g1_corazzata3.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della corazzata 2: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_corazzata2.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
-            }
-        }
-        accepted = false;
+            accepted = false;
 
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate della nave di supporto 1: " << endl;
-                std::cin >> inizio >> fine;
-                g1_supporto1.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della corazzata 3: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_corazzata3.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
-            }
-        }
-        accepted = false;
+            accepted = false;
 
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate della nave di supporto 2: " << endl;
-                std::cin >> inizio >> fine;
-                g1_supporto2.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della nave di supporto 1: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_supporto1.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
-            }
-        }
-        accepted = false;
+            accepted = false;
 
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate della nave di supporto 3: " << endl;
-                std::cin >> inizio >> fine;
-                g1_supporto3.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della nave di supporto 2: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_supporto2.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
-            }
-        }
-        accepted = false;
+            accepted = false;
 
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate del sottomarino 1: " << endl;
-                std::cin >> inizio >> fine;
-                g1_sottomarino1.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della nave di supporto 3: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_supporto3.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
-            }
-        }
-        accepted = false;
+            accepted = false;
 
-        while (!accepted) {
-            try {
-                std::cout << "Coordinate del sottomarino 2: " << endl;
-                std::cin >> inizio >> fine;
-                g1_sottomarino2.set(inizio, fine, g1_difesa);
-                if (log) { log_file << inizio << " " << fine << endl; }
-		accepted=true;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate del sottomarino 1: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_sottomarino1.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
-            catch (const invalid_argument ex) {
-                cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate del sottomarino 2: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_sottomarino2.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
             }
+            accepted = false;
         }
-        accepted = false;
+        else {
+            create_corazzata(g1_corazzata1, g1_difesa, log_file, log);
+            create_corazzata(g1_corazzata2, g1_difesa, log_file, log);
+            create_corazzata(g1_corazzata3, g1_difesa, log_file, log);
+            create_supporto(g1_supporto1, g1_difesa, log_file, log);
+            create_supporto(g1_supporto2, g1_difesa, log_file, log);
+            create_supporto(g1_supporto3, g1_difesa, log_file, log);
+            create_sottomarino(g1_sottomarino1, g1_difesa, log_file, log);
+            create_sottomarino(g1_sottomarino2, g1_difesa, log_file, log);
+        }
+        create_corazzata(g2_corazzata1, g2_difesa, log_file, log);
+        create_corazzata(g2_corazzata2, g2_difesa, log_file, log);
+        create_corazzata(g2_corazzata3, g2_difesa, log_file, log);
+        create_supporto(g2_supporto1, g2_difesa, log_file, log);
+        create_supporto(g2_supporto2, g2_difesa, log_file, log);
+        create_supporto(g2_supporto3, g2_difesa, log_file, log);
+        create_sottomarino(g2_sottomarino1, g2_difesa, log_file, log);
+        create_sottomarino(g2_sottomarino2, g2_difesa, log_file, log);
+    }
+    else if (giocatore_primo == 2) {
+        create_corazzata(g2_corazzata1, g2_difesa, log_file, log);
+        create_corazzata(g2_corazzata2, g2_difesa, log_file, log);
+        create_corazzata(g2_corazzata3, g2_difesa, log_file, log);
+        create_supporto(g2_supporto1, g2_difesa, log_file, log);
+        create_supporto(g2_supporto2, g2_difesa, log_file, log);
+        create_supporto(g2_supporto3, g2_difesa, log_file, log);
+        create_sottomarino(g2_sottomarino1, g2_difesa, log_file, log);
+        create_sottomarino(g2_sottomarino2, g2_difesa, log_file, log);
+        if (botBattle == false) {
+            std::string inizio, fine;
+
+            bool accepted = false;
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della corazzata 1: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_corazzata1.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della corazzata 2: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_corazzata2.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della corazzata 3: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_corazzata3.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della nave di supporto 1: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_supporto1.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della nave di supporto 2: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_supporto2.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate della nave di supporto 3: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_supporto3.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate del sottomarino 1: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_sottomarino1.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+
+            while (!accepted) {
+                try {
+                    std::cout << "Coordinate del sottomarino 2: " << endl;
+                    std::cin >> inizio >> fine;
+                    g1_sottomarino2.set(inizio, fine, g1_difesa);
+                    if (log) { log_file << inizio << " " << fine << endl; }
+                    accepted = true;
+                }
+                catch (const invalid_argument ex) {
+                    cout << "Le coordinate inserite non sono valide, inserirle nuovamente" << endl;
+                }
+            }
+            accepted = false;
+        }
+        else {
+            create_corazzata(g1_corazzata1, g1_difesa, log_file, log);
+            create_corazzata(g1_corazzata2, g1_difesa, log_file, log);
+            create_corazzata(g1_corazzata3, g1_difesa, log_file, log);
+            create_supporto(g1_supporto1, g1_difesa, log_file, log);
+            create_supporto(g1_supporto2, g1_difesa, log_file, log);
+            create_supporto(g1_supporto3, g1_difesa, log_file, log);
+            create_sottomarino(g1_sottomarino1, g1_difesa, log_file, log);
+            create_sottomarino(g1_sottomarino2, g1_difesa, log_file, log);
+        }
     }
     else {
-        create_corazzata(g1_corazzata1, g1_difesa, log_file, log);
-        create_corazzata(g1_corazzata2, g1_difesa, log_file, log);
-        create_corazzata(g1_corazzata3, g1_difesa, log_file, log);
-        create_supporto(g1_supporto1, g1_difesa, log_file, log);
-        create_supporto(g1_supporto2, g1_difesa, log_file, log);
-        create_supporto(g1_supporto3, g1_difesa, log_file, log);
-        create_sottomarino(g1_sottomarino1, g1_difesa, log_file, log);
-        create_sottomarino(g1_sottomarino2, g1_difesa, log_file, log);
+        throw invalid_argument("Giocatore inziale non valido");
     }
-    create_corazzata(g2_corazzata1, g2_difesa, log_file, log);
-    create_corazzata(g2_corazzata2, g2_difesa, log_file, log);
-    create_corazzata(g2_corazzata3, g2_difesa, log_file, log);
-    create_supporto(g2_supporto1, g2_difesa, log_file, log);
-    create_supporto(g2_supporto2, g2_difesa, log_file, log);
-    create_supporto(g2_supporto3, g2_difesa, log_file, log);
-    create_sottomarino(g2_sottomarino1, g2_difesa, log_file, log);
-    create_sottomarino(g2_sottomarino2, g2_difesa, log_file, log);
 }
 
 
