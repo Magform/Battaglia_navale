@@ -16,19 +16,15 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
     int xInizio=stoi(inizio.substr(1,inizio.length()-1));
     int yInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
-   
     yInizio=cInizio-65;
-    
         
     //converto in cordiate "matrici" la coordinata di fine
     char cFine=fine.at(0);
     int xFine=stoi(fine.substr(1,fine.length()-1));
     int yFine;
     if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
-    
     yFine=cFine-65;
     
-
     //Metto in ordine le due coordinate
     if((yFine<yInizio)||(xFine<xInizio)){
         char scambioY=cFine;
@@ -55,17 +51,15 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
             std::string Pos(1,cSearch);
             Pos=Pos+to_string(xInizio);
             if(g_difesa.retrive(Pos)==" "){    //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
-                cSearch=cSearch+1;
-                    
+                cSearch=cSearch+1; 
             }else{
                 //Se un solo spazio è occupato, lancia una eccezione
-                throw std::invalid_argument("Carattere non valido");
+                throw std::invalid_argument("Carattere non valido: una o piu' caselle sono gia' occupate.");
             }
         }
             
         //Posizione verticale valida, si inserisce la lettera C nella griglia
         
-
         if(cInizio+1=='J'||cInizio+1=='K') {
             centro=cInizio+3;
         }else{
@@ -81,7 +75,6 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
 
             g_difesa.set("S", Put);
             cInizio=cInizio+1;
-
         } 
         
     }else{
@@ -99,8 +92,7 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
                     xInizio=xInizio+1;                      
                 }else{
                     //Se un solo spazio è occupato, lancia una eccezione
-
-                    throw std::invalid_argument("Carattere non valido");
+                    throw std::invalid_argument("Carattere non valido: una o piu' caselle sono gia' occupate.");
                 }
             }
 
@@ -121,12 +113,11 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
 
                 g_difesa.set("S", Put);
                 xInizio=xInizio+1;
-
             }
         }else{
 
             //Se non può essere messa nè in orizzontae nè in verticale, da errore
-            throw std::invalid_argument("Carattere non valido");
+            throw std::invalid_argument("Coordinate non valide: la nave di supporto puo' essere messa solo o in ORIZZONTALE o in VERTICALE.");
 
         }
     }
@@ -140,13 +131,14 @@ bool Supporto::isAlive(Griglia& g_difesa){
     if(vita==0) return false;
 
     int counter=0;
-
+    //quanto quante unità della nave di supporto sono state colpite
     if(g_difesa.retrive(begin)=="s") counter++;
     if(g_difesa.retrive(centro)=="s") counter++;
     if(g_difesa.retrive(end)=="s") counter++;
 
-    vita=3-counter;
-
+    vita=3-counter;  //diminuisco la vita del supporto 
+    
+    //se la vita del supporto è uguale a 0, la elimino dalla griglia di difesa
     if(vita==0){
         g_difesa.remove(begin);
         g_difesa.remove(centro);
@@ -158,24 +150,22 @@ bool Supporto::isAlive(Griglia& g_difesa){
     
 void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
 
-    //Controllo se la nave di supporto è ancora in vita
-    if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido");
+    //Controllo se la nave di supporto è ancora in vita, altrimenti lancio un'eccezione
+    if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido: la nave di supporto che si vuole utilizzare e' stata affondata!");
 
-   
     //Ottengo le coordinate dell'obiettivo
     char cTarget=obiettivo.at(0);
     int XTarget=stoi(obiettivo.substr(1,obiettivo.length()-1));
     int YTarget;
     if((cTarget<65)||(cTarget>78))  throw std::invalid_argument("Carattere non valido");
-    
     YTarget=cTarget-65;
     
-
     //Ottengo le coordinate x dell'inizio e fine della vecchia posizione, per vedere se la nave è in orizzontale o verticale
     int xInizio=stoi(begin.substr(1,begin.length()-1));
     int xFine=stoi(end.substr(1,end.length()-1));
       
     //inizio spostamento, controllando prima se la nave è in orizzontale o in verticale
+    
     if(xInizio==xFine){
            
         //E' in verticale
@@ -198,7 +188,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")||(g1_difesa.retrive(sopra)==" ")||(g1_difesa.retrive(sotto)==" "))){
-            throw std::invalid_argument("Carattere non valido");
+            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
         }
 
         //Posizione valida, rimuovo la vecchia posizione
@@ -228,7 +218,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")||(g1_difesa.retrive(sinistra)==" ")||(g1_difesa.retrive(destra)==" "))){
-            throw std::invalid_argument("Carattere non valido");
+            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
         }
 
         //Posizione valida, rimuovo la vecchia posizione
@@ -246,7 +236,6 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         g1_difesa.set("S", end);
 
     }
-
     //Fine spostamento nave
 
     //Inizio riparazioni
@@ -256,15 +245,13 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     int XInizio=stoi(begin.substr(1,begin.length()-1));
     int YInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
-    
     YInizio=cInizio-65;
     
     char cFine=end.at(0);
     int XFine=stoi(end.substr(1,end.length()-1));
     int YFine;
     if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
-    
-        YFine=cFine-65;
+    YFine=cFine-65;
     
 
     if(YInizio==YFine){
