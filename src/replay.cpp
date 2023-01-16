@@ -22,9 +22,9 @@ int main() {
 			cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
 			cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			cin >> loadtype;
-			if (arg == "v") {
+			if (loadtype == "v") {
 				cin >> log_in;
-			}else if (arg == "f") {
+			}else if (loadtype == "f") {
 				cin >> log_in >> log_out;
 			}
 			else {
