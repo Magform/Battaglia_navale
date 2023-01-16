@@ -29,7 +29,7 @@ int main() {
 	
 	battaglia.setup(start+1);
 
-	while (battaglia.winner()==0 && turni<=massimo_turni) {
+	while (turni<=massimo_turni) {
 		battaglia.command(start+1);
 		turni++;
 	}
