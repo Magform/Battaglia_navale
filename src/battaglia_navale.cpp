@@ -28,7 +28,7 @@ int main() {
 		battaglia.accept_command();		//il giocatore che inizia è il giocatore 1
 	}else{
 		cout << "Il giocatere che inizia la partita è il \"giocatore 2\" (il computer)"<<"\n";
-		battaglia.bot_command();		//il giocatore che inizia è il giocatore 2 (il computer)
+		battaglia.bot_command(start + 1);		//il giocatore che inizia è il giocatore 2 (il computer)
 	}
 	
 	while (battaglia.winner()==0 && turni<=massimo_turni) {
