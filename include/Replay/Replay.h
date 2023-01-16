@@ -1,7 +1,10 @@
 #ifndef Replay_H_
 #define Replay_H_
 
-
+#include "Griglia.h"
+#include "Corazzata.h"
+#include "Supporto.h"
+#include "Sottomarino.h"
 
 class Replay {
 private:
