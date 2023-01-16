@@ -33,7 +33,7 @@ int main(int argc, char ** argv) {
 			}
 			battaglia.turno();
 			turni ++;
-			while (is_winner()==0 && turni <= massimo_turni) {
+			while (battaglia.winner()==0 && turni <= massimo_turni) {
 				battaglia.turno();
 				turni++;
 			}
