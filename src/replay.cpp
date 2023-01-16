@@ -20,7 +20,7 @@ int main(int argc, char ** argv) {
 			Replay battaglia;
 			
 			if (string(argv[1]) == "v") {
-				battaglia.setup(string(argv[1]), string(argv[2]), string(""));
+				battaglia.setup(string(argv[1]), string(argv[2]), "");
 			}
 			else if (string(argv[1]) == "f") {
 				battaglia.setup(string(argv[1]), string(argv[2]), string(argv[3]));
