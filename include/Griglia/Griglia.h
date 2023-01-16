@@ -18,7 +18,7 @@ public:
     std::string retrive(std::string location);                //restituisce ció che é presente nella posizione "location"
 
     //overload operatori
-    friend ostream& operator<<(ostream& os, const Griglia to_print);
+    friend std::ostream& operator<<(std::ostream& os, const Griglia to_print);
 };
 
 
