@@ -21,10 +21,10 @@ int main(int argc, char ** argv) {
 			Replay battaglia("","","");
 			
 			if (argv[1] == "v") {
-				battaglia(string(argv[1]), string(argv[2]), string(""));
+				battaglia.setup(string(argv[1]), string(argv[2]), string(""));
 			}
 			else if (argv[1] == "f") {
-				battaglia(string(argv[1]), string(argv[2]), string(argv[3]));
+				battaglia.setup(string(argv[1]), string(argv[2]), string(argv[3]));
 			}
 			else {
 				cout << "Argomento non valido: " << endl;
@@ -32,7 +32,6 @@ int main(int argc, char ** argv) {
 				cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
 				cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			}
-			battaglia.setup();
 			while (battaglia.winner() == 0 && turni <= massimo_turni) {
 				battaglia.turno();
 				turni++;
