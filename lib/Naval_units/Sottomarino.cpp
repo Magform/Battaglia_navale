@@ -35,6 +35,8 @@ bool Sottomarino::isAlive(Griglia& g_difesa){
         g_difesa.remove(centro);
         return false;
     }
+    //to remove
+    cout << "allgood" << endl;
     return true;
 }
 
