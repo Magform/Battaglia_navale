@@ -10,7 +10,7 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char** argv[]) {
 	string loadtype{}, log_in{}, log_out{};
 	bool accepted = false;
 	int turni=0;
@@ -21,17 +21,12 @@ int main() {
 			cout << "Inserire il tipo di replay che si desidera effettuare: " << endl;
 			cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
 			cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
-			cin >> loadtype;
-			if (loadtype == "v") {
-				cin >> log_in;
-			}else if (loadtype == "f") {
-				cin >> log_in >> log_out;
+			if (argv[0] == "v") {
+				Replay battaglia(argv[0], argv[1], "");
 			}
-			else {
-				cout << "Tipo di replay non valido";
-				return 0;
+			else if (argv[0] == "f") {
+				Replay battaglia(argv[0], argv[1], argv[2]);
 			}
-			Replay battaglia(loadtype, log_in, log_out);
 			battaglia.setup();
 			while (battaglia.winner() == 0 && turni <= massimo_turni) {
 				battaglia.turno();
@@ -42,7 +37,7 @@ int main() {
 
 		}
 		catch (const invalid_argument ex) {
-			cout << "Il file non contiene una battaglia navale valida" << endl;
+			cout << "Il file non contiene una battaglia navale valida o il file selezionato non e' valido" << endl;
 		}
 	}
 }
