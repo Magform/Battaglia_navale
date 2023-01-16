@@ -221,7 +221,7 @@ void Replay::turno() {
 
 
 //Funzione che conta le navi del giocatore1
-int Naval_battle::g1_navi() {
+int Replay::g1_navi() {
     int toReturn{ 0 };
     if (g1_corazzata1.isAlive(g1_difesa)) {
         toReturn++;
@@ -252,7 +252,7 @@ int Naval_battle::g1_navi() {
 
 
 //funzione che conta le navi del giocatore2
-int Naval_battle::g2_navi() {
+int Replay::g2_navi() {
     int toReturn{ 0 };
     if (g2_corazzata1.isAlive(g2_difesa)) {
         toReturn++;
