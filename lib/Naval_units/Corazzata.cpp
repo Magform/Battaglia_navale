@@ -133,8 +133,9 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     begin=inizio;
     end=fine;  
 }
+
 bool Corazzata::isAlive(Griglia& g_difesa){
-    
+    cout << "isAlive corazzata" << endl;
     if(vita==0) return false;
 
     int counter=0;
