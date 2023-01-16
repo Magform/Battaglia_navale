@@ -75,7 +75,7 @@ void Replay::setup(std::string type, std::string log_in, std::string log_out) {
         write("Sottomarino 2: ");
         log_input >> inizio >> fine;
         write(inizio + " " + fine + "\n");
-        g1_sottomarino1.set(inizio, fine, g1_difesa);
+        g1_sottomarino2.set(inizio, fine, g1_difesa);
 
         write("-----Inserimento navi giocatore 2-----\n");
 
