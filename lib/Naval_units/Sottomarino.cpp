@@ -21,7 +21,7 @@ void Sottomarino::set(std::string inizio, std::string fine, Griglia& g_difesa){
 
 bool Sottomarino::isAlive(){ return vita!=0;}
 
-void azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
+void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
         //Il numero vicino alla g delle griglie rappresenta il giocatore (1 quello che sta compiendo l'azione)
         
        //Controllo se il sottomarino è ancora in vita
