@@ -31,7 +31,9 @@ int main(int argc, char ** argv) {
 				cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
 				cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			}
+
 			while (battaglia.winner() == 0 && turni <= massimo_turni) {
+				cout << "test" << endl;
 				battaglia.turno();
 				turni++;
 			}
@@ -48,7 +50,9 @@ int main(int argc, char ** argv) {
 			return 0;
 		}
 		catch (const logic_error ex) {
-			cout << "Errore nella lettura degli argomenti" << endl;
+			cout << " Inserire il tipo di replay che si desidera effettuare: " << endl;
+			cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
+			cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			return 0;
 		}
 	}
