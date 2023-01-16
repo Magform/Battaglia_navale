@@ -7,11 +7,12 @@
 
 using namespace std;
 
+Replay::Replay()
 
-//Costruttore di replay, richiede l'inseriemento del tipo di log voluto ed il file di log di una partita precente
+//Funzione che apre i file di replay, richiede l'inseriemento del tipo di log voluto ed il file di log di una partita precente
 //in caso il tipo di replay é f deve essere fornito il file dove creare l'output
-//in caso il tipo di replay non sia valido (f,v) o in caso sia f e non sia presente un file di output viene lanciata un eccezioni 
-Replay::Replay(std::string type, std::string log_in, std::string log_out) {
+//in caso il tipo di replay non sia valido (f,v) o in caso sia f e non sia presente un file di output viene lanciata un eccezion
+void Replay::file_opening(std::string type, std::string log_in, std::string log_out) {
     if (type == "v") {
         log_input.open(log_in);
         file_output = false;
@@ -26,11 +27,11 @@ Replay::Replay(std::string type, std::string log_in, std::string log_out) {
     }
 }
 
-
-//Funzione che gestisce l'inserimento delle navi dei due giocatori.
-//Lancia un eccezione invalid_argument se vi é qualche problema presente nel file di log
-void Replay::setup() {
+//funzione cha va per prima cosa a aprire i file utilizzando la funzione privata file_opening(vederla per ulteriori informazioni)
+//Gestisce poi l'inserimento delle navi dei due giocatori.
+void Replay::setup(std::string type, std::string log_in, std::string log_out) {
     try {
+        file_opening(type, log_in, log_out)
         std::string inizio, fine;
 
         write("-----Inserimento navi giocatore 1-----\n");

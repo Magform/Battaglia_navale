@@ -39,13 +39,13 @@ private:
     Sottomarino g2_sottomarino2;
 
     void write(std::string toPrint);
+    void file_opening(std::string type, std::string log_in, std::string log_out); //Apre i file
     int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
     int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
 
 public:
-    Replay(std::string type, std::string log_in, std::string log_out);
 
-    void setup();   //funzione che inizializza le variabile dei due giocatori
+    void setup(std::string type, std::string log_in, std::string log_out);   //funzione che inizializza le variabile dei due giocatori e apre i file
     void turno();   //funzione che gestisce l'esecuzione dei un singolo turno
     int winner();   //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
     void fine();    //funzione da chiamare quando termina la battaglia
