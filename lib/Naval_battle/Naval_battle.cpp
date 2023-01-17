@@ -27,14 +27,14 @@ Naval_battle::Naval_battle(std::string battletype, bool log_or_not) {
 		botBattle = false;
 	}else if (battletype == "cc") {
 		botBattle = true;
-    	}
-    	else {
+    }
+    else {
         	throw std::invalid_argument("Battletype non valido");
-    	}
-    	log = log_or_not;
-    	if (log) {
-    	    log_file.open("log.txt");
-    	}
+   	}
+   	log = log_or_not;
+   	if (log) {
+   	    log_file.open("log.txt");
+    }
 }
 
 
