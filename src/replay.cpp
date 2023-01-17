@@ -54,6 +54,6 @@ int main(int argc, char ** argv) {
 			cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			return 0;
 		}
-		accepted=false;
+		accepted=true;
 	}
 }
