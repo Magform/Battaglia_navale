@@ -48,8 +48,8 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
     //Check per  vedere se posso metterla in verticale
 
     if(xInizio==xFine){
-        if((cFine>75)&&(cInizio-cFine!=7))  throw std::invalid_argument("Lunghezza nave non valida");
-        if(cInizio-cFine!=5) throw std::invalid_argument("Lunghezza nave non valida");
+        if((cFine>75)&&(cFine-cInizio!=6))  throw std::invalid_argument("Lunghezza nave non valida");
+        if(cFine-cInizio!=4) throw std::invalid_argument("Lunghezza nave non valida");
         char cSearch=cInizio;
         for(int k=0; k<5; k++){   
 
@@ -94,7 +94,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
         //Check per vedere se posso metterla in orizzontale
 
         if(yInizio==yFine){
-            if(xInizio-xFine!=5)    throw std::invalid_argument("Lunghezza nave non valida");
+            if(xFine-xInizio!=4)    throw std::invalid_argument("Lunghezza nave non valida");
             char cSearch=cInizio;   
             for(int k=0; k<5; k++){      
                 if(cSearch==74||cSearch==75) cSearch=cSearch+2;
