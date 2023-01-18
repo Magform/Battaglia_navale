@@ -1,4 +1,9 @@
-#include <string>
+
+/*
+
+Autore: Marco Callegaro
+
+*/#include <string>
 #include "Griglia.h"
 
 #ifndef Naval_units_H_
