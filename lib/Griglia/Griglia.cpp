@@ -5,8 +5,10 @@
 
 */
 
+#include <string>
 int oldC, oldN;
-string oldL;
+std::string oldL;
+
 
 #include "Griglia.h"
 #include <iostream>
