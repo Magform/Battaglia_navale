@@ -1,3 +1,9 @@
+
+/*
+
+Autore: Marco Callegaro
+
+*/
 #include <string>
 #include "Griglia.h"
 
