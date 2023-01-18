@@ -43,8 +43,8 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
     //Check per vedere se posso metterla in verticale
 
     if(xInizio==xFine){
-        if((cFine>75)&&(cInizio-cFine!=5))  throw std::invalid_argument("Lunghezza nave non valida");
-        if(cInizio-cFine!=3) throw std::invalid_argument("Lunghezza nave non valida");
+        if((cFine>75)&&(cInizio-cFine!=4))  throw std::invalid_argument("Lunghezza nave non valida");
+        if(cInizio-cFine!=2) throw std::invalid_argument("Lunghezza nave non valida");
         char cSearch=cInizio;
         for(int k=0; k<3; k++){   
 
@@ -194,6 +194,10 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
             throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
         }
 
+        string at_begin=g1_difesa.retrive(begin);
+        string at_centro=g1_difesa.retrive(centro);
+        string at_end=g1_difesa.retrive(end);
+        
         //Posizione valida, rimuovo la vecchia posizione
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
@@ -204,9 +208,9 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         end=sotto;
         
 
-        g1_difesa.set("S", begin);
-        g1_difesa.set("S", obiettivo);
-        g1_difesa.set("S", end);
+        g1_difesa.set(at_begin, begin);
+        g1_difesa.set(at_centro, obiettivo);
+        g1_difesa.set(at_end, end);
 
     }else{
 
@@ -223,6 +227,10 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
             throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
         }
+        
+        string at_begin=g1_difesa.retrive(begin);
+        string at_centro=g1_difesa.retrive(centro);
+        string at_end=g1_difesa.retrive(end);
 
         //Posizione valida, rimuovo la vecchia posizione
         g1_difesa.remove(begin);
@@ -233,9 +241,9 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         begin=sinistra;
         end=destra;
 
-        g1_difesa.set("S", begin);
-        g1_difesa.set("S", obiettivo);
-        g1_difesa.set("S", end);
+        g1_difesa.set(at_begin, begin);
+        g1_difesa.set(at_centro, obiettivo);
+        g1_difesa.set(at_end, end);
 
     }
     //Fine spostamento nave
