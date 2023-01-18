@@ -29,7 +29,7 @@ bool Sottomarino::isAlive(Griglia& g_difesa){
 
     if(vita==0) return false;
     if(g_difesa.retrive(centro)=="e"){
-        vita=0
+        vita = 0;
         g_difesa.remove(centro);
         return false;
     }
