@@ -27,11 +27,11 @@ int main(int argc, char ** argv) {
 		else {
 			cout << "Il giocatore che inizia la partita è il \"giocatore 2\"" << "\n";
 		}
-
+		cout << "Fase posizionamento navi" << endl;
 		battaglia.setup(start);
 
 		while (battaglia.winner() == 0 && turni <= massimo_turni) {
-			cout << "turno " << turni << endl;
+			cout << "Turno " << turni << endl;
 			battaglia.command(start);
 			turni++;
 		}
