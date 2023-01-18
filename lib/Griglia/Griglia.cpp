@@ -6,7 +6,6 @@
 */
 
 #include <string>
-int oldC, oldN;
 std::string oldL;
 
 
@@ -85,10 +84,6 @@ void Griglia::remove(string location){
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 
 string Griglia::retrive(string location){
-    if (location != oldL) {
-        std::cout << location << std::endl;
-        oldL = location;
-    }
 
     int character = location[0];
     character = character - 65;
@@ -106,10 +101,9 @@ string Griglia::retrive(string location){
         throw invalid_argument("Numero della location non valido");
     }
 
-    if (character != oldC || number != oldN) {
-        std::cout << character << " " << number << " " << matrix[character][number] << std::endl;
-        oldC = character;
-        oldN = number;
+    if (location != oldL) {
+        std::cout << location <<" " << character << " " << number << " " << matrix[character][number] << std::endl;
+        oldL = location;
     }
 
     return matrix[character][number];
