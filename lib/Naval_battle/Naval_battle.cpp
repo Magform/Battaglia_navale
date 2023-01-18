@@ -490,6 +490,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_corazzata1.get_centro();
                 g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_corazzata1" <<old_centro << " " << g1_corazzata1.get_centro()<< endl;
@@ -500,6 +501,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_corazzata2.get_centro();
                 g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_corazzata2" << old_centro << " " << g1_corazzata2.get_centro() << endl;
@@ -510,6 +512,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_corazzata3.get_centro();
                 g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_corazzata3" << old_centro << " " << g1_corazzata3.get_centro() << endl;
@@ -520,6 +523,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_supporto1.get_centro();
                 g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_supporto1" << old_centro << " " << g1_supporto1.get_centro() << endl;
@@ -530,6 +534,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_supporto2.get_centro();
                 g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_supporto2" << old_centro << " " << g1_supporto2.get_centro() <<endl;
@@ -540,6 +545,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_supporto3.get_centro();
                 g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_supporto3" << old_centro << " " << g1_supporto3.get_centro() << endl;
@@ -550,6 +556,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_sottomarino1.get_centro();
                 g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_sottomarino1" << old_centro << " " << g1_sottomarino1.get_centro() << endl;
@@ -560,6 +567,7 @@ void Naval_battle::bot_g1_command(){
             try {
                 old_centro = g1_sottomarino2.get_centro();
                 g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g1_sottomarino2" << old_centro << " " << g1_sottomarino2.get_centro() << endl;
@@ -588,6 +596,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_corazzata1.get_centro();
                 g2_corazzata1.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_corazzata1" << old_centro << " " << g2_corazzata1.get_centro() << endl;
@@ -598,6 +607,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_corazzata2.get_centro();
                 g2_corazzata2.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << "" << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_corazzata2" << old_centro << " " << g2_corazzata2.get_centro() << endl;
@@ -608,6 +618,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_corazzata3.get_centro();
                 g2_corazzata3.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_corazzata3" << old_centro <<" " << g2_corazzata3.get_centro() << endl;
@@ -618,6 +629,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_supporto1.get_centro();
                 g2_supporto1.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_supporto1" <<" "<<old_centro<< " " << g2_supporto1.get_centro() << endl;
@@ -628,6 +640,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_supporto2.get_centro();
                 g2_supporto2.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_supporto2" << " " << old_centro << " " << g2_supporto2.get_centro() << endl;
@@ -638,6 +651,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_supporto3.get_centro();
                 g2_supporto3.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_supporto3" << " " << old_centro << " " << g2_supporto3.get_centro() << endl;
@@ -648,6 +662,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_sottomarino1.get_centro();
                 g2_sottomarino1.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_sottomarino1" << " " << old_centro << " " << g2_sottomarino1.get_centro() << endl;
@@ -658,6 +673,7 @@ void Naval_battle::bot_g2_command() {
             try {
                 old_centro = g2_sottomarino2.get_centro();
                 g2_sottomarino2.azione(target, g2_difesa, g2_attacco, g1_difesa);
+                std::this_thread::sleep_for(std::chrono::milliseconds(800));
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
                 cout << "g2_sottomarino2" << " " << old_centro << " "<<g2_sottomarino2.get_centro() << endl;
