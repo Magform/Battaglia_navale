@@ -151,7 +151,7 @@ void Replay::turno() {
             g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_supporto2.get_centro()) {
-            cout << "supporto2" <<  endl;s
+            cout << "supporto2" <<  endl;
             g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_supporto3.get_centro()) {
