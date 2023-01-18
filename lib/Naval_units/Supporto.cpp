@@ -188,7 +188,6 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sopra)==" ")&&(g1_difesa.retrive(sotto)==" "))){
-            cout<<"check: "<<centro<<endl;
             throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
         }
 
@@ -200,12 +199,12 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         //E metto quella nuova
         begin=sopra;
         end=sotto;
-        centro=obiettivo;
+        
 
         std::cout << "centro: " << centro << std::endl;
 
         g1_difesa.set("S", begin);
-        g1_difesa.set("S", centro);
+        g1_difesa.set("S", obiettivo);
         g1_difesa.set("S", end);
 
     }else{
@@ -233,12 +232,11 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         //E metto quella nuova
         begin=sinistra;
         end=destra;
-        centro=obiettivo;
 
         std::cout << "centro: " << centro << std::endl;
 
         g1_difesa.set("S", begin);
-        g1_difesa.set("S", centro);
+        g1_difesa.set("S", obiettivo);
         g1_difesa.set("S", end);
 
 
@@ -396,6 +394,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         //Fine riparazione
     }
+    centro=obiettivo;
     //Fine dell'azione della nave di supporto 
 };
 
