@@ -303,7 +303,8 @@ int Replay::winner() {
 //funzione da chiamare quando termina la battaglia che si occupa di scrivere in output l'eventuale vincitore e di chiudere i file di input e output
 void Replay::fine() {
     if (winner() != 0) {
-        write("Battaglia terminata, ha vinto il giocatore " + winner());
+        write("Battaglia terminata, ha vinto il giocatore ");
+        write(to_string(winner()));
     }
     else {
         write("Non vi é stato alcun vincitore");
