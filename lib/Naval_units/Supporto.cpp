@@ -43,8 +43,11 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
     //Check per vedere se posso metterla in verticale
 
     if(xInizio==xFine){
-        if((cFine>75)&&(cFine-cInizio!=4))  throw std::invalid_argument("Lunghezza nave non valida");
-        if(cFine-cInizio!=2) throw std::invalid_argument("Lunghezza nave non valida");
+        if(cFine>75){
+            if(cFine-cInizio!=4) throw std::invalid_argument("Lunghezza nave non valida");
+        }else{
+            if(cFine-cInizio!=2) throw std::invalid_argument("Lunghezza nave non valida");
+        }
         char cSearch=cInizio;
         for(int k=0; k<3; k++){   
 
