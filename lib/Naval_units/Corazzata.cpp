@@ -1,3 +1,8 @@
+/*
+
+Autore: Marco Callegaro
+
+*/
 #include "Corazzata.h"
 #include <cstring>
 #include <stdexcept>

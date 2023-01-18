@@ -1,3 +1,8 @@
+/*
+
+Autore: Marco Callegaro
+
+*/
 #include "Sottomarino.h"
 #include <stdexcept>
 #include <string>
