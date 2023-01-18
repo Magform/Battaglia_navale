@@ -161,7 +161,7 @@ bool Supporto::isAlive(Griglia& g_difesa){
 }
     
 void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
-    cout << "Obiettivo supporto: " << obiettivo << g1_difesa.retrive(obiettivo) << endl; endl;
+    cout << "Obiettivo supporto: " << obiettivo << g1_difesa.retrive(obiettivo) << endl;
     //Controllo se la nave di supporto è ancora in vita, altrimenti lancio un'eccezione
     if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido: la nave di supporto che si vuole utilizzare e' stata affondata!");
 
