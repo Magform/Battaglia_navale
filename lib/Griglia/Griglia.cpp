@@ -77,6 +77,7 @@ void Griglia::remove(string location){
 
 //Restituisce la stringa nella posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
+/*
 string Griglia::retrive(string location){
     int character = location[0];
     character = character - 65;
@@ -93,6 +94,16 @@ string Griglia::retrive(string location){
     if(number<0 || number>11){
         throw invalid_argument("Numero della location non valido");
     }
+    return matrix[character][number];
+}
+*/
+string Griglia::retrive(string location) {
+    int character = location[0];
+    character = character - 65;
+    if (character > 10) {
+        character = character - 2;
+    }
+    int number = stoi(location.substr(1, location.lenght() - 1) - 1;
     return matrix[character][number];
 }
 

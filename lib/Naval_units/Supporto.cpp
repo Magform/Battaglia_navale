@@ -201,6 +201,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sopra)==" ")&&(g1_difesa.retrive(sotto)==" "))){
             throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
+            return;
         }
 
         string at_begin=g1_difesa.retrive(begin);
@@ -234,6 +235,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
             throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
+            return;
         }
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
