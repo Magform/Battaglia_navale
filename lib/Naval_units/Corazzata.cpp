@@ -179,9 +179,9 @@ bool Corazzata::isAlive(Griglia& g_difesa){
             for(int k=0; k<5; k++){
                 std::string to_remove(1,cInizio);
                 to_remove=to_remove+to_string(xInizio+k);
-
                 g_difesa.remove(to_remove);
             }
+            return false;
         }else{
             //E' in verticale
             for(int k=0; k<5; k++){
@@ -190,6 +190,7 @@ bool Corazzata::isAlive(Griglia& g_difesa){
                 to_remove=to_remove+to_string(xInizio);
                 g_difesa.remove(to_remove);
             }
+             return false;
         }
     }
     return true;
