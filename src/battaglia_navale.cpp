@@ -14,13 +14,13 @@ int main(int argc, char ** argv) {
 	try {
 		int massimo_turni = 100;	//attenzioe se la si cambia qua bisonga cambiarla anche su replay
 		if (argc > 1) {
-			cout << "Sono stati inseriti troppi argomenti, solo il primo verra' considerator" << endl;
+			cout << "Sono stati inseriti troppi argomenti, solo il primo verra' considerato" << endl;
 		}
 		Naval_battle battaglia(argv[1], true);
 
 		int turni = 1;
 		srand(time(NULL));
-		int start = rand() % 3 + 1;  //si decide in maniera casuale chi inizia
+		int start = (rand() % 2) + 1;  //si decide in maniera casuale chi inizia
 		if (start == 1) {
 			cout << "Il giocatore che inizia la partita è il \"giocatore 1\"" << "\n";
 		}
