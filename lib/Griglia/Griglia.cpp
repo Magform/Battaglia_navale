@@ -103,7 +103,13 @@ string Griglia::retrive(string location) {
     if (character > 10) {
         character = character - 2;
     }
-    int number = stoi(location.substr(1, location.lenght() - 1) - 1;
+    int number = 0;
+    if (location.length() == 2) {
+        number = stoi(location[1]);
+    }
+    else {
+        number = stoi(location[1])*10+stoi(location[2]);
+    }
     return matrix[character][number];
 }
 
