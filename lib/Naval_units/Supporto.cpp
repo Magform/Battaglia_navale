@@ -66,7 +66,7 @@ void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
             centro=cInizio+1;
         }
         centro=centro+to_string(xInizio);
-        cout << "centro" << endl;
+        std::cout << "centro" << std::endl;
                     
             
         for(int k=0; k<3; k++){   
@@ -106,7 +106,7 @@ void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
                 centro=cInizio;
             }
             centro=centro+to_string(xInizio+1);
-            cout << "centro" << endl;
+            std::cout << "centro" << std::endl;
                 
             for(int k=0; k<3; k++){
                 if(cInizio==74||cInizio==75) cInizio=cInizio+2;    
