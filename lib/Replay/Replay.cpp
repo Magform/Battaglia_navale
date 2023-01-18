@@ -172,7 +172,6 @@ void Replay::turno() {
             log_output << g1_difesa << "\n";
         }
 
-        cout << winner() << endl;
         if (winner() != 0) {
             return;
         };
@@ -291,6 +290,7 @@ int Replay::g2_navi() {
 
 //se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
 int Replay::winner() {
+    cout << g1_navi() <<" " << g2_navi() << endl;
     if (g1_navi() == 0) {
         return 1;
     }
