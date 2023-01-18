@@ -108,7 +108,7 @@ string Griglia::retrive(string location) {
         number = location[1]-49;
     }
     else {
-        number = location[1]-49
+        number = location[1] - 49;
         number = number*10+location[2]-49;
     }
     return matrix[character][number];
