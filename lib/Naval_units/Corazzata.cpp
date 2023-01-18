@@ -44,6 +44,7 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
         fine=scambio;
     }
 
+
     //Check per  vedere se posso metterla in verticale
 
     if(xInizio==xFine){
