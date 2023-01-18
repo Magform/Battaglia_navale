@@ -50,7 +50,7 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
         if(!isAlive(g1_difesa)) throw std::invalid_argument("Azione non valida: il sottomarino che si vuole utilizzare e' stato affondato!");
 
         //Guardo se la posizione non è già occupata
-        cout << "Obiettivo sottomarino: " << obiettivo << endl;
+        cout << "Obiettivo sottomarino: " << obiettivo << g1_difesa.retrive(obiettivo)<< endl;
         if (g1_difesa.retrive(obiettivo) == " ") {
             //nuova posizione valida
             //rimuovo vecchia posizione e metto quella nuova
