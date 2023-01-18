@@ -135,27 +135,35 @@ void Replay::turno() {
         write(origin + " " + target + "\n");
 
         if (origin == g1_corazzata1.get_centro()) {
+            cout << "corazzata1" << centro << endl;
             g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_corazzata2.get_centro()) {
+            cout << "corazzata2" << centro << endl;
             g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_corazzata3.get_centro()) {
+            cout << "corazzata3" << centro << endl;
             g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_supporto1.get_centro()) {
+            cout << "supporto1" << centro << endl;
             g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_supporto2.get_centro()) {
+            cout << "supporto2" << centro << endl;s
             g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_supporto3.get_centro()) {
+            cout << "supporto3" << centro << endl;
             g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_sottomarino1.get_centro()) {
+            cout << "sottomarino1" << centro << endl;
             g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else if (origin == g1_sottomarino2.get_centro()) {
+            cout << "sottomarino2" << endl;
             g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
         }
         else {
