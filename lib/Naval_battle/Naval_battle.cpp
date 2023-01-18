@@ -434,14 +434,18 @@ void Naval_battle::command(int giocatore_primo) {
     if (giocatore_primo==2) {
         bot_command(giocatore_primo);
         if (!botBattle) {
-            winner();
+            if (winner() != 0) {
+                return;
+            }
             accept_command();
         }
     }
     else if(giocatore_primo==1){
         if (!botBattle) {
             accept_command();
-            winner();
+            if (winner() != 0) {
+                return;
+            }
         }
         bot_command(giocatore_primo);
     }
@@ -458,7 +462,9 @@ void Naval_battle::bot_command(int giocatore_primo) {
     if (giocatore_primo == 1) {
         if (botBattle) {
             bot_g1_command();
-            winner();
+            if (winner() != 0) {
+                return;
+            }
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
         bot_g2_command();
@@ -467,7 +473,9 @@ void Naval_battle::bot_command(int giocatore_primo) {
         bot_g2_command();
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
         if (botBattle) {
-            winner();
+            if (winner() != 0) {
+                return;
+            }
             bot_g1_command();
         }
     }
