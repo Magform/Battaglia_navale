@@ -67,7 +67,6 @@ void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
             centro=cInizio+1;
         }
         centro=centro+to_string(xInizio);
-        std::cout << "centro" << std::endl;
                     
             
         for(int k=0; k<3; k++){   
@@ -107,7 +106,6 @@ void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
                 centro=cInizio;
             }
             centro=centro+to_string(xInizio+1);
-            std::cout << "centro" << std::endl;
                 
             for(int k=0; k<3; k++){
                 if(cInizio==74||cInizio==75) cInizio=cInizio+2;    
@@ -391,6 +389,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         //Fine riparazione
     }
+    std::cout << "centro: " << centro << std::endl;
     //Fine dell'azione della nave di supporto 
 };
 
