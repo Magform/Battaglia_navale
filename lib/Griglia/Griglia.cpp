@@ -97,9 +97,13 @@ string Griglia::retrive(string location){
     return matrix[character][number];
 }
 */
+
 string Griglia::retrive(string location) {
     int character = location[0];
     character = character - 65;
+    if (character == 9 || character == 10) {
+        throw invalid_argument("Carattere della location non valido");
+    }
     if (character > 10) {
         character = character - 2;
     }
@@ -107,9 +111,12 @@ string Griglia::retrive(string location) {
     if (location.length() == 2) {
         number = location[1]-49;
     }
-    else {
+    if(location.length == 3) {
         number = location[1] - 49;
         number = number*10+location[2]-49;
+    }
+    else {
+        throw invalid_argument("Numero della location non valido");
     }
     return matrix[character][number];
 }
