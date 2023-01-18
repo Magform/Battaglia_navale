@@ -28,6 +28,7 @@ Griglia::Griglia(){
 //Posiziona la stringa toSet alla posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 void Griglia::set(string toSet, string location){
+    cout << "setting: " << string << " to " << toSet << endl;
     int character = location[0];
     character=character-65;
     if(character<0 || character>13){
@@ -61,6 +62,7 @@ void Griglia::clear(){
 //Rimuove la stringa nella posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 void Griglia::remove(string location){
+    cout << "removing: " << location << endl;
     int character = location[0];
     character = character - 65;
     if (character < 0 || character>13) {
