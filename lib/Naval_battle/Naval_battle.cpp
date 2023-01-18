@@ -452,17 +452,17 @@ void Naval_battle::command(int giocatore_primo) {
 //funzione che gestisce i comandi di entrambi i giocatori bot
 //in caso il primo giocatore non sia valido (non sia 1 o 2) lancia un eccezione invalid_argument
 void Naval_battle::bot_command(int giocatore_primo) {
-    std::this_thread::sleep_for(std::chrono::milliseconds(800));
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
     if (giocatore_primo == 1) {
         if (botBattle) {
             bot_g1_command();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(800));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
         bot_g2_command();
     }
     else if (giocatore_primo == 2) {
         bot_g2_command();
-        std::this_thread::sleep_for(std::chrono::milliseconds(800));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
         if (botBattle) {
             bot_g1_command();
         }
