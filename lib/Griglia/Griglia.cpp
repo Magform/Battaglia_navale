@@ -93,7 +93,6 @@ string Griglia::retrive(string location){
     if(number<0 || number>11){
         throw invalid_argument("Numero della location non valido");
     }
-    std::cout << character << " " << number << std::endl;
     return matrix[character][number];
 }
 
