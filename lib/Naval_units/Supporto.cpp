@@ -84,7 +84,7 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
         //Check per vedere se posso metterla in orizzontale
 
         if(yInizio==yFine){
-            if(xInizio-xFine!=5)    throw std::invalid_argument("Lunghezza nave non valida");
+            if(xInizio-xFine!=2)    throw std::invalid_argument("Lunghezza nave non valida");
             char cSearch=cInizio;  
             for(int k=0; k<3; k++){   
                 if(cSearch==74||cSearch==75) cSearch=cSearch+2;   
