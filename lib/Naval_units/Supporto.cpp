@@ -9,7 +9,7 @@ string Supporto::get_centro(){
     return centro;
 }
 
-void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
+void Supporto::set(std::string inizio, std::string fine, Griglia& g_difesa){
        
     //converto in cordiate "matrici" la coordinata di inizio
     char cInizio=inizio.at(0);
@@ -66,6 +66,7 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
             centro=cInizio+1;
         }
         centro=centro+to_string(xInizio);
+        cout << "centro" << endl;
                     
             
         for(int k=0; k<3; k++){   
@@ -105,6 +106,7 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
                 centro=cInizio;
             }
             centro=centro+to_string(xInizio+1);
+            cout << "centro" << endl;
                 
             for(int k=0; k<3; k++){
                 if(cInizio==74||cInizio==75) cInizio=cInizio+2;    
@@ -127,7 +129,6 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
 }
 
 bool Supporto::isAlive(Griglia& g_difesa){ 
-
     if(vita==0) return false;
 
     int counter=0;
