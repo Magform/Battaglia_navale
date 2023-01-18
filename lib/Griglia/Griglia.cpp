@@ -105,10 +105,11 @@ string Griglia::retrive(string location) {
     }
     int number = 0;
     if (location.length() == 2) {
-        number = stoi(location[1]);
+        number = location[1]-49;
     }
     else {
-        number = stoi(location[1])*10+stoi(location[2]);
+        number = location[1]-49
+        number = number*10+location[2]-49;
     }
     return matrix[character][number];
 }
