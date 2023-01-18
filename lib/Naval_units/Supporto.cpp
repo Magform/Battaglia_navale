@@ -1,3 +1,8 @@
+/*
+
+Autore: Marco Callegaro
+
+*/
 #include "Supporto.h"
 #include <cstring>
 #include <stdexcept>
