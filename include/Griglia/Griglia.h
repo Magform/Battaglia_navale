@@ -3,19 +3,22 @@
 #ifndef Griglia_H_
 #define Griglia_H_
 
+// Classe che rappresenta una griglia bidimensionale di stringhe.
+// Ogni posizione della griglia è rappresentata da una cella contenente una stringa.
+// La classe fornisce funzionalità per posizionare, rimuovere e recuperare le stringhe nella griglia.
 
 class Griglia{
 protected:
-    std::string matrix[12][12];      //matrice che rappresenta la griglia [y][x]
+    std::string matrix[12][12];     
 public:
     Griglia();
 
     //funzioni utili
-    void set(std::string toSet, std::string location);        //posiziona la stringa "toSet" nalla posizione "location" 
-    void clear();                                   //cancella TUTTA la griglia
-    void remove(std::string location);                   //rimuove ciò che c'è nalla posizione "location"
-    void remove_all(std::string to_remove);              //Elimina interamente il valore cercato dalla griglia.
-    std::string retrive(std::string location);                //restituisce ció che é presente nella posizione "location"
+    void set(std::string toSet, std::string location);       
+    void clear();                                             
+    void remove(std::string location);                        
+    void remove_all(std::string to_remove);                   
+    std::string retrive(std::string location);                
 
     //overload operatori
     friend std::ostream& operator<<(std::ostream& os, const Griglia to_print);

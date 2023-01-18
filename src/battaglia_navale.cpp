@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, char ** argv) {
 	try {
-		int massimo_turni = 100;	//attenzioe se la si cambia qua bisonga cambiarla anche su replay
+		int massimo_turni = 100;	//WARNING: se la si cambia qua bisonga cambiarla anche su replay, rappresenta il numero massimo di turni giocati
 		if (argc > 1) {
 			cout << "Sono stati inseriti troppi argomenti, solo il primo verra' considerato" << endl;
 		}

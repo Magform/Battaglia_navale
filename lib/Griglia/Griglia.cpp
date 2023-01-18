@@ -14,7 +14,7 @@ Griglia::Griglia(){
 }
 
 
-//Posiziona la stringa toSot alla posizione location
+//Posiziona la stringa toSet alla posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 void Griglia::set(string toSet, string location){
     int character = location[0];
@@ -103,7 +103,7 @@ void Griglia::remove_all(string to_remove) {
 }
 
 //overload operator <<
-//Stampa a schermo la griglia fornendo anche il numero nelle colonne e la lettera nella righe
+//Stampa a schermo la griglia fornendo anche il numero di colonna nelle colonne e la lettera nella righe
 ostream& operator<<(ostream& os, const Griglia to_Print){
     char rigaChar=65;
 

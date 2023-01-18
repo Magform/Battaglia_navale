@@ -6,13 +6,13 @@
 #include <chrono>
 #include <thread>
 
-//namespace
+//namespace utilizzati
 using namespace std;
 using namespace this_thread;
 using namespace chrono;
 
 //funzioni utili.
-std::string location_to_string(int X, int Y);       //funzione che trasforma coordinate numeriche in coordinate valide per la griglia (del tipo LetteraNumero)                                                
+std::string location_to_string(int X, int Y);         //funzione che trasforma coordinate numeriche in coordinate valide per la griglia (del tipo LetteraNumero)                                                
 void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);		//funzione utilizzata dal bot per creare la corazzata in maniera casuale
 void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);		    //funzione utilizzata dal bot per creare la nave di supporto in maniera casuale
 void create_sottomarino(Sottomarino& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log);	//funzione utilizzata dal bot per creare il sottomarino in maniera casuale
@@ -321,7 +321,7 @@ void Naval_battle::setup(int giocatore_primo) {
 }
 
 
-//funzione che gestisce i comandi del giocatore e, se validi gli scrive anche nel log
+//funzione che gestisce i comandi del giocatore e, se validi gli scrive anche nel file di log
 void Naval_battle::accept_command(){
     cout << "Inserire comando (HH HH per mostrare tutti i comandi possibili) \n";
     std::string origin, target;
@@ -429,7 +429,7 @@ void Naval_battle::accept_command(){
 }
 
 //funzione che gestisce tutti i comandi che la battaglia possiede (inseriti dall'utente ed automatici dei bot)
-//se il primo giocatore non é 1 o 2 lancia un eccezione
+//in caso il primo giocatore non sia valido (non sia 1 o 2) lancia un eccezione invalid_argument
 void Naval_battle::command(int giocatore_primo) {
     if (giocatore_primo==2) {
         bot_command(giocatore_primo);
@@ -889,7 +889,7 @@ std::string location_to_string(int X, int Y) {
         output = output + "N";
         break;
     default:
-        output = output + "A"; //se il valore non é valido, invece di lanciare un eccezzione, ho deciso di impostare la colonna A di default.
+        output = output + "A"; //se il valore non é valido, invece di lanciare un eccezione, ho deciso di impostare la colonna A di default.
     }
     output = output + to_string(Y);
     return output;
