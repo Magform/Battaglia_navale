@@ -1,3 +1,10 @@
+
+/*
+
+	Autore: Anna Quartesan
+
+*/
+
 #include <stdexcept>
 #include <string>
 #include <iostream>

@@ -1,3 +1,10 @@
+
+/*
+
+    Autore: Nicolas Ferraresso
+
+*/
+
 #ifndef Naval_battle_H_
 #define Naval_battle_H_
 

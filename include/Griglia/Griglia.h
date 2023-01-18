@@ -1,3 +1,10 @@
+
+/*
+
+    Autore: Nicolas Ferraresso
+
+*/
+
 #include <string>
 
 #ifndef Griglia_H_

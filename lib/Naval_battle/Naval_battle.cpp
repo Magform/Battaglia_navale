@@ -1,3 +1,9 @@
+/*
+
+    Autore: Nicolas Ferraresso
+
+*/
+
 #include "Naval_battle.h"
 
 #include <fstream>

@@ -1,3 +1,10 @@
+
+/*
+
+    Autore: Nicolas Ferraresso
+
+*/
+
 #include "Griglia.h"
 #include <iostream>
 
