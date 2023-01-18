@@ -235,8 +235,6 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
             throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
         }
-        cout << g1_difesa.retrive(obiettivo) << g1_difesa.retrive(sinistra) << g1_difesa.retrive(destra) << endl;
-        cout << obiettivo << sinistra << destra << endl;
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
         string at_end=g1_difesa.retrive(end);
