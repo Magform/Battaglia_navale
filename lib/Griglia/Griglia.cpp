@@ -6,6 +6,7 @@
 */
 
 int oldC, oldN;
+string oldL;
 
 #include "Griglia.h"
 #include <iostream>
@@ -82,6 +83,11 @@ void Griglia::remove(string location){
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 
 string Griglia::retrive(string location){
+    if (location != oldL) {
+        std::cout << location << std::endl;
+        oldL = location;
+    }
+
     int character = location[0];
     character = character - 65;
     if (character < 0 || character>13) {

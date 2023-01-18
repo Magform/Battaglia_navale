@@ -67,7 +67,6 @@ void Corazzata::set(std::string inizio, std::string fine, Griglia& g_difesa){
             if(cSearch==74||cSearch==75) cSearch=cSearch+2;
             std::string Pos(1,cSearch);
             Pos=Pos+to_string(xInizio);
-            cout << "checking " << Pos << endl;
             if(g_difesa.retrive(Pos)==" "){    //Se va fuori dalla griglia lancia l'eccezione da Griglia.hpp
                 cSearch=cSearch+1;
                     
