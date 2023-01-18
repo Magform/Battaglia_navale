@@ -201,6 +201,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         end=sotto;
         centro=obiettivo;
 
+        std::cout << "centro: " << centro << std::endl;
+
         g1_difesa.set("S", begin);
         g1_difesa.set("S", centro);
         g1_difesa.set("S", end);
@@ -231,9 +233,12 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         end=destra;
         centro=obiettivo;
 
+        std::cout << "centro: " << centro << std::endl;
+
         g1_difesa.set("S", begin);
         g1_difesa.set("S", centro);
         g1_difesa.set("S", end);
+
 
     }
     //Fine spostamento nave
@@ -389,7 +394,6 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         //Fine riparazione
     }
-    std::cout << "centro: " << centro << std::endl;
     //Fine dell'azione della nave di supporto 
 };
 
