@@ -261,35 +261,27 @@ int Replay::g1_navi() {
 int Replay::g2_navi() {
     int toReturn{ 0 };
     if (g2_corazzata1.isAlive(g2_difesa)) {
-        cout << "cor1 viva" << endl;
         toReturn++;
     }
     if (g2_corazzata2.isAlive(g2_difesa)) {
-        cout << "cor2 viva" << endl;
         toReturn++;
     }
     if (g2_corazzata3.isAlive(g2_difesa)) {
-        cout << "cor3 viva" << endl;
         toReturn++;
     }
     if (g2_supporto1.isAlive(g2_difesa)) {
-        cout << "sup1 viva" << endl;
         toReturn++;
     }
     if (g2_supporto2.isAlive(g2_difesa)) {
-        cout << "sup2 viva" << endl;
         toReturn++;
     }
     if (g2_supporto3.isAlive(g2_difesa)) {
-        cout << "sup3 viva" << endl;
         toReturn++;
     }
     if (g2_sottomarino1.isAlive(g2_difesa)) {
-        cout << "sot1 viva" << endl;
         toReturn++;
     }
     if (g2_sottomarino2.isAlive(g2_difesa)) {
-        cout << "sot2 viva" << endl;
         toReturn++;
     }
     return toReturn;
