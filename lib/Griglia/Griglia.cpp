@@ -111,7 +111,7 @@ string Griglia::retrive(string location) {
     if (location.length() == 2) {
         number = location[1]-49;
     }
-    if(location.length == 3) {
+    if(location.length() == 3) {
         number = location[1] - 49;
         number = number*10+location[2]-49;
     }
