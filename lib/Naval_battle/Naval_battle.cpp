@@ -492,7 +492,7 @@ void Naval_battle::bot_g1_command(){
                 g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_corazzata1" << endl;
+                cout << "g1_corazzata1" <<old_centro << " " << g1_corazzata1.get_centro() endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -502,7 +502,7 @@ void Naval_battle::bot_g1_command(){
                 g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_corazzata2" << endl;
+                cout << "g1_corazzata2" << old_centro << " " << g1_corazzata2.get_centro() endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -512,7 +512,7 @@ void Naval_battle::bot_g1_command(){
                 g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_corazzata3" << endl;
+                cout << "g1_corazzata3" << old_centro << " " << g1_corazzata3.get_centro() endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -590,7 +590,7 @@ void Naval_battle::bot_g2_command() {
                 g2_corazzata1.azione(target, g2_difesa, g2_attacco, g1_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g2_corazzata1" << endl;
+                cout << "g2_corazzata1" << old_centro << " " << g2_corazzata1.get_centro() endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -600,7 +600,7 @@ void Naval_battle::bot_g2_command() {
                 g2_corazzata2.azione(target, g2_difesa, g2_attacco, g1_difesa);
                 if (log) { log_file << "" << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g2_corazzata2" << endl;
+                cout << "g2_corazzata2" << old_centro << " " << g2_corazzata2.get_centro() endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -610,7 +610,7 @@ void Naval_battle::bot_g2_command() {
                 g2_corazzata3.azione(target, g2_difesa, g2_attacco, g1_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g2_corazzata3" << endl;
+                cout << "g2_corazzata3" << old_centro <<" " << g2_corazzata3.get_centro() endl;
             }
             catch (const invalid_argument ex) {}
             break;
