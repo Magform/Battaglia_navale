@@ -13,7 +13,7 @@ using namespace std;
 int main(int argc, char ** argv) {
 	string loadtype{}, log_in{}, log_out{};
 	bool accepted = false;
-	int turni=0;
+	int turni=1;
 	int massimo_turni = 100; //WARNING: se la si cambia qua bisonga cambiarla anche su battaglia_navale, rappresenta il numero massimo di turni giocati
 	while (!accepted) {
 		try {

@@ -492,7 +492,7 @@ void Naval_battle::bot_g1_command(){
                 g1_corazzata1.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "corazzata1" << endl;
+                cout << "g1_corazzata1" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -502,7 +502,7 @@ void Naval_battle::bot_g1_command(){
                 g1_corazzata2.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "corazzata2" << endl;
+                cout << "g1_corazzata2" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -512,7 +512,7 @@ void Naval_battle::bot_g1_command(){
                 g1_corazzata3.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "corazzata3" << endl;
+                cout << "g1_corazzata3" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -522,7 +522,7 @@ void Naval_battle::bot_g1_command(){
                 g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "supporto1" << endl;
+                cout << "g1_supporto1" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -532,7 +532,7 @@ void Naval_battle::bot_g1_command(){
                 g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "supporto2" << endl;
+                cout << "g1_supporto2" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -542,7 +542,7 @@ void Naval_battle::bot_g1_command(){
                 g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "supporto3" << endl;
+                cout << "g1_supporto3" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -552,7 +552,7 @@ void Naval_battle::bot_g1_command(){
                 g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "sottomarino1" << endl;
+                cout << "g1_sottomarino1" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -562,7 +562,7 @@ void Naval_battle::bot_g1_command(){
                 g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "sottomarino2" << endl;
+                cout << "g1_sottomarino2" << endl;
             }
             catch (const invalid_argument ex) {}
             break;
