@@ -172,6 +172,7 @@ void Replay::turno() {
             log_output << g1_difesa << "\n";
         }
 
+        cout << winner() << endl;
         if (winner() != 0) {
             return;
         };
