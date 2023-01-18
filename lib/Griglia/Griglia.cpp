@@ -21,6 +21,8 @@ Griglia::Griglia(){
 }
 
 
+int oldC, oldN;
+
 //Posiziona la stringa toSet alla posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 void Griglia::set(string toSet, string location){
@@ -39,6 +41,13 @@ void Griglia::set(string toSet, string location){
     if(number<0 || number>11){
         throw invalid_argument("Numero della location non valido");
     }
+
+    if (character != oldC && number != oldN) {
+        std::cout << character << " " << number << std::endl;
+        oldC = character;
+        number = oldN;
+    }
+
     matrix[character][number] = toSet;
 }
 
