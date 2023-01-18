@@ -522,7 +522,7 @@ void Naval_battle::bot_g1_command(){
                 g1_supporto1.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_supporto1" << endl;
+                cout << "g1_supporto1" << old_centro << " " << g1_supporto1.get_centro() << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -532,7 +532,7 @@ void Naval_battle::bot_g1_command(){
                 g1_supporto2.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_supporto2" << endl;
+                cout << "g1_supporto2" << old_centro << " " << g1_supporto2.get_centro() <<endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -542,7 +542,7 @@ void Naval_battle::bot_g1_command(){
                 g1_supporto3.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_supporto3" << endl;
+                cout << "g1_supporto3" << old_centro << " " << g1_supporto3.get_centro() << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -552,7 +552,7 @@ void Naval_battle::bot_g1_command(){
                 g1_sottomarino1.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_sottomarino1" << endl;
+                cout << "g1_sottomarino1" << old_centro << " " << g1_sottomarino1.get_centro() << endl;
             }
             catch (const invalid_argument ex) {}
             break;
@@ -562,7 +562,7 @@ void Naval_battle::bot_g1_command(){
                 g1_sottomarino2.azione(target, g1_difesa, g1_attacco, g2_difesa);
                 if (log) { log_file << old_centro << " " << target << endl; }
                 command_accepted = true;
-                cout << "g1_sottomarino2" << endl;
+                cout << "g1_sottomarino2" << old_centro << " " << g1_sottomarino2.get_centro() << endl;
             }
             catch (const invalid_argument ex) {}
             break;
