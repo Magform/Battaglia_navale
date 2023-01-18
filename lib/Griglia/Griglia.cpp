@@ -43,7 +43,7 @@ void Griglia::set(string toSet, string location){
     }
 
     if (character != oldC && number != oldN) {
-        std::cout << character << " " << number << std::endl;
+        std::cout << character << " " << number <<" "<< matrix[character][number]<< std::endl;
         oldC = character;
         oldN = number;
     }
