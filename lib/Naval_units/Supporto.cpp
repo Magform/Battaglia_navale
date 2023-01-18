@@ -225,7 +225,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         std::string destra(1,cTarget);
         destra=destra+to_string(XTarget+1);
-
+        cout << g1_difesa.retrive(obiettivo) << g1_difesa.retrive(sinistra) << g1_difesa.retrive(destra) << endl;
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
             throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
