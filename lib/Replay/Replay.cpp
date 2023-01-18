@@ -171,7 +171,7 @@ void Replay::turno() {
             log_output << g1_attacco << "\n";
             log_output << g1_difesa << "\n";
         }
-
+        winner();
         write("Azione giocatore 2: ");
         log_input >> origin >> target;
         write(origin + " " + target + "\n");
