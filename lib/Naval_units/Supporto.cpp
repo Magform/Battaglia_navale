@@ -7,6 +7,7 @@ Autore: Marco Callegaro
 #include <cstring>
 #include <stdexcept>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
