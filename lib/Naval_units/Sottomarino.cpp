@@ -14,7 +14,7 @@ string Sottomarino::get_centro(){
     return centro;
 }
 
-/
+
 void Sottomarino::set(std::string inizio, std::string fine, Griglia& g_difesa){
     
     if(inizio!=fine)    throw std::invalid_argument("Carattere non valido: le coordinate devono essere uguali");
@@ -96,9 +96,9 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
                 }
                 //fine del radar           
             }
-            else {
-                throw std::invalid_argument("La casella in cui si vuole spostare il sottomarino e' gia' occupata!");
-            }
+        }
+        else {
+            throw std::invalid_argument("La casella in cui si vuole spostare il sottomarino e' gia' occupata!");
         }
     //Fine sottomarino        
 };
