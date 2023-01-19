@@ -297,10 +297,10 @@ int Replay::g2_navi() {
 
 //se vince giocatore 1 restituisce 1, se vince giocatore 2 restituisce 2, altrimenti 0
 int Replay::winner() {
-    if (g1_navi() == 8) {
+    if (g1_navi() == 0) {
         return 2;
     }
-    if (g2_navi() == 8) {
+    if (g2_navi() == 0) {
         return 1;
     }
     return 0;
