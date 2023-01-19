@@ -212,6 +212,7 @@ void Replay::turno() {
             g2_sottomarino2.azione(target, g2_difesa, g2_attacco, g1_difesa);
         }
         else {
+            cout << "WTF" << origin << g2_supporto2.get_centro() <<endl;
             throw invalid_argument("Battaglia nel file non valida");
         }
 
