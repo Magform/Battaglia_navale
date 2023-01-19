@@ -39,7 +39,6 @@ int main(int argc, char ** argv) {
 			}
 
 			while (battaglia.winner()==0 && turni <= massimo_turni) {
-				cout << "Turno: " << turni << endl;
 				battaglia.turno();
 				turni++;
 			}
