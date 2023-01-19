@@ -50,12 +50,17 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
         if(!isAlive(g1_difesa)) throw std::invalid_argument("Azione non valida: il sottomarino che si vuole utilizzare e' stato affondato!");
 
         //Guardo se la posizione non è già occupata
-        if (g1_difesa.retrive(obiettivo) == " ") {
-            //nuova posizione valida
-            //rimuovo vecchia posizione e metto quella nuova
-            g1_difesa.remove(centro);
-            g1_difesa.set("E", obiettivo);
+        g1_difesa.remove(centro);
+        try {
+            g1_difesa.secure_set("E", obiettivo);
             centro = obiettivo;
+            inizio = obiettivo;
+            fine = obiettivo;
+        }
+        catch (const invalid_argument ex) {
+            g1_difesa.secure_set("E", centro);
+        }
+
 
             //Trasformo "obiettivo" in coordinate
             char cTarget = obiettivo.at(0);
