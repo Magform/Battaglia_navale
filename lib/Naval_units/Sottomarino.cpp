@@ -59,8 +59,6 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
         inizio = obiettivo;
         fine = obiettivo;
 
-        char cTarget = obiettivo.at(0);
-        int XTarget = stoi(obiettivo.substr(1, obiettivo.length() - 1));
 
         //Trasformo "obiettivo" in coordinate
         char cTarget = obiettivo.at(0);
