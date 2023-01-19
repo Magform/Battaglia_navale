@@ -515,10 +515,9 @@ void Naval_battle::bot_g1_command(){
     while (!command_accepted) {
         srand(time(NULL));
 	int attaccante = rand() % 8 + 0;
-std::this_thread::sleep_for(std::chrono::milliseconds(500));
+std::this_thread::sleep_for(std::chrono::milliseconds(10));
         int locationX, locationY;
         locationX = rand() % 12 + 0;
-std::this_thread::sleep_for(std::chrono::milliseconds(500));
         locationY = rand() % 12 + 1;
         string target = location_to_string(locationX, locationY);
         switch (attaccante) {
@@ -607,10 +606,9 @@ void Naval_battle::bot_g2_command() {
     while (!command_accepted) {
         srand(time(NULL));
         int attaccante = rand() % 8 + 0;
-std::this_thread::sleep_for(std::chrono::milliseconds(500));
         int locationX, locationY;
         locationX = rand() % 12 + 0;
-std::this_thread::sleep_for(std::chrono::milliseconds(500));
+std::this_thread::sleep_for(std::chrono::milliseconds(10));
         locationY = rand() % 12 + 1;
         string target = location_to_string(locationX, locationY);
         switch (attaccante) {
@@ -697,28 +695,28 @@ int Naval_battle::g1_navi() {
     int toReturn{ 0 };
     if (g1_corazzata1.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g1_corazzata2.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g1_corazzata3.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g1_supporto1.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g1_supporto2.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g1_supporto3.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g1_sottomarino1.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g1_sottomarino2.isAlive(g1_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     return toReturn;
 }
 
@@ -728,28 +726,28 @@ int Naval_battle::g2_navi() {
     int toReturn{ 0 };
     if (g2_corazzata1.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g2_corazzata2.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g2_corazzata3.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g2_supporto1.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g2_supporto2.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g2_supporto3.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g2_sottomarino1.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     if (g2_sottomarino2.isAlive(g2_difesa)) {
         toReturn++;
-    }std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
     return toReturn;
 }
 
