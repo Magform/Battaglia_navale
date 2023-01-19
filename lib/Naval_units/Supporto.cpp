@@ -206,7 +206,6 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         g1_difesa.remove(end);
 
         char tmp_1 = obiettivo[0] - 1;
-        cout << tmp_1 << endl;
         string tmp_11;
         if (tmp_1 == 'J' || tmp_1 == 'K') {
             tmp_1 = tmp_1 - 2;
@@ -214,6 +213,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         }
         else {
             tmp_11.assign(tmp_1,1);
+            cout << tmp_11 << endl;
         }
 
         char tmp_2 = obiettivo[0] + 1;
