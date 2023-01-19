@@ -166,20 +166,21 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido: la nave di supporto che si vuole utilizzare e' stata affondata!");
 
     //individuo la poszione della vecchia nave:
-    int lettera_inizio = inizio[0];
-    int lettera_fine = fine[0];
+
+    int lettera_inizio = begin[0];
+    int lettera_fine = end[0];
 
     cout << "t1" << endl;
-
+    cout << lettera_fine << " " << lettera_inizio;
     if (lettera_fine == lettera_inizio) {       //e' orizziontale
         cout << "never" << endl;
-        string old_sinistra = g1_difesa.retrive(inizio);
+        string old_sinistra = g1_difesa.retrive(begin);
         string old_centro = g1_difesa.retrive(centro);
-        string old_destra = g1_difesa.retrive(fine);
+        string old_destra = g1_difesa.retrive(end);
 
-        g1_difesa.remove(inizio);
+        g1_difesa.remove(begin);
         g1_difesa.remove(centro);
-        g1_difesa.remove(fine);
+        g1_difesa.remove(end);
 
         string tmp(1, obiettivo[0]);
         string sinistra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length() - 1)) - 1);
@@ -190,27 +191,27 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
             g1_difesa.secure_set(old_destra, destra_obiettivo);
             g1_difesa.secure_set(old_centro, obiettivo);
 
-            inizio = sinistra_obiettivo;
-            fine = destra_obiettivo;
+            begin = sinistra_obiettivo;
+            end = destra_obiettivo;
             centro = obiettivo;
 
        }
        catch(const invalid_argument ex) {
             g1_difesa.set(old_sinistra, inizio);
-            g1_difesa.set(old_destra, fine);
+            g1_difesa.set(old_destra, end);
             g1_difesa.set(old_centro, obiettivo);
        }
 
     }
     else {                                      //e' verticale
         cout << "giusto" << endl;
-        string old_sopra = g1_difesa.retrive(inizio);
+        string old_sopra = g1_difesa.retrive(begin);
         string old_centro = g1_difesa.retrive(centro);
-        string old_sotto = g1_difesa.retrive(fine);
+        string old_sotto = g1_difesa.retrive(end);
 
-        g1_difesa.remove(inizio);
+        g1_difesa.remove(begin);
         g1_difesa.remove(centro);
-        g1_difesa.remove(fine);
+        g1_difesa.remove(end);
 
         char tmp_1 = obiettivo[0] - 1;
         string tmp_11;
@@ -241,14 +242,14 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
             g1_difesa.secure_set(old_sotto, sotto_obiettivo);
             g1_difesa.secure_set(old_centro, obiettivo);
 
-            inizio = sopra_obiettivo;
-            fine = sotto_obiettivo;
+            begin = sopra_obiettivo;
+            end = sotto_obiettivo;
             centro = obiettivo;
 
        }
        catch(const invalid_argument ex){
-            g1_difesa.set(old_sopra, inizio);
-            g1_difesa.set(old_sotto, fine);
+            g1_difesa.set(old_sopra, begin);
+            g1_difesa.set(old_sotto, end);
             g1_difesa.set(old_centro, obiettivo);
        }
     }
