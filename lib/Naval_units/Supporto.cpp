@@ -225,8 +225,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
             tmp_22.assign(tmp_2, 1);
         }
 
-        cout << tmp_11 << " " << obiettivo.substr(1, begin.length())<<endl;
-        cout << tmp_22 << " " << obiettivo.substr(1, begin.length()) << endl;
+        cout << tmp_11 << " number: " << obiettivo.substr(1, begin.length())<<endl;
+        cout << tmp_22 << " number: " << obiettivo.substr(1, begin.length()) << endl;
 
         string sopra_obiettivo = tmp_11 + obiettivo.substr(1, begin.length() - 1);
         string sotto_obiettivo = tmp_22 + obiettivo.substr(1, begin.length() - 1);
