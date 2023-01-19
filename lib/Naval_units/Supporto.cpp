@@ -176,8 +176,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         g1_difesa.remove(end);
 
         string tmp(1, obiettivo[0]);
-        string sinistra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length()) - 1);
-        string destra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length()) + 1);
+        string sinistra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length())) - 1);
+        string destra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length())) + 1);
 
         if (g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " ") {
             g1_difesa.set(old_sinistra, sinistra_obiettivo);
