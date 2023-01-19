@@ -54,7 +54,6 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
         if (g1_difesa.retrive(obiettivo) == " ") {
             //nuova posizione valida
             //rimuovo vecchia posizione e metto quella nuova
-            g1_difesa.remove(centro);
             g1_difesa.set("E", obiettivo);
             centro = obiettivo;
 
