@@ -201,7 +201,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
         string at_end=g1_difesa.retrive(end);
-cout<<"begin: <<"<<at_begin<<"  at_centro:  "<<at_centro<<"   end: "<<at_end;
+cout<<"sopra: <<"<<sopra<<"  at_centro:  "<<obiettivo<<"   sotto "<<sotto<<endl;
         //Rimuovo la posizione, in caso di spostamento su se stessa
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
@@ -241,7 +241,7 @@ cout<<"niente if verticale"<<endl;
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
         string at_end=g1_difesa.retrive(end);
-cout<<"begin: <<"<<at_begin<<"  at_centro:  "<<at_centro<<"   end: "<<at_end;
+cout<<"sinistra: <<"<<sinistra<<"  at_centro:  "<<obiettivo<<"   destra: "<<destra<<endl;
         //Rimuovo la posizione, in caso di spostamento su se stessa
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
