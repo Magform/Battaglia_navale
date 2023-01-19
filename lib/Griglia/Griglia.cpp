@@ -5,9 +5,6 @@
 
 */
 
-#include <string>
-std::string oldL;
-
 
 #include "Griglia.h"
 #include <iostream>
@@ -28,7 +25,6 @@ Griglia::Griglia(){
 //Posiziona la stringa toSet alla posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 void Griglia::set(string toSet, string location){
-    cout << "setting: " << location << " to " << toSet << endl;
     int character = location[0];
     character=character-65;
     if(character<0 || character>13){
@@ -62,7 +58,6 @@ void Griglia::clear(){
 //Rimuove la stringa nella posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia, in caso negativo lancia un eccezione invalid_argument
 void Griglia::remove(string location){
-    cout << "removing: " << location << endl;
     int character = location[0];
     character = character - 65;
     if (character < 0 || character>13) {
@@ -103,10 +98,6 @@ string Griglia::retrive(string location){
         throw invalid_argument("Numero della location non valido");
     }
 
-    if (location != oldL) {
-        std::cout << location <<" " << character << " " << number << " " << matrix[character][number] << std::endl;
-        oldL = location;
-    }
 
     return matrix[character][number];
 }
