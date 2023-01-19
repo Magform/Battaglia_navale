@@ -19,14 +19,14 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
        
     //converto in cordiate "matrici" la coordinata di inizio
     char cInizio=inizio.at(0);
-    int xInizio=stoi(inizio.substr(1,inizio.length()-1));
+    int xInizio=stoi(inizio.substr(1,inizio.length()));
     int yInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
     yInizio=cInizio-65;
         
     //converto in cordiate "matrici" la coordinata di fine
     char cFine=fine.at(0);
-    int xFine=stoi(fine.substr(1,fine.length()-1));
+    int xFine=stoi(fine.substr(1,fine.length()));
     int yFine;
     if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
     yFine=cFine-65;
@@ -178,7 +178,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         string tmp(1, obiettivo[0]);
         string sinistra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length())) - 1);
         string destra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length())) + 1);
-        cout << sinistra_obiettivo << " " << destra_obiettivo << endl;
+
         if (g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " ") {
             g1_difesa.set(old_sinistra, sinistra_obiettivo);
             g1_difesa.set(old_destra, destra_obiettivo);
