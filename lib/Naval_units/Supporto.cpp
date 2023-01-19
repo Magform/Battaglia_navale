@@ -168,8 +168,11 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     //individuo la poszione della vecchia nave:
     int lettera_inizio = inizio[0];
     int lettera_fine = fine[0];
-    if (lettera_fine == lettera_inizio) {       //e' orizziontale
 
+    cout << "t1" << endl;
+
+    if (lettera_fine == lettera_inizio) {       //e' orizziontale
+        cout << "never" << endl;
         string old_sinistra = g1_difesa.retrive(inizio);
         string old_centro = g1_difesa.retrive(centro);
         string old_destra = g1_difesa.retrive(fine);
@@ -200,6 +203,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
     }
     else {                                      //e' verticale
+        cout << "giusto" << endl;
         string old_sopra = g1_difesa.retrive(inizio);
         string old_centro = g1_difesa.retrive(centro);
         string old_sotto = g1_difesa.retrive(fine);
