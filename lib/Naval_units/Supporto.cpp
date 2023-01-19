@@ -206,6 +206,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         g1_difesa.remove(end);
 
         char tmp_1 = obiettivo[0] - 1;
+        cout << tmp_1 << endl;
         string tmp_11;
         if (tmp_1 == 'J' || tmp_1 == 'K') {
             tmp_1 = tmp_1 - 2;
@@ -228,8 +229,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         cout << tmp_11 << " number: " << obiettivo.substr(1, begin.length())<<endl;
         cout << tmp_22 << " number: " << obiettivo.substr(1, begin.length()) << endl;
 
-        string sopra_obiettivo = tmp_11 + obiettivo.substr(1, begin.length() - 1);
-        string sotto_obiettivo = tmp_22 + obiettivo.substr(1, begin.length() - 1);
+        string sopra_obiettivo = tmp_11 + obiettivo.substr(1, begin.length());
+        string sotto_obiettivo = tmp_22 + obiettivo.substr(1, begin.length());
 
         cout << sopra_obiettivo <<" " << sotto_obiettivo <<" " << obiettivo << endl;
         if (g1_difesa.retrive(sopra_obiettivo) == " " && g1_difesa.retrive(sotto_obiettivo) == " " && g1_difesa.retrive(obiettivo) == " ") {
