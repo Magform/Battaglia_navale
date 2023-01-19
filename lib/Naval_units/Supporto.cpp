@@ -161,99 +161,79 @@ bool Supporto::isAlive(Griglia& g_difesa){
 }
     
 void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_attacco, Griglia& g2_difesa){
-    //Controllo se la nave di supporto è ancora in vita, altrimenti lancio un'eccezione
-    if(!isAlive(g1_difesa)) throw std::invalid_argument("Carattere non valido: la nave di supporto che si vuole utilizzare e' stata affondata!");
 
-    //Ottengo le coordinate dell'obiettivo
-    char cTarget=obiettivo.at(0);
-    int XTarget=stoi(obiettivo.substr(1,obiettivo.length()-1));
-    int YTarget;
-    if((cTarget<65)||(cTarget>78))  throw std::invalid_argument("Carattere non valido");
-    YTarget=cTarget-65;
-    
-    //Ottengo le coordinate x dell'inizio e fine della vecchia posizione, per vedere se la nave è in orizzontale o verticale
-    int xInizio=stoi(begin.substr(1,begin.length()-1));
-    int xFine=stoi(end.substr(1,end.length()-1));
-      
-    //inizio spostamento, controllando prima se la nave è in orizzontale o in verticale
-    
-    if(xInizio==xFine){
-           
-        //E' in verticale
+    //individuo la poszione della vecchia nave:
+    int lettera_inizio = inizio[0];
+    int lettera_fine = fine[0];
+    if (lettera_fine == lettera_inizio) {       //e' orizziontale
 
-        //Prendo le posizioni sopra e sotto all'obiettivo, per vedere se posso metterla in verticale
-        std::string sopra, sotto;
-        if(cTarget-1=='J'||cTarget-1=='K'){
-            sopra=cTarget-3;
-        }else{
-            sopra=cTarget-1;
-        }
-        sopra=sopra+to_string(XTarget);
+        string old_sinistra = g1_difesa.retrive(inizio);
+        string old_centro = g1_difesa.retrive(centro);
+        string old_destra = g1_difesa.retrive(fine);
 
-        if(cTarget+1=='J'||cTarget+1=='K'){
-            sotto=cTarget+3;
-        }else{
-            sotto=cTarget+1;
-        }
-        sotto=sotto+to_string(XTarget);
-
-        //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
-        if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sopra)==" ")&&(g1_difesa.retrive(sotto)==" "))){
-            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
-            return;
-        }
-
-        string at_begin=g1_difesa.retrive(begin);
-        string at_centro=g1_difesa.retrive(centro);
-        string at_end=g1_difesa.retrive(end);
-        
-        //Posizione valida, rimuovo la vecchia posizione
-        g1_difesa.remove(begin);
+        g1_difesa.remove(inizio);
         g1_difesa.remove(centro);
-        g1_difesa.remove(end);
+        g1_difesa.remove(fine);
 
-        //E metto quella nuova
-        begin=sopra;
-        end=sotto;
-        
+        string tmp(1, obiettivo[0]);
+        string sinistra_obiettivo = tmp + (stoi(obiettivo.substr(1, begin.length() - 1)) - 1);
+        string destra_obiettivo = tmp + (stoi(obiettivo.substr(1, begin.length() - 1)) + 1);
 
-        g1_difesa.set(at_begin, begin);
-        g1_difesa.set(at_centro, obiettivo);
-        g1_difesa.set(at_end, end);
+        if (g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " ") {
+            g1_difesa.set(old_sinistra, sinistra_obiettivo);
+            g1_difesa.set(old_destra, destra_obiettivo);
+            g1_difesa.set(old_centro, obiettivo);
 
-    }else{
+            inizio = sinistra_obiettivo;
+            fine = destra_obiettivo;
+            centro = obiettivo;
 
-        //E' in orizzontale (essendo che non è in verticale)
-
-        //Controllo che gli spazi siano vuoti
-        std::string sinistra(1,cTarget);
-        sinistra=sinistra+to_string(XTarget-1);
-
-        std::string destra(1,cTarget);
-        destra=destra+to_string(XTarget+1);
-        //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
-        if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
-            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
-            return;
         }
-        string at_begin=g1_difesa.retrive(begin);
-        string at_centro=g1_difesa.retrive(centro);
-        string at_end=g1_difesa.retrive(end);
-
-        //Posizione valida, rimuovo la vecchia posizione
-        g1_difesa.remove(begin);
-        g1_difesa.remove(centro);
-        g1_difesa.remove(end);
-
-        //E metto quella nuova
-        begin=sinistra;
-        end=destra;
-
-        g1_difesa.set(at_begin, begin);
-        g1_difesa.set(at_centro, obiettivo);
-        g1_difesa.set(at_end, end);
+        else {
+            g1_difesa.set(old_sinistra, inizio);
+            g1_difesa.set(old_destra, fine);
+            g1_difesa.set(old_centro, obiettivo);
+        }
 
     }
+    else {                                      //e' verticale
+        string old_sopra = g1_difesa.retrive(inizio);
+        string old_sotto = g1_difesa.retrive(centro);
+        string old_destra = g1_difesa.retrive(fine);
+
+        g1_difesa.remove(inizio);
+        g1_difesa.remove(centro);
+        g1_difesa.remove(fine);
+
+        string tmp_1(1, obiettivo[0]-1);
+        if (tmp_1 == "J" || tmp_1 == "k") {
+            tmp_1(1, obiettivo[0] - 3);
+        }
+        string tmp_2(1, obiettivo[0]+1);
+        if (tmp_2 == "J" || tmp_2 == "k") {
+            tmp_1(1, obiettivo[0] + 3);
+        }
+        string sopra_obiettivo = tmp_1 + stoi(obiettivo.substr(1, begin.length() - 1));
+        string sotto_obiettivo = tmp_2 + stoi(obiettivo.substr(1, begin.length() - 1));
+
+        if (g1_difesa.retrive(sopra_obiettivo) == " " && g1_difesa.retrive(sotto_obiettivo) == " " && g1_difesa.retrive(obiettivo) == " ") {
+            g1_difesa.set(old_sopra, sopra_obiettivo);
+            g1_difesa.set(old_sotto, sotto_obiettivo);
+            g1_difesa.set(old_centro, obiettivo);
+
+            inizio = sopra_obiettivo;
+            fine = sotto_obiettivo;
+            centro = obiettivo;
+
+        }
+        else {
+            g1_difesa.set(old_sopra, inizio);
+            g1_difesa.set(old_sotto, fine);
+            g1_difesa.set(old_centro, obiettivo);
+        }
+    }
+
+
     //Fine spostamento nave
 
     //Inizio riparazioni

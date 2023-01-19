@@ -49,57 +49,58 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
         //Controllo se il sottomarino è ancora in vita
         if(!isAlive(g1_difesa)) throw std::invalid_argument("Azione non valida: il sottomarino che si vuole utilizzare e' stato affondato!");
 
-        //Guardo se la posizione non è già occupata
-        if (g1_difesa.retrive(obiettivo) == " ") {
-            //nuova posizione valida
-            //rimuovo vecchia posizione e metto quella nuova
-            g1_difesa.remove(centro);
-            g1_difesa.set("E", obiettivo);
-            centro = obiettivo;
+        g1_difesa.remove(centro);
+        if (g1_difesa.retrive(obiettivo) != " ") {
+            g1_difesa.set("E", centro);
+            throw std::invalid_argument("La casella in cui si vuole spostare il sottomarino e' gia' occupata!");
+        }
+        g1_difesa.set("E", obiettivo);
+        centro = obiettivo;
+        inizio = obiettivo;
+        fine = obiettivo;
 
-            //Trasformo "obiettivo" in coordinate
-            char cTarget = obiettivo.at(0);
-            int XTarget = stoi(obiettivo.substr(1, obiettivo.length() - 1));
-            int YTarget;
-            if ((cTarget < 65) || (cTarget > 78))  throw std::invalid_argument("Carattere non valido");
-            YTarget = cTarget - 65;
+        char cTarget = obiettivo.at(0);
+        int XTarget = stoi(obiettivo.substr(1, obiettivo.length() - 1));
 
-            //inizio radar
-            int YSearch = YTarget - 3;
-            int XSearch;
+        //Trasformo "obiettivo" in coordinate
+        char cTarget = obiettivo.at(0);
+        int XTarget = stoi(obiettivo.substr(1, obiettivo.length() - 1));
+        int YTarget;
+        if ((cTarget < 65) || (cTarget > 78))  throw std::invalid_argument("Carattere non valido");
+        YTarget = cTarget - 65;
 
-            for (int Ycounter = 0; Ycounter < 5; Ycounter++) {
-                XSearch = XTarget - 3;
-                YSearch = YSearch + 1;
+         //inizio radar
+        int YSearch = YTarget - 3;
+        int XSearch;
 
-                for (int Xcounter = 0; Xcounter < 5; Xcounter++) {
+        for (int Ycounter = 0; Ycounter < 5; Ycounter++) {
+             XSearch = XTarget - 3;
+             YSearch = YSearch + 1;
 
-                    XSearch = XSearch + 1;
+             for (int Xcounter = 0; Xcounter < 5; Xcounter++) {
+
+                 XSearch = XSearch + 1;
 
                     //Guardo se la posizione dove sto cercando è all'interno della griglia
-                    if ((XSearch >= 0) && (XSearch < 12) && (YSearch >= 0) && (YSearch < 12)) {
+                 if ((XSearch >= 0) && (XSearch < 12) && (YSearch >= 0) && (YSearch < 12)) {
 
-                        char cY = YSearch + 65;
-                        if (cY == 'J' || cY == 'K') cY += 2;
+                    char cY = YSearch + 65;
+                    if (cY == 'J' || cY == 'K') cY += 2;
 
-                        std::string Pos(1, cY);
-                        Pos = Pos + to_string(XSearch);
-                        try {
+                    std::string Pos(1, cY);
+                    Pos = Pos + to_string(XSearch);
+                    try {
                             //if per vedere se nella posizione dove stiamo cercando cercando c'è una nave nemica
-                            if (g2_difesa.retrive(Pos) != " ") {
+                        if (g2_difesa.retrive(Pos) != " ") {
 
-                                //Nave trovata, metto una Y nella griglia d'attacco
-                                g1_attacco.set("Y", Pos);
-                            }
+                            //Nave trovata, metto una Y nella griglia d'attacco
+                            g1_attacco.set("Y", Pos);
                         }
-                        catch (const std::invalid_argument ex) {}
                     }
-                }
+                    catch (const std::invalid_argument ex) {}
+                 }
+             }
                 //fine del radar           
-            }
-        }
-        else {
-            throw std::invalid_argument("La casella in cui si vuole spostare il sottomarino e' gia' occupata!");
         }
     //Fine sottomarino        
 };
