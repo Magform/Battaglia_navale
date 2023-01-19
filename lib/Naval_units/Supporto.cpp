@@ -205,14 +205,26 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         g1_difesa.remove(centro);
         g1_difesa.remove(fine);
 
-        string tmp_1(1, obiettivo[0]-1);
-        if (tmp_1 == "J" || tmp_1 == "k") {
-            tmp_1(1, obiettivo[0] - 3);
+        char tmp_1 = obiettivo[0] - 1;
+        string tmp_11;
+        if (tmp_1 == 'J' || tmp_1 == 'K') {
+            tmp_1 = tmp_1 - 2;
+            tmp_11(1, tmp_1);
         }
-        string tmp_2(1, obiettivo[0]+1);
-        if (tmp_2 == "J" || tmp_2 == "k") {
-            tmp_1(1, obiettivo[0] + 3);
+        else {
+            tmp_11(1, tmp_1);
         }
+
+        char tmp_2 = obiettivo[0] + 1;
+        string tmp_22;
+        if (tmp_2 == 'J' || tmp_2 == 'K') {
+            tmp_2 = tmp_2 + 2;
+            tmp_22(1, tmp_2);
+        }
+        else {
+            tmp_22(1,tmp_2);
+        }
+
         string sopra_obiettivo = tmp_1 + obiettivo.substr(1, begin.length() - 1);
         string sotto_obiettivo = tmp_2 + obiettivo.substr(1, begin.length() - 1);
 
