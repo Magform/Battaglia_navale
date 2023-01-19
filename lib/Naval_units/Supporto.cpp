@@ -198,8 +198,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     }
     else {                                      //e' verticale
         string old_sopra = g1_difesa.retrive(inizio);
-        string old_sotto = g1_difesa.retrive(centro);
-        string old_destra = g1_difesa.retrive(fine);
+        string old_centro = g1_difesa.retrive(centro);
+        string old_sotto = g1_difesa.retrive(fine);
 
         g1_difesa.remove(inizio);
         g1_difesa.remove(centro);
