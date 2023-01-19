@@ -20,7 +20,7 @@ int main(int argc, char ** argv) {
 	string loadtype{}, log_in{}, log_out{};
 	bool accepted = false;
 	int turni=1;
-	int massimo_turni = 100; //WARNING: se la si cambia qua bisonga cambiarla anche su battaglia_navale, rappresenta il numero massimo di turni giocati
+	int massimo_turni = 100; //WARNING: se la si cambia qua bisonga cambiarla anche su battaglia_navale -> rappresenta il numero massimo di turni giocati
 	while (!accepted) {
 		try {
 			Replay battaglia;
@@ -33,9 +33,9 @@ int main(int argc, char ** argv) {
 			}
 			else{
 				cout << "Argomento non valido: " << endl;
-				cout << " Inserire il tipo di replay che si desidera effettuare: " << endl;
-				cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
-				cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
+				cout << "Inserire il tipo di replay che si desidera effettuare: " << endl;
+				cout << "\tv [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
+				cout << "\tf [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			}
 
 			while (battaglia.winner()==0 && turni <= massimo_turni) {
@@ -56,9 +56,9 @@ int main(int argc, char ** argv) {
 			return 0;
 		}
 		catch (const logic_error ex) {	//eccezione lanciata se non si inseriscono argomenti
-			cout << " Inserire il tipo di replay che si desidera effettuare: " << endl;
-			cout << "v [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
-			cout << "f [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
+			cout << "Inserire il tipo di replay che si desidera effettuare: " << endl;
+			cout << "\tv [nome_file_log] -> stampa a video il replay del file di log indicato" << endl;
+			cout << "\tf [nome_file_log] [nome_file_output_replay] -> scrive su file il replay del file di log indicato" << endl;
 			return 0;
 		}
 		accepted=true;
