@@ -192,7 +192,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         else {
             g1_difesa.set(old_sinistra, begin);
             g1_difesa.set(old_destra, end);
-            g1_difesa.set(old_centro, obiettivo);
+            g1_difesa.set(old_centro, centro);
         }
 
     }
@@ -235,7 +235,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         else {
             g1_difesa.set(old_sopra, begin);
             g1_difesa.set(old_sotto, end);
-            g1_difesa.set(old_centro, obiettivo);
+            g1_difesa.set(old_centro, centro);
         }
     }
 
