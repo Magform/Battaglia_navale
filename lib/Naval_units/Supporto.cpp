@@ -225,10 +225,13 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
             tmp_22.assign(tmp_2, 1);
         }
 
+        cout << tmp_11 << " " << obiettivo.substr(1, begin.length() - 1)<<endl;
+        cout << tmp_22 << " " << obiettivo.substr(1, begin.length() - 1) << endl;
+
         string sopra_obiettivo = tmp_11 + obiettivo.substr(1, begin.length() - 1);
         string sotto_obiettivo = tmp_22 + obiettivo.substr(1, begin.length() - 1);
 
-        cout << sopra_obiettivo << sotto_obiettivo << obiettivo << endl;
+        cout << sopra_obiettivo <<" " << sotto_obiettivo <<" " << obiettivo << endl;
         if (g1_difesa.retrive(sopra_obiettivo) == " " && g1_difesa.retrive(sotto_obiettivo) == " " && g1_difesa.retrive(obiettivo) == " ") {
             g1_difesa.set(old_sopra, sopra_obiettivo);
             g1_difesa.set(old_sotto, sotto_obiettivo);
