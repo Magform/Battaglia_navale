@@ -467,22 +467,38 @@ void Naval_battle::bot_command(int giocatore_primo) {
     std::this_thread::sleep_for(std::chrono::milliseconds(600));
     if (giocatore_primo == 1) {
         if (botBattle) {
+            cout << "g1 prima" << endl;
+            cout << g1_difesa << endl;
             bot_g1_command();
+            cout << "g1 dopo" << endl;
+            cout << g1_difesa << endl;
             if (winner() != 0) {
                 return;
             }
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
+        cout << "g2 prima" << endl;
+        cout << g2_difesa << endl;
         bot_g2_command();
+        cout << "g2 dopo" << endl;
+        cout << g2_difesa << endl;
     }
     else if (giocatore_primo == 2) {
+        cout << "g2 prima" << endl;
+        cout << g2_difesa << endl;
         bot_g2_command();
+        cout << "g2 dopo" << endl;
+        cout << g2_difesa << endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
         if (botBattle) {
             if (winner() != 0) {
                 return;
             }
+            cout << "g1 prima" << endl;
+            cout << g1_difesa << endl;
             bot_g1_command();
+            cout << "g1 dopo" << endl;
+            cout << g1_difesa << endl;
         }
     }
     else {
