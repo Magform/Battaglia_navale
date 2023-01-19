@@ -102,9 +102,5 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
                 }
                 //fine del radar           
             }
-        }
-        else {
-            throw std::invalid_argument("La casella in cui si vuole spostare il sottomarino e' gia' occupata!");
-        }
     //Fine sottomarino        
 };
