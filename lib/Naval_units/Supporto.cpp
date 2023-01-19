@@ -167,9 +167,9 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     int lettera_fine = end[0];
     if (lettera_fine == lettera_inizio) {       //e' orizziontale
 
-        string old_sinistra = g1_difesa.retrive(inizio);
+        string old_sinistra = g1_difesa.retrive(begin);
         string old_centro = g1_difesa.retrive(centro);
-        string old_destra = g1_difesa.retrive(fine);
+        string old_destra = g1_difesa.retrive(end);
 
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
@@ -209,7 +209,6 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         if (tmp_1 == 'J' || tmp_1 == 'K') {
             tmp_1 = tmp_1 - 2;
         }
-        cout << tmp_1 << endl;
         string tmp_11(1, tmp_1);
 
         char tmp_2 = obiettivo[0] + 1;
@@ -218,13 +217,11 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         }
         string tmp_22(1, tmp_2);
 
-        cout << tmp_11 << " number: " << obiettivo.substr(1, begin.length())<<endl;
-        cout << tmp_22 << " number: " << obiettivo.substr(1, begin.length()) << endl;
 
         string sopra_obiettivo = tmp_11 + obiettivo.substr(1, begin.length());
         string sotto_obiettivo = tmp_22 + obiettivo.substr(1, begin.length());
 
-        cout << sopra_obiettivo <<" " << sotto_obiettivo <<" " << obiettivo << endl;
+
         if (g1_difesa.retrive(sopra_obiettivo) == " " && g1_difesa.retrive(sotto_obiettivo) == " " && g1_difesa.retrive(obiettivo) == " ") {
             g1_difesa.set(old_sopra, sopra_obiettivo);
             g1_difesa.set(old_sotto, sotto_obiettivo);
