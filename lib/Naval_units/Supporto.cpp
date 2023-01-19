@@ -232,6 +232,7 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         string sotto_obiettivo = tmp_2 + obiettivo.substr(1, begin.length() - 1);
 
        try{
+           cout << sopra_obiettivo << " " << sotto_obiettivo << " " << obiettivo << endl;
             g1_difesa.secure_set(old_sopra, sopra_obiettivo);
             g1_difesa.secure_set(old_sotto, sotto_obiettivo);
             g1_difesa.secure_set(old_centro, obiettivo);
