@@ -762,11 +762,11 @@ bool Naval_battle::is_botBattle() {
 int Naval_battle::winner() {
     if (g1_navi() == 0) {
         log_file.close();
-        return 1;
+        return 2;
     }
     if (g2_navi() == 0) {
         log_file.close();
-        return 2;
+        return 1;
     }
     return 0;
 }
