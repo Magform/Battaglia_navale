@@ -46,7 +46,7 @@ void Griglia::set(string toSet, string location){
 
 //Posiziona la stringa toSet alla posizione location
 //Prima di farlo peró si assicura che la posizione location é presente nella griglia e sia vuota, in caso negativo lancia un eccezione invalid_argument
-void secure_set(std::string toSet, std::string location) {
+void Griglia::secure_set(std::string toSet, std::string location) {
     int character = location[0];
     character = character - 65;
     if (character < 0 || character>13) {
