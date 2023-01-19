@@ -19,14 +19,14 @@ void Supporto::set(std::string inizio, std::string fine,Griglia& g_difesa){
        
     //converto in cordiate "matrici" la coordinata di inizio
     char cInizio=inizio.at(0);
-    int xInizio=stoi(inizio.substr(1,inizio.length()-1));
+    int xInizio=stoi(inizio.substr(1,inizio.length()));
     int yInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
     yInizio=cInizio-65;
         
     //converto in cordiate "matrici" la coordinata di fine
     char cFine=fine.at(0);
-    int xFine=stoi(fine.substr(1,fine.length()-1));
+    int xFine=stoi(fine.substr(1,fine.length()));
     int yFine;
     if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
     yFine=cFine-65;
@@ -166,14 +166,14 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
     //Ottengo le coordinate dell'obiettivo
     char cTarget=obiettivo.at(0);
-    int XTarget=stoi(obiettivo.substr(1,obiettivo.length()-1));
+    int XTarget=stoi(obiettivo.substr(1,obiettivo.length()));
     int YTarget;
     if((cTarget<65)||(cTarget>78))  throw std::invalid_argument("Carattere non valido");
     YTarget=cTarget-65;
     
     //Ottengo le coordinate x dell'inizio e fine della vecchia posizione, per vedere se la nave è in orizzontale o verticale
-    int xInizio=stoi(begin.substr(1,begin.length()-1));
-    int xFine=stoi(end.substr(1,end.length()-1));
+    int xInizio=stoi(begin.substr(1,begin.length()));
+    int xFine=stoi(end.substr(1,end.length()));
       
     //inizio spostamento, controllando prima se la nave è in orizzontale o in verticale
     
@@ -260,13 +260,13 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
     //Nuove coordinate x di begin e end
     char cInizio=begin.at(0);
-    int XInizio=stoi(begin.substr(1,begin.length()-1));
+    int XInizio=stoi(begin.substr(1,begin.length()));
     int YInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
     YInizio=cInizio-65;
     
     char cFine=end.at(0);
-    int XFine=stoi(end.substr(1,end.length()-1));
+    int XFine=stoi(end.substr(1,end.length()));
     int YFine;
     if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
     YFine=cFine-65;

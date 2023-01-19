@@ -59,7 +59,7 @@ void Sottomarino::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_
 
             //Trasformo "obiettivo" in coordinate
             char cTarget = obiettivo.at(0);
-            int XTarget = stoi(obiettivo.substr(1, obiettivo.length() - 1));
+            int XTarget = stoi(obiettivo.substr(1, obiettivo.length());
             int YTarget;
             if ((cTarget < 65) || (cTarget > 78))  throw std::invalid_argument("Carattere non valido");
             YTarget = cTarget - 65;
