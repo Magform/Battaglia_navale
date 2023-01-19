@@ -196,21 +196,25 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
             sotto=cTarget+1;
         }
         sotto=sotto+to_string(XTarget);
-
-        //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
-        if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sopra)==" ")&&(g1_difesa.retrive(sotto)==" "))){
-            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
-            return;
-        }
-
+        
+        //Salvo le lettere nelle posizioni della nave, maiuscolo e minuscole
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
         string at_end=g1_difesa.retrive(end);
-        
-        //Posizione valida, rimuovo la vecchia posizione
+
+        //Rimuovo la posizione, in caso di spostamento su se stessa
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
         g1_difesa.remove(end);
+
+        //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
+        if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sopra)==" ")&&(g1_difesa.retrive(sotto)==" "))){
+            g1_difesa.set(at_begin, begin);
+            g1_difesa.set(at_centro, obiettivo);
+            g1_difesa.set(at_end, end);
+            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
+            return;
+        }
 
         //E metto quella nuova
         begin=sopra;
@@ -231,19 +235,25 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
         std::string destra(1,cTarget);
         destra=destra+to_string(XTarget+1);
-        //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
-        if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
-            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
-            return;
-        }
+        
+        //Salvo le lettere nelle posizioni della nave, maiuscolo e minuscole
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
         string at_end=g1_difesa.retrive(end);
 
-        //Posizione valida, rimuovo la vecchia posizione
+        //Rimuovo la posizione, in caso di spostamento su se stessa
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
         g1_difesa.remove(end);
+        
+        //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
+        if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
+            g1_difesa.set(at_begin, begin);
+            g1_difesa.set(at_centro, obiettivo);
+            g1_difesa.set(at_end, end);
+            throw std::invalid_argument("Coordinata dell'obiettivo non valida.");
+            return;
+        }
 
         //E metto quella nuova
         begin=sinistra;
