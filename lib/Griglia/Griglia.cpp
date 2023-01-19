@@ -44,6 +44,32 @@ void Griglia::set(string toSet, string location){
     matrix[character][number] = toSet;
 }
 
+//Posiziona la stringa toSet alla posizione location
+//Prima di farlo peró si assicura che la posizione location é presente nella griglia e sia vuota, in caso negativo lancia un eccezione invalid_argument
+void secure_set(std::string toSet, std::string location) {
+    int character = location[0];
+    character = character - 65;
+    if (character < 0 || character>13) {
+        throw invalid_argument("Carattere della location non valido");
+    }
+    if (character == 9 || character == 10) {
+        throw invalid_argument("Carattere della location non valido");
+    }
+    if (character > 10) {
+        character -= 2;
+    }
+    int number = stoi(location.substr(1, location.length() - 1)) - 1;
+    if (number < 0 || number>11) {
+        throw invalid_argument("Numero della location non valido");
+    }
+    if(matrix[character][number]==" "){
+        matrix[character][number] = toSet;
+    }
+    else {
+        throw invalid_argument("Posizione occupata");
+    }
+}
+
 
 //Cancella tutti i valori presenti nella griglia
 void Griglia::clear(){

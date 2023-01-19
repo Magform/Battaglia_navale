@@ -21,7 +21,8 @@ public:
     Griglia();
 
     //funzioni utili
-    void set(std::string toSet, std::string location);       
+    void set(std::string toSet, std::string location);    
+    void secure_set(std::string toSet, std::string location);
     void clear();                                             
     void remove(std::string location);                        
     void remove_all(std::string to_remove);                   
