@@ -203,7 +203,6 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
         string at_end=g1_difesa.retrive(end);
-cout<<"sopra: <<"<<sopra<<"  at_centro:  "<<obiettivo<<"   sotto "<<sotto<<endl;
         //Rimuovo la posizione, in caso di spostamento su se stessa
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
@@ -211,7 +210,6 @@ cout<<"sopra: <<"<<sopra<<"  at_centro:  "<<obiettivo<<"   sotto "<<sotto<<endl;
 
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sopra)==" ")&&(g1_difesa.retrive(sotto)==" "))){
-            cout<<"check verticale"<<endl;
             g1_difesa.set(at_begin, begin);
             g1_difesa.set(at_centro, centro);
             g1_difesa.set(at_end, end);
@@ -223,7 +221,6 @@ cout<<"sopra: <<"<<sopra<<"  at_centro:  "<<obiettivo<<"   sotto "<<sotto<<endl;
         begin=sopra;
         end=sotto;
         
-cout<<"niente if verticale"<<endl;
         g1_difesa.set(at_begin, begin);
         g1_difesa.set(at_centro, obiettivo);
         g1_difesa.set(at_end, end);
@@ -245,7 +242,6 @@ cout<<"niente if verticale"<<endl;
         string at_begin=g1_difesa.retrive(begin);
         string at_centro=g1_difesa.retrive(centro);
         string at_end=g1_difesa.retrive(end);
-cout<<"sinistra: <<"<<sinistra<<"  at_centro:  "<<obiettivo<<"   destra: "<<destra<<endl;
         //Rimuovo la posizione, in caso di spostamento su se stessa
         g1_difesa.remove(begin);
         g1_difesa.remove(centro);
@@ -253,7 +249,6 @@ cout<<"sinistra: <<"<<sinistra<<"  at_centro:  "<<obiettivo<<"   destra: "<<dest
         
         //if per vedere se le nuove posizioni sono vuote, lancia una eccezione se non lo sono o se si esce dalla griglia
         if(!((g1_difesa.retrive(obiettivo)==" ")&&(g1_difesa.retrive(sinistra)==" ")&&(g1_difesa.retrive(destra)==" "))){
-            cout<<"check orizzontale"<<endl;
             g1_difesa.set(at_begin, begin);
             g1_difesa.set(at_centro, centro);
             g1_difesa.set(at_end, end);
@@ -264,7 +259,6 @@ cout<<"sinistra: <<"<<sinistra<<"  at_centro:  "<<obiettivo<<"   destra: "<<dest
         //E metto quella nuova
         begin=sinistra;
         end=destra;
-cout<<"niente if orizzontale"<<endl;
         g1_difesa.set(at_begin, begin);
         g1_difesa.set(at_centro, obiettivo);
         g1_difesa.set(at_end, end);
