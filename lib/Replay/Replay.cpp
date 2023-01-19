@@ -168,7 +168,7 @@ void Replay::turno() {
         else {
             throw invalid_argument("Battaglia nel file non valida");
         }
-        write("-----Griglie di gioco giocatore 1-----\n");
+        write("-----GRIGLIE DI GIOCO GIOCATORE 1-----\n");
         if (!file_output) {
             cout << g1_attacco << "\n";
             cout << g1_difesa << "\n";
@@ -215,7 +215,7 @@ void Replay::turno() {
             throw invalid_argument("Battaglia nel file non valida");
         }
 
-        write("-----Griglie di gioco giocatore 2-----\n");
+        write("-----GRIGLIE DI GIOCO GIOCATORE 2-----\n");
         if (!file_output) {
             cout << g2_attacco << "\n";
             cout << g2_difesa << "\n";
@@ -295,13 +295,13 @@ int Replay::g2_navi() {
 }
 
 
-//se ritorna 1 vince giocatore 1, se ritorna 2 vince giocatore 2
+//se vince giocatore 1 restituisce 1, se vince giocatore 2 restituisce 2, altrimenti 0
 int Replay::winner() {
-    if (g1_navi() == 0) {
-        return 1;
-    }
-    if (g2_navi() == 0) {
+    if (g1_navi() == 8) {
         return 2;
+    }
+    if (g2_navi() == 8) {
+        return 1;
     }
     return 0;
 }
@@ -310,11 +310,11 @@ int Replay::winner() {
 //funzione da chiamare quando termina la battaglia che si occupa di scrivere in output l'eventuale vincitore e di chiudere i file di input e output
 void Replay::fine() {
     if (winner() != 0) {
-        write(" Battaglia terminata, ha vinto il giocatore ");
+        write("\nBattaglia terminata, ha vinto il giocatore ");
         write(to_string(winner()));
     }
     else {
-        write("Non vi é stato alcun vincitore");
+        write("\nNon vi e' stato alcun vincitore!");
     }
     if (file_output) {
         log_output.close();
