@@ -246,13 +246,13 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
 
     //Nuove coordinate x di begin e end
     char cInizio=begin.at(0);
-    int XInizio=stoi(begin.substr(1,begin.length()-1));
+    int XInizio=stoi(begin.substr(1,begin.length()));
     int YInizio;
     if((cInizio<65)||(cInizio>78))  throw std::invalid_argument("Carattere non valido");
     YInizio=cInizio-65;
     
     char cFine=end.at(0);
-    int XFine=stoi(end.substr(1,end.length()-1));
+    int XFine=stoi(end.substr(1,end.length()));
     int YFine;
     if((cFine<65)||(cFine>78))  throw std::invalid_argument("Carattere non valido");
     YFine=cFine-65;
