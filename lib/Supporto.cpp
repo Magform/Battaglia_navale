@@ -305,19 +305,21 @@ cout<<"niente if orizzontale"<<endl;
 
                 std::string Repair(1,cRepair);
                 Repair=Repair+to_string(XRepair+k);
-                //if per vedere se nella posizione di ricerca c'è una lettera minuscola
-                if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
+                
+                try{
+                    //if per vedere se nella posizione di ricerca c'è una lettera minuscola
+                    if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
 
-                    //Prendo la lettera e la metto maiuscola
-                    string lettera=g1_difesa.retrive(Repair);
-                    char l=lettera[0];
-                    l=toupper(l);
-                    string insert(1,l);
+                        //Prendo la lettera e la metto maiuscola
+                        string lettera=g1_difesa.retrive(Repair);
+                        char l=lettera[0];
+                        l=toupper(l);
+                        string insert(1,l);
 
-                    //E la inserisco
-                    g1_difesa.set(insert, Repair);
-
-                }
+                        //E la inserisco
+                        g1_difesa.set(insert, Repair);
+                    }
+                }catch (const std::invalid_argument ex) {}
             }    
             //Fine controlli di riparazione nella riga superiore alla nave
         }
@@ -336,6 +338,7 @@ cout<<"niente if orizzontale"<<endl;
                 std::string Repair(1,cRepair);
                 Repair=Repair+to_string(XRepair+k);
 
+                try{
                 //if per vedere se nella posizione di ricerca c'è una lettera minuscola
                 if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
 
@@ -349,6 +352,7 @@ cout<<"niente if orizzontale"<<endl;
                     g1_difesa.set(insert, Repair);
 
                 }
+                }catch (const std::invalid_argument ex) {}
             }    
             //Fine controlli di riparazione riga inferiore alla nave
         }
@@ -371,6 +375,8 @@ cout<<"niente if orizzontale"<<endl;
                     Repair=cRepair+k;
                 }
                 Repair=Repair+to_string(XRepair);
+                
+                try{
                 //if per vedere se nella posizione di ricerca c'è una lettera minuscola
                 if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
 
@@ -384,6 +390,7 @@ cout<<"niente if orizzontale"<<endl;
                     g1_difesa.set(insert, Repair);
 
                 }
+                }catch (const std::invalid_argument ex) {}
             }
             //Fine controlli di riparazione colonna a sinistra nella nave                            
         }
@@ -403,6 +410,7 @@ cout<<"niente if orizzontale"<<endl;
                 }
                 Repair=Repair+to_string(XRepair);
 
+                try{
                 //if per vedere se nella posizione di ricerca c'è una lettera minuscola
                 if((g1_difesa.retrive(Repair)=="c")||(g1_difesa.retrive(Repair)=="s")){
               
@@ -416,6 +424,7 @@ cout<<"niente if orizzontale"<<endl;
                     g1_difesa.set(insert, Repair);
 
                 }
+                }catch (const std::invalid_argument ex) {}
 
             }
         }
