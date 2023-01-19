@@ -10,7 +10,7 @@ add_library(naval_battle_and_replay
 	lib/Corazzata.cpp
 	lib/Griglia.cpp
 	lib/Naval_battle.cpp
-	lib/replay.cpp
+	lib/Replay.cpp
 	lib/Sottomarino.cpp
 	lib/Supporto.cpp)
 
