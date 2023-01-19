@@ -221,7 +221,7 @@ cout<<"begin: <<"<<at_begin<<"  at_centro:  "<<at_centro<<"   end: "<<at_end;
         begin=sopra;
         end=sotto;
         
-
+cout<<"niente if verticale"<<endl;
         g1_difesa.set(at_begin, begin);
         g1_difesa.set(at_centro, obiettivo);
         g1_difesa.set(at_end, end);
@@ -260,7 +260,7 @@ cout<<"begin: <<"<<at_begin<<"  at_centro:  "<<at_centro<<"   end: "<<at_end;
         //E metto quella nuova
         begin=sinistra;
         end=destra;
-
+cout<<"niente if orizzontale"<<endl;
         g1_difesa.set(at_begin, begin);
         g1_difesa.set(at_centro, obiettivo);
         g1_difesa.set(at_end, end);
