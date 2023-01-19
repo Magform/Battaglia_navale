@@ -180,7 +180,9 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
     if(xInizio==xFine){
            
         //E' in verticale
-
+        
+        if(cTarget<66||cTarget>77)   throw std::invalid_argument("Fuori dalla griglia");
+        
         //Prendo le posizioni sopra e sotto all'obiettivo, per vedere se posso metterla in verticale
         std::string sopra, sotto;
         if(cTarget-1=='J'||cTarget-1=='K'){
@@ -230,6 +232,8 @@ cout<<"niente if verticale"<<endl;
 
         //E' in orizzontale (essendo che non è in verticale)
 
+        if(XTarget<2||XTarget>11)   throw std::invalid_argument("Fuori dalla griglia");
+        
         //Controllo che gli spazi siano vuoti
         std::string sinistra(1,cTarget);
         sinistra=sinistra+to_string(XTarget-1);
