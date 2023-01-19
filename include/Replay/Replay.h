@@ -18,7 +18,7 @@ class Replay {
 private:
     std::ifstream log_input;     //variabile per la lettura dei log dal file
     std::ofstream log_output;    //variabile per la scrittura dell'output su file 
-    bool file_output;           //variabile per definire se vi é un output su file o no
+    bool file_output;            //variabile per definire se vi é un output su file o no
 
     //tutti le variabili del giocatore1 
     Griglia g1_attacco;
@@ -44,10 +44,10 @@ private:
     Sottomarino g2_sottomarino1;
     Sottomarino g2_sottomarino2;
 
-    void write(std::string toPrint); //funzione che scrive dove necessario (file di output o terminale) ció che gli viene passato come stringa
-    void file_opening(std::string type, std::string log_in, std::string log_out); //Apre i file
-    int g1_navi(); //conta le navi attualmente in vita del giocatore 1.
-    int g2_navi(); //conta le navi attualemente in vida del giocatore 2.
+    void write(std::string toPrint);   //funzione che scrive dove necessario (file di output o terminale) ció che gli viene passato come stringa
+    void file_opening(std::string type, std::string log_in, std::string log_out);   //Apre i file
+    int g1_navi();   //conta le navi attualmente in vita del giocatore 1.
+    int g2_navi();   //conta le navi attualemente in vida del giocatore 2.
 
 public:
     Replay();
