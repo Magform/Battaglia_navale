@@ -760,7 +760,6 @@ int Naval_battle::winner() {
 
 //funzione che si occupa di inizializzare una corazzata in modo casuale (utilizzata dal bot)
 void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log){
-    cout << "corazzata" << endl;
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
@@ -807,7 +806,6 @@ void create_corazzata(Corazzata& unita, Griglia& griglia_difesa, std::ofstream& 
 
 //funzione che si occupa di inizializzare una supporto in modo casuale (utilizzata dal bot)
 void create_supporto(Supporto& unita, Griglia& griglia_difesa, std::ofstream& log_file, bool log) {
-    cout << "supporto" << endl;
     bool isGood = false;
     while (!isGood) {
         srand(time(NULL));
