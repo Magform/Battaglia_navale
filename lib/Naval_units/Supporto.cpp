@@ -176,8 +176,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         g1_difesa.remove(fine);
 
         string tmp(1, obiettivo[0]);
-        string sinistra_obiettivo = tmp + (stoi(obiettivo.substr(1, begin.length() - 1)) - 1);
-        string destra_obiettivo = tmp + (stoi(obiettivo.substr(1, begin.length() - 1)) + 1);
+        string sinistra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length() - 1)) - 1);
+        string destra_obiettivo = tmp + to_string(stoi(obiettivo.substr(1, begin.length() - 1)) + 1);
 
         if (g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " " && g1_difesa.retrive(destra_obiettivo) == " ") {
             g1_difesa.set(old_sinistra, sinistra_obiettivo);
@@ -213,8 +213,8 @@ void Supporto::azione(std::string obiettivo, Griglia& g1_difesa, Griglia& g1_att
         if (tmp_2 == "J" || tmp_2 == "k") {
             tmp_1(1, obiettivo[0] + 3);
         }
-        string sopra_obiettivo = tmp_1 + stoi(obiettivo.substr(1, begin.length() - 1));
-        string sotto_obiettivo = tmp_2 + stoi(obiettivo.substr(1, begin.length() - 1));
+        string sopra_obiettivo = tmp_1 + obiettivo.substr(1, begin.length() - 1);
+        string sotto_obiettivo = tmp_2 + obiettivo.substr(1, begin.length() - 1);
 
         if (g1_difesa.retrive(sopra_obiettivo) == " " && g1_difesa.retrive(sotto_obiettivo) == " " && g1_difesa.retrive(obiettivo) == " ") {
             g1_difesa.set(old_sopra, sopra_obiettivo);
